@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:36:25 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/18 18:42:20 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:40:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,3 +36,6 @@ void *ft_memmove(void *dest, const void *src, size_t count)
 		}
 	}
 }
+/*ARREGLAR estaría mal el ELSE porque necesitas pre-decremento no post-decremento
+porque destination += count apunta afuera de la memoria que queres mover
+y *destination-- = *source-- te va a mover un byte por fuera del size*/
