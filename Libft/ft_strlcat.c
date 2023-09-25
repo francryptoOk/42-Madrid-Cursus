@@ -6,11 +6,21 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:07:13 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/18 18:33:02 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:24:15 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_runstr(char *str)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {

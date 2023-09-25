@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 11:19:51 by fsantill          #+#    #+#              #
-#    Updated: 2023/09/25 15:14:09 by fsantill         ###   ########.fr        #
+#    Updated: 2023/09/25 18:35:33 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,12 @@ FT=		ft_isalpha.c	\
 		ft_strlen.c		\
 		ft_memset.c		\
 		ft_bzero.c		\
-		ft_strlcpy.c
+		ft_memcpy.c 	\
+		ft_memmove.c	\
+		ft_strlcpy.c	\
+		ft_strlcat.c	\
+		ft_toupper.c	\
+		ft_tolower.c
 
 OBJ=$(FT:%.c=%.o)
 

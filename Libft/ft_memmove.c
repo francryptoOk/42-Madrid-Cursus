@@ -3,39 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 15:36:25 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/18 21:40:38 by codespace        ###   ########.fr       */
+/*   Updated: 2023/09/25 18:14:33 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memmove(void *dest, const void *src, size_t count)
+void	*ft_memmove(void *dest, const void *src, size_t count)
 {
-	char		*destination;
-	const char	*source;
+	unsigned char	*destiny;
+	unsigned char	*source;
+	size_t			i;
 
-	destination = dest;
-	source = src;
-	if (destination < source)
-		while (count != 0)
+	destiny = (unsigned char *)dest;
+	source = (unsigned char *)src;
+	i = 0;
+	if (destiny == 0 || source == 0)
+		return (0);
+	if (destiny < source)
+		while(i < count)
 		{
-			*destination++ = *source++;
-			count--;
+			destiny[i] = source[i];
+			i++;
 		}
 	else
 	{
-		destination += count;
-		source += count;
-		while (count != 0)
-		{
-			*destination-- = *source--;
-			count--;
-		}
+		i = count - 1;
+		destiny[i] = source[i];
+		i--;
 	}
+	return (destiny);
 }
-/*ARREGLAR estaría mal el ELSE porque necesitas pre-decremento no post-decremento
-porque destination += count apunta afuera de la memoria que queres mover
-y *destination-- = *source-- te va a mover un byte por fuera del size*/

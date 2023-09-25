@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/25 15:13:53 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:35:29 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,44 @@ int	test_bzero(void)
 		return (0);
 }
 
+int	test_memcpy(void)
+{
+	char	mem1[10] = "hola, que?";
+	char	mem2[10] = "chau, lala";
+	char	mem3[10] = "hola, que?";
+	char	mem4[10] = "chau, lala";
+	int		i = 0;
+
+	memcpy(mem1, mem2, 4);
+	ft_memcpy(mem3, mem4, 4);
+	if (mem1[i] == mem3[i])
+	{
+		while (i != '\0')
+			i++;
+		return (1);
+	}
+	else
+		return (0);
+}
+
+int	test_memmove(void)
+{
+	char	mem1[10] = "hola, que?";
+	char	mem2[10] = "hola, que?";
+	int		i = 0;
+
+	memmove(mem1 + 3, mem1, 5);
+	ft_memmove(mem2 + 3, mem2, 5);
+	if (mem1[i] == mem2[i])
+	{
+		while (i != '\0')
+			i++;
+		return (1);
+	}
+	else
+		return (0);
+}
+
 int	test_strlcpy(void)
 {
 	char	str1[10] = "hola, que?";
@@ -141,6 +179,44 @@ int	test_strlcpy(void)
 	len1 = strlcpy(str1, "chau", sizeof(str1));
 	len2 = ft_strlcpy(str1, "chau", sizeof(str1));
 	if (len1 == len2)
+		return (1);
+	else
+		return (0);
+}
+
+int	test_strlcat(void)
+{
+	char	str1[10] = "hola, que?";
+	int		len1 = 9;
+	int		len2 = 3;
+
+	len1 = strlcat(str1, "chau", sizeof(str1));
+	len2 = ft_strlcat(str1, "chau", sizeof(str1));
+	if (len1 == len2)
+		return (1);
+	else
+		return (0);
+}
+
+int	test_toupper(void)
+{
+	if (ft_toupper('a') == 'A')
+		return (1);
+	if (ft_toupper('z') == 'Z')
+		return (1);
+	if (ft_toupper('g') == 'G')
+		return (1);
+	else
+		return (0);
+}
+
+int	test_tolower(void)
+{
+	if (ft_tolower('A') == 'a')
+		return (1);
+	if (ft_tolower('Z') == 'z')
+		return (1);
+	if (ft_tolower('H') == 'h')
 		return (1);
 	else
 		return (0);
@@ -180,9 +256,29 @@ int	main(void)
 		printf("bzero = OKey! :D\n");
 	else
 		printf("bzero = KnOckout! :(\n");
+	if (test_memcpy() == 1)
+		printf("memcpy = OKey! :D\n");
+	else
+		printf("memcpy = KnOckout! :(\n");
+	if (test_memmove() == 1)
+		printf("memmove = OKey! :D\n");
+	else
+		printf("memmove = KnOckout! :(\n");
 	if (test_strlcpy() == 1)
 		printf("strlcpy = OKey! :D\n");
 	else
 		printf("strlcpy = KnOckout! :(\n");
+	if (test_strlcat() == 1)
+		printf("strlcat = OKey! :D\n");
+	else
+		printf("strlcat = KnOckout! :(\n");
+	if (test_toupper() == 1)
+		printf("toupper = OKey! :D\n");
+	else
+		printf("toupper = KnOckout! :(\n");
+	if (test_tolower() == 1)
+		printf("tolower = OKey! :D\n");
+	else
+		printf("tolower = KnOckout! :(\n");
 	return (0);
 }
