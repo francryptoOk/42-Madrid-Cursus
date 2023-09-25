@@ -6,12 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/18 11:42:30 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/25 15:13:53 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <string.h>
 
 int	test_isalpha(void)
 {
@@ -69,7 +70,7 @@ int	test_isalnum(void)
 
 int	test_isascii(void)
 {
-	if (ft_isascii(255) == 1)
+	if (ft_isascii(127) == 1)
 		return (1);
 	else
 		return (0);
@@ -93,6 +94,56 @@ int	test_strlen(void)
 		return (0);
 	else
 		return (1);
+}
+
+int	test_memset(void)
+{
+	char	mem1[10] = "hola, que?";
+	char	mem2[10] = "hola, que?";
+	int		i = 0;
+
+	memset(mem1, '+', 4);
+	ft_memset(mem2, '+', 4);
+	if (mem1[i] == mem2[i])
+	{
+		while (i != '\0')
+			i++;
+		return (1);
+	}
+	else
+		return (0);
+}
+
+int	test_bzero(void)
+{
+	char	mem1[10] = "hola, que?";
+	char	mem2[10] = "hola, que?";
+	int		i = 0;
+
+	bzero(mem1, 4);
+	ft_bzero(mem2, 4);
+	if (mem1[i] == mem2[i])
+	{
+		while (i != '\0')
+			i++;
+		return (1);
+	}
+	else
+		return (0);
+}
+
+int	test_strlcpy(void)
+{
+	char	str1[10] = "hola, que?";
+	int		len1 = 9;
+	int		len2 = 3;
+
+	len1 = strlcpy(str1, "chau", sizeof(str1));
+	len2 = ft_strlcpy(str1, "chau", sizeof(str1));
+	if (len1 == len2)
+		return (1);
+	else
+		return (0);
 }
 
 int	main(void)
@@ -121,5 +172,17 @@ int	main(void)
 		printf("strlen = OKey! :D\n");
 	else
 		printf("strlen = KnOckout! :(\n");
+	if (test_memset() == 1)
+		printf("memset = OKey! :D\n");
+	else
+		printf("memset = KnOckout! :(\n");
+	if (test_bzero() == 1)
+		printf("bzero = OKey! :D\n");
+	else
+		printf("bzero = KnOckout! :(\n");
+	if (test_strlcpy() == 1)
+		printf("strlcpy = OKey! :D\n");
+	else
+		printf("strlcpy = KnOckout! :(\n");
 	return (0);
 }

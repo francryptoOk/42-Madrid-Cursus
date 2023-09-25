@@ -6,21 +6,23 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:37:27 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/18 17:01:03 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/25 14:52:06 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_memset(void *dest, int c, size_t count)
+void	*ft_memset(void *dest, int c, size_t count)
 {
-	unsigned char	*destino;
+	unsigned char	*destiny;
+	size_t			i;
 
-	destino = dest;
-	while (count != 0)
+	destiny = dest;
+	i = 0;
+	while (i < count)
 	{
-		destino[count] = (unsigned char)c;
-		count--;
+		destiny[i] = (unsigned char)c;
+		i++;
 	}
-	return (destino);
+	return (destiny);
 }
