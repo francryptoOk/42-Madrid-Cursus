@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:48:30 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/15 12:22:40 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:18:59 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,12 @@ int	ft_isalpha(int c)
 		return (1);
 	return (0);
 }
+/**
+ * The function `ft_isalpha` checks if a given character
+ * is an alphabetic character.
+ * 
+ * @param c The parameter "c" is of type "int" and represents a character.
+ * 
+ * @return 1 if the character is an alphabetic character
+ * (either lowercase or uppercase), and 0 otherwise.
+ */

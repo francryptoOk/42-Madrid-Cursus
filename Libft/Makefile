@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 11:19:51 by fsantill          #+#    #+#              #
-#    Updated: 2023/09/25 18:35:33 by fsantill         ###   ########.fr        #
+#    Updated: 2023/09/29 16:29:27 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,10 @@ FT=		ft_isalpha.c	\
 		ft_strlcpy.c	\
 		ft_strlcat.c	\
 		ft_toupper.c	\
-		ft_tolower.c
+		ft_tolower.c	\
+		ft_strchr.c		\
+		ft_strrchr.c	\
+		#ft_strncmp.c
 
 OBJ=$(FT:%.c=%.o)
 
@@ -36,7 +39,7 @@ $(NAME):$(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
 t: $(NAME) testeos.o
-	cc testeos.o -o tests -L. -lft
+	cc testeos.o -o testeos -L. -lft
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c $<

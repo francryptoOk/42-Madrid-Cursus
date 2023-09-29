@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Testeos.c                                          :+:      :+:    :+:   */
+/*   testeos.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/25 18:35:29 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:29:26 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
 int	test_isalpha(void)
 {
@@ -222,6 +220,32 @@ int	test_tolower(void)
 		return (0);
 }
 
+int	test_strchr(void)
+{
+	char	mem1[10] = "hola, que?";
+	char	mem2[10] = "hola, que?";
+
+	char	*var1 =	strchr(mem1, 97);
+	char	*var2 = ft_strchr(mem2, 97);
+	if ((var1 == NULL && var2 == NULL) || (var1 != NULL && var2 != NULL && *var1 == *var2))
+		return (1);
+	else
+		return (0);
+}
+
+int	test_strrchr(void)
+{
+	char	mem1[10] = "hola, que?";
+	char	mem2[10] = "hola, que?";
+
+	char	*var1 = strrchr(mem1, 'a');
+	char	*var2 = ft_strrchr(mem2, 'a');
+	if ((var1 == NULL && var2 == NULL) || (var1 != NULL && var2 != NULL && *var1 == *var2))
+		return (1);
+	else
+		return (0);
+}
+
 int	main(void)
 {
 	if (test_isalpha() == 1)
@@ -280,5 +304,13 @@ int	main(void)
 		printf("tolower = OKey! :D\n");
 	else
 		printf("tolower = KnOckout! :(\n");
+	if (test_strchr() == 1)
+		printf("strchr = OKey! :D\n");
+	else
+		printf("strchr = KnOckout! :(\n");
+	if (test_strrchr() == 1)
+		printf("strrchr = OKey! :D\n");
+	else
+		printf("strrchr = KnOckout! :(\n");
 	return (0);
 }

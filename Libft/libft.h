@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/25 18:47:09 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:29:24 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <string.h>
 
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
@@ -30,8 +32,25 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
-//char*			ft_strchr(const char *str, int c);
-//char*			ft_strrchr(const char *str, int c);
-//int			ft_strncmp(char *s1, char *s2, unsigned int n);
+char			*ft_strchr(const char *str, int c);
+char			*ft_strrchr(const char *str, int c);
+//int				ft_strncmp(char *s1, char *s2, unsigned int n);
+//	ft_memchr
+//	ft_memcmp
+//	ft_strnstr
+//int			ft_atoi(char *str)
+//void			*calloc(size_t number, size_t size)
+//	ft_strdup
+//	ft_substr
+//	ft_strjoin
+//	ft_strtrim
+//	ft_split
+//	ft_itoa
+//	ft_strmapi
+//	ft_striteri
+//	ft_putchar_fd
+//	ft_putstr_fd
+//	ft_putendl_fd
+//	ft_putnbr_fd
 
 #endif

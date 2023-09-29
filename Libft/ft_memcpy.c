@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:23:23 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/25 17:49:04 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:21:08 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,16 @@ void	*ft_memcpy(void *dest, const void *src, size_t count)
 	}
 	return (destiny);
 }
+/**
+ * The function `ft_memcpy` copies `count` bytes from the memory location
+ * pointed to by `src` to the memory location pointed to by `dest`.
+ * 
+ * @param dest The `dest` parameter is a pointer to the destination
+ * memory where the copied data will be stored.
+ * @param src The `src` parameter is a pointer to the source memory
+ * location from where the data will be copied.
+ * @param count The parameter "count" represents the number of bytes
+ * to be copied from the source to the destination.
+ * 
+ * @return a pointer to the destination memory block.
+ */
