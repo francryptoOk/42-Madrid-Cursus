@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/29 16:29:24 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:52:31 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 char			*ft_strchr(const char *str, int c);
 char			*ft_strrchr(const char *str, int c);
-//int				ft_strncmp(char *s1, char *s2, unsigned int n);
+int				ft_strncmp(char *s1, char *s2, size_t n);
 //	ft_memchr
 //	ft_memcmp
 //	ft_strnstr

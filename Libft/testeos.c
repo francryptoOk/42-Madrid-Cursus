@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/29 16:29:26 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:56:07 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,6 +246,21 @@ int	test_strrchr(void)
 		return (0);
 }
 
+int	test_strncmp(void)
+{
+	char	mem1[10] = "hola, que?";
+	char	mem2[10] = "hola, chau";
+	char	mem3[10] = "hola, que?";
+	char	mem4[10] = "hola, chau";
+
+	int	var1 = strncmp(mem1, mem2, 7);
+	int	var2 = ft_strncmp(mem3, mem4, 7);
+	if (var1 == var2)
+		return (1);
+	else
+		return (0);
+}
+
 int	main(void)
 {
 	if (test_isalpha() == 1)
@@ -312,5 +327,9 @@ int	main(void)
 		printf("strrchr = OKey! :D\n");
 	else
 		printf("strrchr = KnOckout! :(\n");
+	if (test_strncmp() == 1)
+		printf("strncmp = OKey! :D\n");
+	else
+		printf("strncmp = KnOckout! :(\n");
 	return (0);
 }
