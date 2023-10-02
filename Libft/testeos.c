@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/29 16:56:07 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:09:03 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,6 +261,49 @@ int	test_strncmp(void)
 		return (0);
 }
 
+int	test_memchr(void)
+{
+	char			mem1[10] = "hola, que?";
+	char			mem2[10] = "hola, que?";
+	
+	unsigned char	*var1 = memchr(mem1, 'a', 7);
+	unsigned char	*var2 = ft_memchr(mem2, 'a', 7);
+	if ((var1 == NULL && var2 == NULL) || (var1 != NULL && var2 != NULL && *var1 == *var2))
+		return (1);
+	else
+		return (0);
+}
+
+int	test_memcmp(void)
+{
+	char	mem1[10] = "hola, chau";
+	char	mem2[10] = "hola, que?";
+	char	mem3[10] = "hola, chau";
+	char	mem4[10] = "hola, que?";
+	
+	int		var1 = memcmp(mem1, mem2, 8);
+	int		var2 = ft_memcmp(mem3, mem4, 8);
+	if (var1 == var2)
+		return (1);
+	else
+		return (0);
+}
+
+int	test_strnstr(void)
+{
+	char	mem1[10] = "hola, chau";
+	char	mem2[10] = "hola, que?";
+	char	mem3[10] = "hola, chau";
+	char	mem4[10] = "hola, que?";
+	
+	char	*var1 = strnstr(mem1, mem2, 8);
+	char	*var2 = ft_strnstr(mem3, mem4, 8);
+	if (var1 == var2)
+		return (1);
+	else
+		return (0);
+}
+
 int	main(void)
 {
 	if (test_isalpha() == 1)
@@ -331,5 +374,20 @@ int	main(void)
 		printf("strncmp = OKey! :D\n");
 	else
 		printf("strncmp = KnOckout! :(\n");
+	if (test_memchr() == 1)
+		printf("memchr = OKey! :D\n");
+	else
+		printf("memchr = KnOckout! :(\n");
+	if (test_memcmp() == 1)
+		printf("memcmp = OKey! :D\n");
+	else
+		printf("memcmp = KnOckout! :(\n");
+	if (test_strnstr() == 1)
+		printf("strnstr = OKey! :D\n");
+	else
+		printf("strnstr = KnOckout! :(\n");
 	return (0);
 }
+
+//verificar cada test
+//printf("\t> %d\n\t> %d\n", var1, var2...);

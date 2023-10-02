@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/29 16:52:31 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:06:35 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
-int				ft_strlen(char *str);
+int				ft_strlen(const char *str);
 void			*ft_memset(void *dest, int c, size_t count);
 void			*ft_bzero(void *dest, size_t count);
 void			*ft_memcpy(void *dest, const void *src, size_t count);
@@ -34,11 +34,12 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 char			*ft_strchr(const char *str, int c);
 char			*ft_strrchr(const char *str, int c);
-int				ft_strncmp(char *s1, char *s2, size_t n);
-//	ft_memchr
-//	ft_memcmp
-//	ft_strnstr
-//int			ft_atoi(char *str)
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+void			*ft_memchr(const void *buffer, int c, size_t count);
+int				ft_memcmp(const void *buffer1, const void *buffer2, \
+size_t count);
+char			*ft_strnstr(const char *str, const char *find, size_t slen);
+//int				ft_atoi(char *str);
 //void			*calloc(size_t number, size_t size)
 //	ft_strdup
 //	ft_substr
