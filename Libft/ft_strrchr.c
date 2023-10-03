@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/02 17:48:33 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:15:30 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *str, int c)
 	int	i;
 
 	i = ft_strlen((char *)str) - 1;
-	if (c == '\0')
+	if ((unsigned char)c == '\0')
 		return ((char *)&str[i + 1]);
 	while (i >= 0)
 	{

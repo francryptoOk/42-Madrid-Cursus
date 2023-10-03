@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:27:09 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/02 17:03:43 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:16:40 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strnstr(const char *str, const char *find, size_t slen)
 {
-	size_t find_len;
-	
+	size_t	find_len;
+
 	find_len = ft_strlen(find);
 	if (find_len == 0)
 		return ((char *)str);
@@ -26,7 +26,7 @@ char	*ft_strnstr(const char *str, const char *find, size_t slen)
 		str++;
 		slen--;
 	}
-    return (NULL);
+	return (NULL);
 }
 
 /**
