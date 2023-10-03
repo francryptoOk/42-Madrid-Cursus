@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/02 17:06:35 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/03 11:47:05 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			*ft_memchr(const void *buffer, int c, size_t count);
 int				ft_memcmp(const void *buffer1, const void *buffer2, \
 size_t count);
 char			*ft_strnstr(const char *str, const char *find, size_t slen);
-//int				ft_atoi(char *str);
+int				ft_atoi(const char *str);
 //void			*calloc(size_t number, size_t size)
 //	ft_strdup
 //	ft_substr

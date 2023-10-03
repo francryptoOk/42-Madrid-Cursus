@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/02 17:09:03 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:04:53 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,6 +304,20 @@ int	test_strnstr(void)
 		return (0);
 }
 
+int	test_atoi(void)
+{
+	const char	str1[10] = "ho -12";
+	int			var1;
+	int			var2;
+
+	var1 = atoi(str1);
+	var2 = ft_atoi(str1);
+	if (var1 == var2)
+		return (1);
+	else
+		return (0);
+}
+
 int	main(void)
 {
 	if (test_isalpha() == 1)
@@ -386,6 +400,10 @@ int	main(void)
 		printf("strnstr = OKey! :D\n");
 	else
 		printf("strnstr = KnOckout! :(\n");
+	if (test_atoi() == 1)
+		printf("atoi = OKey! :D\n");
+	else
+		printf("atoi = KnOckout! :(\n");
 	return (0);
 }
 
