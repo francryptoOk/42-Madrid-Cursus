@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/04 12:11:32 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:54:54 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,6 +330,23 @@ int	test_calloc(void)
 		return (0);
 }
 
+int	test_strdup(void)
+{
+	const char mem1[10] = "hola, chau";
+	char *ptr = ft_strdup(mem1);
+	if (ptr != 0)
+	{
+		if (ft_strncmp(ptr, mem1, sizeof(mem1)) == 0)
+		free (ptr);
+		return (1);
+	}
+	else
+	{
+		free (ptr);
+		return (0);
+	}
+}
+
 int	main(void)
 {
 	if (test_isalpha() == 1)
@@ -420,6 +437,10 @@ int	main(void)
 		printf("calloc = OKey! :D\n");
 	else
 		printf("calloc = KnOckout! :(\n");
+	if (test_strdup() == 1)
+		printf("strdup = OKey! :D\n");
+	else
+		printf("strdup = KnOckout! :(\n");
 	return (0);
 }
 

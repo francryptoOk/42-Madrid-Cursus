@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/03 15:22:48 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:36:26 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ size_t count);
 char			*ft_strnstr(const char *str, const char *find, size_t slen);
 int				ft_atoi(const char *str);
 void			*ft_calloc(size_t number, size_t size);
-//	ft_strdup
+void			*ft_strdup(const char *str);
 //	ft_substr
 //	ft_strjoin
 //	ft_strtrim
