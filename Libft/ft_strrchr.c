@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/03 11:15:30 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:29:11 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,24 @@
 char	*ft_strrchr(const char *str, int c)
 {
 	int	i;
+	const unsigned char caux = (unsigned char)c;
 
-	i = ft_strlen((char *)str) - 1;
-	if ((unsigned char)c == '\0')
+	i = ft_strlen(str) - 1;
+	if (caux == '\0')
 		return ((char *)&str[i + 1]);
 	while (i >= 0)
 	{
-		if (str[i] == (unsigned char)c)
+		if (str[i] == caux)
 			return ((char *)&str[i]);
 		i--;
 	}
 	return (NULL);
 }
+
+/**
+ * str[i] == *(str + i)
+*/
+
 /**
  * The function ft_strrchr searches for the last occurrence of a character
  * in a string and returns a pointer to that character.

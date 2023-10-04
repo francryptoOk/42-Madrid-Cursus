@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/04 15:54:54 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:26:24 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 
 int	test_isalpha(void)
 {
+	if (ft_isalpha('@') == 1)
+		return (0);
+	if (ft_isalpha('[') == 1)
+		return (0);
+	if (ft_isalpha('_') == 1)
+		return (0);
+	if (ft_isalpha('{') == 1)
+		return (0);
+	if (ft_isalpha('a') == 0)
+		return (0);
 	if (ft_isalpha('a') == 0)
 		return (0);
 	if (ft_isalpha('z') == 0)
@@ -32,6 +42,10 @@ int	test_isalpha(void)
 
 int	test_isdigit(void)
 {
+	if (ft_isdigit('/') == 1)
+		return (0);
+	if (ft_isdigit(':') == 1)
+		return (0);
 	if (ft_isdigit('0') == 0)
 		return (0);
 	if (ft_isdigit('9') == 0)
@@ -44,6 +58,18 @@ int	test_isdigit(void)
 
 int	test_isalnum(void)
 {
+	if (ft_isalnum('@') == 1)
+		return (0);
+	if (ft_isalnum('[') == 1)
+		return (0);
+	if (ft_isalnum('_') == 1)
+		return (0);
+	if (ft_isalnum('{') == 1)
+		return (0);
+	if (ft_isalnum('/') == 1)
+		return (0);
+	if (ft_isalnum(':') == 1)
+		return (0);
 	if (ft_isalnum('a') == 0)
 		return (0);
 	if (ft_isalnum('z') == 0)
@@ -68,10 +94,14 @@ int	test_isalnum(void)
 
 int	test_isascii(void)
 {
-	if (ft_isascii(127) == 1)
-		return (1);
-	else
+	if (ft_isascii(127) == 0)
 		return (0);
+	if (ft_isascii(0) == 0)
+		return (0);
+	if (ft_isascii(80) == 0)
+		return (0);
+	else
+		return (1);
 }
 
 int	test_isprint(void)
@@ -96,38 +126,32 @@ int	test_strlen(void)
 
 int	test_memset(void)
 {
-	char	mem1[10] = "hola, que?";
+	char	mem1[10] = "chau, que?";
 	char	mem2[10] = "hola, que?";
 	int		i = 0;
 
 	memset(mem1, '+', 4);
 	ft_memset(mem2, '+', 4);
-	if (mem1[i] == mem2[i])
-	{
-		while (i != '\0')
-			i++;
-		return (1);
-	}
-	else
+	while (mem1[i] == mem2[i] && i != 4)
+		i++;
+	if (mem1[i] != mem2[i])
 		return (0);
+	return (1);
 }
 
 int	test_bzero(void)
 {
-	char	mem1[10] = "hola, que?";
+	char	mem1[10] = "chau, que?";
 	char	mem2[10] = "hola, que?";
 	int		i = 0;
 
 	bzero(mem1, 4);
 	ft_bzero(mem2, 4);
-	if (mem1[i] == mem2[i])
-	{
-		while (i != '\0')
-			i++;
-		return (1);
-	}
-	else
+	while (mem1[i] == mem2[i] && i != 4)
+		i++;
+	if (mem1[i] != mem2[i])
 		return (0);
+	return (1);
 }
 
 int	test_memcpy(void)
@@ -140,14 +164,11 @@ int	test_memcpy(void)
 
 	memcpy(mem1, mem2, 4);
 	ft_memcpy(mem3, mem4, 4);
-	if (mem1[i] == mem3[i])
-	{
-		while (i != '\0')
-			i++;
-		return (1);
-	}
-	else
+	while (mem1[i] == mem2[i] && i != 4)
+		i++;
+	if (mem1[i] != mem2[i])
 		return (0);
+	return (1);
 }
 
 int	test_memmove(void)
@@ -158,14 +179,11 @@ int	test_memmove(void)
 
 	memmove(mem1 + 3, mem1, 5);
 	ft_memmove(mem2 + 3, mem2, 5);
-	if (mem1[i] == mem2[i])
-	{
-		while (i != '\0')
-			i++;
-		return (1);
-	}
-	else
+	while (mem1[i] == mem2[i] && i != 5)
+		i++;
+	if (mem1[i] != mem2[i])
 		return (0);
+	return (1);
 }
 
 int	test_strlcpy(void)

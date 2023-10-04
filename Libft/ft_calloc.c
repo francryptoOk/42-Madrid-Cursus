@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:40:05 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/04 13:21:13 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/04 17:27:31 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_calloc(size_t number, size_t size)
 
 	if (number == 0 || size == 0)
 		return (malloc (0));
-	if (!(number < ((size_t) - 1) / size))
+	if (!(number < SIZE_MAX / size))
 		return (NULL);
 	assignmem = (void *)malloc(number * size);
 	if (assignmem == 0)
@@ -27,9 +27,10 @@ void	*ft_calloc(size_t number, size_t size)
 	return (assignmem);
 }
 
-/** I need a true condition in: (number < ((size_t) - 1) / size).
- * That condition is like: (number * size < (size_t - 1)).
- * The (size_t - 1) is almost the longest number of a size_t (unsigned long).
+/** I need a true condition in: (number < SIZE_MAX / size).
+ * That condition is like: (number * size < SIZE_MAX).
+ * Other way is (size_t - 1) that is almost the longest
+ * number of a size_t (unsigned long).
  * So I am trying to avoid an overflow when I multiply number & size.
  */
 
