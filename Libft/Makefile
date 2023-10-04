@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 11:19:51 by fsantill          #+#    #+#              #
-#    Updated: 2023/10/03 11:47:24 by fsantill         ###   ########.fr        #
+#    Updated: 2023/10/03 15:23:10 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ FT=		ft_isalpha.c	\
 		ft_memchr.c		\
 		ft_memcmp.c		\
 		ft_strnstr.c	\
-		ft_atoi.c
+		ft_atoi.c		\
+		ft_calloc.c
 
 OBJ=$(FT:%.c=%.o)
 

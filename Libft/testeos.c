@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/03 12:04:53 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:11:32 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,6 +318,18 @@ int	test_atoi(void)
 		return (0);
 }
 
+int	test_calloc(void)
+{
+	char *var = ft_calloc(10, sizeof(char));
+	if (var[9] == 0)
+	{
+		free (var);
+		return (1);
+	}
+	else
+		return (0);
+}
+
 int	main(void)
 {
 	if (test_isalpha() == 1)
@@ -404,6 +416,10 @@ int	main(void)
 		printf("atoi = OKey! :D\n");
 	else
 		printf("atoi = KnOckout! :(\n");
+	if (test_calloc() == 1)
+		printf("calloc = OKey! :D\n");
+	else
+		printf("calloc = KnOckout! :(\n");
 	return (0);
 }
 
