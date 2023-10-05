@@ -6,13 +6,13 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 11:19:51 by fsantill          #+#    #+#              #
-#    Updated: 2023/10/04 15:36:38 by fsantill         ###   ########.fr        #
+#    Updated: 2023/10/05 15:34:48 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra -g3
 FT=		ft_isalpha.c	\
 		ft_isdigit.c	\
 		ft_isalnum.c	\
@@ -21,7 +21,7 @@ FT=		ft_isalpha.c	\
 		ft_strlen.c		\
 		ft_memset.c		\
 		ft_bzero.c		\
-		ft_memcpy.c 	\
+		ft_memcpy.c		\
 		ft_memmove.c	\
 		ft_strlcpy.c	\
 		ft_strlcat.c	\
@@ -35,7 +35,9 @@ FT=		ft_isalpha.c	\
 		ft_strnstr.c	\
 		ft_atoi.c		\
 		ft_calloc.c		\
-		ft_strdup.c
+		ft_strdup.c		\
+		ft_substr.c		\
+		ft_strjoin.c
 
 OBJ=$(FT:%.c=%.o)
 

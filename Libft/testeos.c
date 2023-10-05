@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/04 17:26:24 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:11:21 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -365,100 +365,171 @@ int	test_strdup(void)
 	}
 }
 
+int	test_substr(void)
+{
+	const char mem1[10] = "hola, chau";
+	char *ptr = ft_substr(mem1, 5, 10);
+	int	i = 0;
+	while (ptr[i] != '\0' && ptr[i] == mem1[i + 5])
+	{
+			i++;
+	}
+	if (ptr[i] == '\0')
+	{
+		free (ptr);
+		return (1);
+	}
+	else
+	{
+		free (ptr);
+		return (0);
+	}
+}
+
+int	test_strjoin(void)
+{
+	const char mem1[] = "hola";
+	const char mem2[] = "chau";
+	const char mem3[] = "holachau";
+	char *ptr = ft_strjoin(mem1, mem2);
+
+	size_t i = 0;
+	while (mem3[i] == ptr[i] && ptr[i] != '\0' && ptr[i] != '\0')
+	{
+		i++;
+		free(ptr);
+		return (1);
+	}
+	free(ptr);
+	return (0);
+}
+
 int	main(void)
 {
 	if (test_isalpha() == 1)
 		printf("isalpha = OKey! :D\n");
 	else
 		printf("isalpha = KnOckout! :(\n");
+
 	if (test_isdigit() == 1)
 		printf("isdigit = OKey! :D\n");
 	else
 		printf("isdigit = KnOckout! :(\n");
+
 	if (test_isalnum() == 1)
 		printf("isalnum = OKey! :D\n");
 	else
 		printf("isalnum = KnOckout! :(\n");
+
 	if (test_isascii() == 1)
 		printf("isascii = OKey! :D\n");
 	else
 		printf("isascii = KnOckout! :(\n");
+
 	if (test_isprint() == 1)
 		printf("isprint = OKey! :D\n");
 	else
 		printf("isprint = KnOckout! :(\n");
+
 	if (test_strlen() == 1)
 		printf("strlen = OKey! :D\n");
 	else
 		printf("strlen = KnOckout! :(\n");
+
 	if (test_memset() == 1)
 		printf("memset = OKey! :D\n");
 	else
 		printf("memset = KnOckout! :(\n");
+
 	if (test_bzero() == 1)
 		printf("bzero = OKey! :D\n");
 	else
 		printf("bzero = KnOckout! :(\n");
+
 	if (test_memcpy() == 1)
 		printf("memcpy = OKey! :D\n");
 	else
 		printf("memcpy = KnOckout! :(\n");
+
 	if (test_memmove() == 1)
 		printf("memmove = OKey! :D\n");
 	else
 		printf("memmove = KnOckout! :(\n");
+
 	if (test_strlcpy() == 1)
 		printf("strlcpy = OKey! :D\n");
 	else
 		printf("strlcpy = KnOckout! :(\n");
+
 	if (test_strlcat() == 1)
 		printf("strlcat = OKey! :D\n");
 	else
 		printf("strlcat = KnOckout! :(\n");
+
 	if (test_toupper() == 1)
 		printf("toupper = OKey! :D\n");
 	else
 		printf("toupper = KnOckout! :(\n");
+
 	if (test_tolower() == 1)
 		printf("tolower = OKey! :D\n");
 	else
 		printf("tolower = KnOckout! :(\n");
+
 	if (test_strchr() == 1)
 		printf("strchr = OKey! :D\n");
 	else
 		printf("strchr = KnOckout! :(\n");
+
 	if (test_strrchr() == 1)
 		printf("strrchr = OKey! :D\n");
 	else
 		printf("strrchr = KnOckout! :(\n");
+
 	if (test_strncmp() == 1)
 		printf("strncmp = OKey! :D\n");
 	else
 		printf("strncmp = KnOckout! :(\n");
+
 	if (test_memchr() == 1)
 		printf("memchr = OKey! :D\n");
 	else
 		printf("memchr = KnOckout! :(\n");
+
 	if (test_memcmp() == 1)
 		printf("memcmp = OKey! :D\n");
 	else
 		printf("memcmp = KnOckout! :(\n");
+
 	if (test_strnstr() == 1)
 		printf("strnstr = OKey! :D\n");
 	else
 		printf("strnstr = KnOckout! :(\n");
+
 	if (test_atoi() == 1)
 		printf("atoi = OKey! :D\n");
 	else
 		printf("atoi = KnOckout! :(\n");
+
 	if (test_calloc() == 1)
 		printf("calloc = OKey! :D\n");
 	else
 		printf("calloc = KnOckout! :(\n");
+
 	if (test_strdup() == 1)
 		printf("strdup = OKey! :D\n");
 	else
 		printf("strdup = KnOckout! :(\n");
+
+	if (test_substr() == 1)
+		printf("substr = OKey! :D\n");
+	else
+		printf("substr = KnOckout! :(\n");
+
+	if (test_strjoin() == 1)
+		printf("strjoin = OKey! :D\n");
+	else
+		printf("strjoin = KnOckout! :(\n");
 	return (0);
 }
 

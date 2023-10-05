@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:00:11 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/05 15:17:48 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:15:11 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len1;
 	size_t	len2;
-	size_t	i;
-	size_t	j;
 	char	*strnew;
 
-	i = 0;
-	j = 0;
-	len1 = (ft_strlen(s1)) - 1;
-	len2 = (ft_strlen(s2)) - 1;
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
 
 	if (!s1 && !s2)
 		return (NULL);
@@ -34,26 +30,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	strnew = (char *)malloc((len1 + len2 + 1) * sizeof(char));
 	if (!strnew)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
-		strnew[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		strnew[i + j] = s2[j];
-		j++;
-	}
-	strnew [i + j] = '\0';
+	ft_memcpy(strnew, s1, len1);
+	ft_memcpy(strnew + len1, s2, len2);
+	strnew [len1 + len2] = '\0';
 	return (strnew);
 }
 /**
- * The function `ft_strjoin` concatenates two strings `s1` and `s2` into a
- * new string.
+ * The function `ft_strjoin` concatenates two strings `s1` and `s2` and
+ * returns a new string.
  * 
  * @param s1 A pointer to a constant character string (string 1)
  * @param s2 The parameter `s2` is a pointer to a constant character string.
  * 
- * @return a pointer to a newly allocated string that is the concatenation of
- * the two input strings, s1 and s2.
+ * @return The function `ft_strjoin` returns a pointer to a newly allocated
+ * string that is the concatenation of `s1` and `s2`.
  */
