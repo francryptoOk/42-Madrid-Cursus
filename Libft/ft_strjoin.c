@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:00:11 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/05 16:15:11 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:18:32 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-
 	if (!s1 && !s2)
 		return (NULL);
 	if (!s1)

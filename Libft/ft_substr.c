@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 10:59:50 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/05 12:58:53 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:19:46 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = start;
 	sub_i = 0;
 	if (!s)
-		return (NULL);	
+		return (NULL);
 	if (start >= (unsigned int)ft_strlen(s))
 		return (ft_strdup(""));
 	if (len > ft_strlen(s) - start)

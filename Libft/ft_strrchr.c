@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/04 17:29:11 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:19:05 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	int	i;
-	const unsigned char caux = (unsigned char)c;
+	int					i;
+	const unsigned char	caux = (unsigned char)c;
 
 	i = ft_strlen(str) - 1;
 	if (caux == '\0')
