@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/06 17:13:01 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/06 19:10:29 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,11 +216,7 @@ int	test_strlcat(void)
 
 int	test_toupper(void)
 {
-	if (ft_toupper('a') == 'A')
-		return (1);
-	if (ft_toupper('z') == 'Z')
-		return (1);
-	if (ft_toupper('g') == 'G')
+	if ((ft_toupper('a') == 'A') && (ft_toupper('z') == 'Z') && (ft_toupper('g') == 'G'))
 		return (1);
 	else
 		return (0);
@@ -228,11 +224,7 @@ int	test_toupper(void)
 
 int	test_tolower(void)
 {
-	if (ft_tolower('A') == 'a')
-		return (1);
-	if (ft_tolower('Z') == 'z')
-		return (1);
-	if (ft_tolower('H') == 'h')
+	if ((ft_tolower('A') == 'a') && (ft_tolower('Z') == 'z') && (ft_tolower('H') == 'h'))
 		return (1);
 	else
 		return (0);
@@ -410,7 +402,7 @@ int	test_strtrim(void)
 	const char	mem2[] = "holis";
 	const char	settrim[] = "a1345";
 	char *ptr = ft_strtrim(mem1, settrim);
-
+	
 	size_t i = 0;
 	while (mem2[i] == ptr[i] && mem2[i] != '\0' && ptr[i] != '\0')
 	{
@@ -421,17 +413,6 @@ int	test_strtrim(void)
 	free(ptr);
 	return (0);
 }
-
-/*	size_t i = 0;
-	while (mem3[i] == ptr[i] && ptr[i] != '\0' && ptr[i] != '\0')
-	{
-		i++;
-		free(ptr);
-		return (1);
-	}
-	free(ptr);
-	return (0);
-}*/
 
 int	main(void)
 {
