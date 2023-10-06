@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/05 16:11:21 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:13:01 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,8 @@ int	test_strlen(void)
 
 int	test_memset(void)
 {
-	char	mem1[10] = "chau, que?";
-	char	mem2[10] = "hola, que?";
+	char	mem1[] = "chau, que?";
+	char	mem2[] = "hola, que?";
 	int		i = 0;
 
 	memset(mem1, '+', 4);
@@ -141,8 +141,8 @@ int	test_memset(void)
 
 int	test_bzero(void)
 {
-	char	mem1[10] = "chau, que?";
-	char	mem2[10] = "hola, que?";
+	char	mem1[] = "chau, que?";
+	char	mem2[] = "hola, que?";
 	int		i = 0;
 
 	bzero(mem1, 4);
@@ -156,10 +156,10 @@ int	test_bzero(void)
 
 int	test_memcpy(void)
 {
-	char	mem1[10] = "hola, que?";
-	char	mem2[10] = "chau, lala";
-	char	mem3[10] = "hola, que?";
-	char	mem4[10] = "chau, lala";
+	char	mem1[] = "hola, que?";
+	char	mem2[] = "chau, lala";
+	char	mem3[] = "hola, que?";
+	char	mem4[] = "chau, lala";
 	int		i = 0;
 
 	memcpy(mem1, mem2, 4);
@@ -173,8 +173,8 @@ int	test_memcpy(void)
 
 int	test_memmove(void)
 {
-	char	mem1[10] = "hola, que?";
-	char	mem2[10] = "hola, que?";
+	char	mem1[] = "hola, que?";
+	char	mem2[] = "hola, que?";
 	int		i = 0;
 
 	memmove(mem1 + 3, mem1, 5);
@@ -188,7 +188,7 @@ int	test_memmove(void)
 
 int	test_strlcpy(void)
 {
-	char	str1[10] = "hola, que?";
+	char	str1[] = "hola, que?";
 	int		len1 = 9;
 	int		len2 = 3;
 
@@ -202,7 +202,7 @@ int	test_strlcpy(void)
 
 int	test_strlcat(void)
 {
-	char	str1[10] = "hola, que?";
+	char	str1[] = "hola, que?";
 	int		len1 = 9;
 	int		len2 = 3;
 
@@ -240,8 +240,8 @@ int	test_tolower(void)
 
 int	test_strchr(void)
 {
-	char	mem1[10] = "hola, que?";
-	char	mem2[10] = "hola, que?";
+	char	mem1[] = "hola, que?";
+	char	mem2[] = "hola, que?";
 
 	char	*var1 =	strchr(mem1, 97);
 	char	*var2 = ft_strchr(mem2, 97);
@@ -253,8 +253,8 @@ int	test_strchr(void)
 
 int	test_strrchr(void)
 {
-	char	mem1[10] = "hola, que?";
-	char	mem2[10] = "hola, que?";
+	char	mem1[] = "hola, que?";
+	char	mem2[] = "hola, que?";
 
 	char	*var1 = strrchr(mem1, 'a');
 	char	*var2 = ft_strrchr(mem2, 'a');
@@ -266,10 +266,10 @@ int	test_strrchr(void)
 
 int	test_strncmp(void)
 {
-	char	mem1[10] = "hola, que?";
-	char	mem2[10] = "hola, chau";
-	char	mem3[10] = "hola, que?";
-	char	mem4[10] = "hola, chau";
+	char	mem1[] = "hola, que?";
+	char	mem2[] = "hola, chau";
+	char	mem3[] = "hola, que?";
+	char	mem4[] = "hola, chau";
 
 	int	var1 = strncmp(mem1, mem2, 7);
 	int	var2 = ft_strncmp(mem3, mem4, 7);
@@ -281,8 +281,8 @@ int	test_strncmp(void)
 
 int	test_memchr(void)
 {
-	char			mem1[10] = "hola, que?";
-	char			mem2[10] = "hola, que?";
+	char			mem1[] = "hola, que?";
+	char			mem2[] = "hola, que?";
 	
 	unsigned char	*var1 = memchr(mem1, 'a', 7);
 	unsigned char	*var2 = ft_memchr(mem2, 'a', 7);
@@ -294,10 +294,10 @@ int	test_memchr(void)
 
 int	test_memcmp(void)
 {
-	char	mem1[10] = "hola, chau";
-	char	mem2[10] = "hola, que?";
-	char	mem3[10] = "hola, chau";
-	char	mem4[10] = "hola, que?";
+	char	mem1[] = "hola, chau";
+	char	mem2[] = "hola, que?";
+	char	mem3[] = "hola, chau";
+	char	mem4[] = "hola, que?";
 	
 	int		var1 = memcmp(mem1, mem2, 8);
 	int		var2 = ft_memcmp(mem3, mem4, 8);
@@ -309,10 +309,10 @@ int	test_memcmp(void)
 
 int	test_strnstr(void)
 {
-	char	mem1[10] = "hola, chau";
-	char	mem2[10] = "hola, que?";
-	char	mem3[10] = "hola, chau";
-	char	mem4[10] = "hola, que?";
+	char	mem1[] = "hola, chau";
+	char	mem2[] = "hola, que?";
+	char	mem3[] = "hola, chau";
+	char	mem4[] = "hola, que?";
 	
 	char	*var1 = strnstr(mem1, mem2, 8);
 	char	*var2 = ft_strnstr(mem3, mem4, 8);
@@ -324,7 +324,7 @@ int	test_strnstr(void)
 
 int	test_atoi(void)
 {
-	const char	str1[10] = "ho -12";
+	const char	str1[] = "ho -12";
 	int			var1;
 	int			var2;
 
@@ -350,7 +350,7 @@ int	test_calloc(void)
 
 int	test_strdup(void)
 {
-	const char mem1[10] = "hola, chau";
+	const char mem1[] = "hola, chau";
 	char *ptr = ft_strdup(mem1);
 	if (ptr != 0)
 	{
@@ -367,7 +367,7 @@ int	test_strdup(void)
 
 int	test_substr(void)
 {
-	const char mem1[10] = "hola, chau";
+	const char mem1[] = "hola, chau";
 	char *ptr = ft_substr(mem1, 5, 10);
 	int	i = 0;
 	while (ptr[i] != '\0' && ptr[i] == mem1[i + 5])
@@ -388,9 +388,9 @@ int	test_substr(void)
 
 int	test_strjoin(void)
 {
-	const char mem1[] = "hola";
-	const char mem2[] = "chau";
-	const char mem3[] = "holachau";
+	const char	mem1[] = "hola";
+	const char	mem2[] = "chau";
+	const char	mem3[] = "holachau";
 	char *ptr = ft_strjoin(mem1, mem2);
 
 	size_t i = 0;
@@ -403,6 +403,35 @@ int	test_strjoin(void)
 	free(ptr);
 	return (0);
 }
+
+int	test_strtrim(void)
+{
+	const char	mem1[] = "1a345holis1543aa";
+	const char	mem2[] = "holis";
+	const char	settrim[] = "a1345";
+	char *ptr = ft_strtrim(mem1, settrim);
+
+	size_t i = 0;
+	while (mem2[i] == ptr[i] && mem2[i] != '\0' && ptr[i] != '\0')
+	{
+		i++;
+		free(ptr);
+		return (1);
+	}
+	free(ptr);
+	return (0);
+}
+
+/*	size_t i = 0;
+	while (mem3[i] == ptr[i] && ptr[i] != '\0' && ptr[i] != '\0')
+	{
+		i++;
+		free(ptr);
+		return (1);
+	}
+	free(ptr);
+	return (0);
+}*/
 
 int	main(void)
 {
@@ -530,6 +559,11 @@ int	main(void)
 		printf("strjoin = OKey! :D\n");
 	else
 		printf("strjoin = KnOckout! :(\n");
+
+	if (test_strtrim() == 1)
+		printf("strtrim = OKey! :D\n");
+	else
+		printf("strtrim = KnOckout! :(\n");
 	return (0);
 }
 

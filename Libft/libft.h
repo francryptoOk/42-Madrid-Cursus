@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/05 13:02:00 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:43:42 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void			*ft_calloc(size_t number, size_t size);
 void			*ft_strdup(const char *str);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
-//	ft_strtrim
+char			*ft_strtrim(char const *s1, char const *set);
 //	ft_split
 //	ft_itoa
 //	ft_strmapi

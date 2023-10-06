@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 11:19:51 by fsantill          #+#    #+#              #
-#    Updated: 2023/10/05 15:34:48 by fsantill         ###   ########.fr        #
+#    Updated: 2023/10/05 16:43:38 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ FT=		ft_isalpha.c	\
 		ft_calloc.c		\
 		ft_strdup.c		\
 		ft_substr.c		\
-		ft_strjoin.c
+		ft_strjoin.c	\
+		ft_strtrim.c
 
 OBJ=$(FT:%.c=%.o)
 
