@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/05 16:43:42 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/09 12:16:47 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			*ft_strdup(const char *str);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);
-//	ft_split
+char			**ft_split(const char *s, char c);
 //	ft_itoa
 //	ft_strmapi
 //	ft_striteri

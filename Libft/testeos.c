@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/06 19:10:29 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:31:34 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -398,11 +398,11 @@ int	test_strjoin(void)
 
 int	test_strtrim(void)
 {
-	const char	mem1[] = "1a345holis1543aa";
-	const char	mem2[] = "holis";
+	const char	mem1[] = "1a345ho1a-quetal1543aa";
+	const char	mem2[] = "ho1a-quetal";
 	const char	settrim[] = "a1345";
 	char *ptr = ft_strtrim(mem1, settrim);
-	
+
 	size_t i = 0;
 	while (mem2[i] == ptr[i] && mem2[i] != '\0' && ptr[i] != '\0')
 	{
@@ -412,6 +412,45 @@ int	test_strtrim(void)
 	}
 	free(ptr);
 	return (0);
+}
+
+int	test_split(void)
+{
+	const char	str[] = "//hola/////que/tal//todo///////?//";
+	char	**arrstr = ((char*[6]){"hola", "que", "tal", "todo", "?", ((void *)0)});
+	char	**split = ft_split(str, '/');
+	int			x = 0;
+	int			y = 0;
+
+	if (ft_strncmp((const char *)split[3], (const char *)arrstr[3], sizeof(split)) == 0)
+	{
+		printf("\nsplit test> str: //hola/////que/tal//todo///////?//\n\n");
+		while (split[x])
+		{
+			printf("\tsplit>%s\n", split[x]);
+			x++;
+			if (!split[x] && arrstr[x])
+			{
+				printf("\n");
+				free(split);
+			}
+		}
+		printf("\n");
+		while (arrstr[y])
+		{
+			printf("\tarrstr>%s\n", arrstr[y]);
+			y++;
+			if (!arrstr[y])
+				printf("\n");
+		}
+		free(split);
+		return (1);
+	}
+	else
+	{
+		free(split);
+		return (0);
+	}
 }
 
 int	main(void)
@@ -545,6 +584,11 @@ int	main(void)
 		printf("strtrim = OKey! :D\n");
 	else
 		printf("strtrim = KnOckout! :(\n");
+
+	if (test_split() == 1)
+		printf("split = OKey! :D\n");
+	else
+		printf("split = KnOckout! :(\n");
 	return (0);
 }
 
