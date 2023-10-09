@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:00:43 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/09 15:29:25 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/09 16:32:12 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static size_t	count_substr_in_str(const char *s, char c)
 	return (countsubstr);
 }
 
-static char	arrays_freedom(char **ptr, int m)
+static void	*arrays_freedom(char **ptr, int m)
 {
 	while (m > 0)
 	{
@@ -41,7 +41,7 @@ static char	arrays_freedom(char **ptr, int m)
 		free (ptr[m]);
 	}
 	free (ptr);
-	return (0);
+	return (NULL);
 }
 
 char	**ft_split(const char *s, char c)
@@ -67,10 +67,7 @@ char	**ft_split(const char *s, char c)
 			len++;
 		strslip[j] = ft_substr(&s[x], 0, len);
 		if (!strslip[j])
-		{
-			arrays_freedom(strslip, j);
-			return (NULL);
-		}
+			return (arrays_freedom(strslip, j));
 		x = x + len;
 		j++;
 	}
