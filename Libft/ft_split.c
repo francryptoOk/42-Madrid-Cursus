@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:00:43 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/09 17:22:39 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/10 10:56:51 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	*arrays_freedom(char **ptr, int m)
 	return (NULL);
 }
 
-static char	**aux_strslip(char **auxstrslip, char *s, char c, \
+static char	**aux_strsplit(char **auxstrslip, char *s, char c, \
 size_t numofsubstr)
 {
 	int		j;
@@ -74,15 +74,15 @@ char	**ft_split(const char *s, char c)
 {
 	int		j;
 	size_t	countsubstr;
-	char	**strslip;
+	char	**strsplit;
 	char	**result;
 
 	j = 0;
 	countsubstr = count_substr_in_str(s, c);
-	strslip = (char **)malloc((countsubstr + 1) * sizeof(char *));
-	if (!strslip)
+	strsplit = (char **)malloc((countsubstr + 1) * sizeof(char *));
+	if (!strsplit)
 		return (NULL);
-	result = aux_strslip(strslip, (char *)s, c, countsubstr);
+	result = aux_strsplit(strsplit, (char *)s, c, countsubstr);
 	return (result);
 }
 /**
