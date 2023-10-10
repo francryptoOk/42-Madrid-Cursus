@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:48 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/09 18:31:34 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:26:04 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -453,6 +453,31 @@ int	test_split(void)
 	}
 }
 
+int	test_itoa(void)
+{
+	const int num1 = -2147483648;
+	const int num2 = 2147483647;
+	const int num3 = -0;
+	const int num4 = -121212;
+
+	const char *str1 = ft_itoa(num1);
+	const char *str2 = ft_itoa(num2);
+	const char *str3 = ft_itoa(num3);
+	const char *str4 = ft_itoa(num4);
+
+	int atoi1 = ft_atoi(str1);
+	int atoi2 = ft_atoi(str2);
+	int atoi3 = ft_atoi(str3);
+	int atoi4 = ft_atoi(str4);
+
+	printf("\nitoa test> integers: %i, %i, %i, %i", num1, num2, num3, num4);
+	printf("\n\t> strings: %s, %s, %s, %s\n\n", str1, str2, str3, str4);
+	if (num1 == atoi1 && num2 == atoi2 && num3 == atoi3 && num4 == atoi4)
+		return (1);
+	else
+		return (0);
+}
+
 int	main(void)
 {
 	if (test_isalpha() == 1)
@@ -589,6 +614,11 @@ int	main(void)
 		printf("split = OKey! :D\n");
 	else
 		printf("split = KnOckout! :(\n");
+
+	if (test_itoa() == 1)
+		printf("itoa = OKey! :D\n");
+	else
+		printf("itoa = KnOckout! :(\n");
 	return (0);
 }
 
