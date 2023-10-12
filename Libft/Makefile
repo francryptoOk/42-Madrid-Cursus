@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 11:19:51 by fsantill          #+#    #+#              #
-#    Updated: 2023/10/09 18:43:42 by fsantill         ###   ########.fr        #
+#    Updated: 2023/10/11 16:43:45 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,13 @@ FT=		ft_isalpha.c	\
 		ft_strjoin.c	\
 		ft_strtrim.c	\
 		ft_split.c		\
-		ft_itoa.c
+		ft_itoa.c		\
+		ft_strmapi.c	\
+		ft_striteri.c	\
+		ft_putchar_fd.c	\
+		ft_putstr_fd.c	\
+		ft_putendl_fd.c	\
+		ft_putnbr_fd.c
 
 OBJ=$(FT:%.c=%.o)
 

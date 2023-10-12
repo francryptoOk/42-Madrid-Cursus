@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:00:43 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/10 10:56:51 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/11 12:46:57 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static void	*arrays_freedom(char **ptr, int m)
 	return (NULL);
 }
 
-static char	**aux_strsplit(char **auxstrslip, char *s, char c, \
-size_t numofsubstr)
+static char	**auxiliary_strsplit(char **aux_strsplit, char *s, char c, \
+size_t aux_countsubstr)
 {
 	int		j;
 	int		x;
@@ -53,21 +53,21 @@ size_t numofsubstr)
 
 	j = 0;
 	x = 0;
-	while (j < (int)numofsubstr)
+	while (j < (int)aux_countsubstr)
 	{
 		len = 0;
 		while (s[x] == c)
 			x++;
 		while (s[x + len] != '\0' && s[x + len] != c)
 			len++;
-		auxstrslip[j] = ft_substr(&s[x], 0, len);
-		if (!auxstrslip[j])
-			return (arrays_freedom(auxstrslip, j));
+		aux_strsplit[j] = ft_substr(&s[x], 0, len);
+		if (!aux_strsplit[j])
+			return (arrays_freedom(aux_strsplit, j));
 		x += len;
 		j++;
 	}
-	auxstrslip[j] = NULL;
-	return (auxstrslip);
+	aux_strsplit[j] = NULL;
+	return (aux_strsplit);
 }
 
 char	**ft_split(const char *s, char c)
@@ -82,7 +82,7 @@ char	**ft_split(const char *s, char c)
 	strsplit = (char **)malloc((countsubstr + 1) * sizeof(char *));
 	if (!strsplit)
 		return (NULL);
-	result = aux_strsplit(strsplit, (char *)s, c, countsubstr);
+	result = auxiliary_strsplit(strsplit, (char *)s, c, countsubstr);
 	return (result);
 }
 /**
@@ -110,19 +110,19 @@ char	**ft_split(const char *s, char c)
  */
 
 /**
- * The function `aux_strslip` takes a string `s` and a character `c`, and
- * splits `s` into substrings based on the delimiter `c`, returning an
+ * The function `auxiliary_strslip` takes a string `s` and a character `c`,
+ * and splits `s` into substrings based on the delimiter `c`, returning an
  * array of the substrings.
  * 
- * @param auxstrslip A pointer to a pointer to a character array. This is
+ * @param aux_strsplit A pointer to a pointer to a character array. This is
  * used to store the substrings of the input string.
  * @param s A pointer to a string that needs to be split into substrings.
  * @param c The parameter 'c' is a character that is used as a delimiter
  * to split the string 's' into substrings.
- * @param numofsubstr The parameter `numofsubstr` represents the number
+ * @param aux_countsubstr The parameter `aux_countsubstr` represents the number
  * of substrings that need to be extracted from the string `s`.
  * 
- * @return a pointer to a character array (char **) called auxstrslip.
+ * @return a pointer to a character array (char **) called aux_strsplit.
  */
 
 /**

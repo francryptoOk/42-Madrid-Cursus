@@ -6,32 +6,22 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:07:13 by fsantill          #+#    #+#             */
-/*   Updated: 2023/09/29 16:25:01 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:23:42 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_runstr(char *str)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	unsigned int	i;
+	size_t	i;
+	size_t	dest_length;
+	size_t	src_length;
+	size_t	ori_dest_length;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	dest_length;
-	unsigned int	src_length;
-	unsigned int	ori_dest_length;
-
-	ori_dest_length = ft_runstr(dest);
+	ori_dest_length = ft_strlen((const char *) dest);
 	dest_length = ori_dest_length;
-	src_length = ft_runstr(src);
+	src_length = ft_strlen((const char *) src);
 	i = 0;
 	if (size == 0)
 		return (src_length);

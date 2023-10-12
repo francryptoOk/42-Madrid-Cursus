@@ -6,22 +6,22 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:26:14 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/02 12:12:30 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:26:19 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *buffer, int c, size_t count)
+void	*ft_memchr(void *buffer, int c, size_t count)
 {
 	while (count > 0)
 	{
 		if (*(unsigned char *)buffer == (unsigned char) c)
 		{
 			if ((unsigned char)c == '\0')
-				return ((void *)buffer);
+				return (buffer);
 			else
-				return ((void *)buffer);
+				return (buffer);
 		}
 		buffer = (unsigned char *)buffer + 1;
 		count--;

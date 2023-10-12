@@ -6,13 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:40:44 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/04 15:48:02 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:29:26 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_strdup(const char *str)
+char	*ft_strdup(const char *str)
 {
 	int		length;
 	char	*ptr;
