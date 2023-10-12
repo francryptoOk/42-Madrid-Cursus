@@ -6,13 +6,13 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 11:19:51 by fsantill          #+#    #+#              #
-#    Updated: 2023/10/11 16:43:45 by fsantill         ###   ########.fr        #
+#    Updated: 2023/10/12 16:48:25 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra -g3
+CFLAGS=-Wall -Werror -Wextra
 FT=		ft_isalpha.c	\
 		ft_isdigit.c	\
 		ft_isalnum.c	\
@@ -50,29 +50,44 @@ FT=		ft_isalpha.c	\
 
 OBJ=$(FT:%.c=%.o)
 
+BONUS=	ft_lstnew_bonus.c		\
+		ft_lstadd_front_bonus.c	\
+		ft_lstadd_back_bonus.c	\
+		ft_lstsize_bonus.c		\
+		ft_lstlast_bonus.c		\
+		ft_lstdelone_bonus.c	\
+		ft_lstclear_bonus.c		\
+		ft_lstiter_bonus.c		\
+		ft_lstmap_bonus.c
+
+OBJBONUS= $(BONUS:%.c=%.o)
+bonuses = .cache
+
 all:$(NAME)
 
 $(NAME):$(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
+bonus:$(bonuses)
+
+$(bonuses): $(NAME) $(OBJBONUS)
+	ar -rcs $^
+	ar -rcs $(bonuses) $^
+
 t: $(NAME) testeos.o
 	cc testeos.o -o testeos -L. -lft
-
-%.o:%.c
-	$(CC) $(CFLAGS) -c $<
 
 .PHONY: clean fclean re
 
 clean:
-	rm -rf $(OBJ)
-fclean:clean
-	rm -rf $(NAME)
-re:fclean $(NAME)
+	rm -rf $(OBJ) $(OBJBONUS)
+fclean: clean
+	rm -rf $(NAME) $(bonuses)
+re: fclean $(NAME)
 
-# flags -Wall, -Werror y -Wextra. Makefile no debe hacer relink.
-# Tu Makefile debe contener al menos las normas $(NAME), all, clean, fclean y re.
+# flag -g3 allow debugger (not included).
+# flags -Wall, -Werror y -Wextra. Need a Makefile without relink.
+# Makefile containing norms $(NAME), all, clean, fclean y re.
 
-# crear programas de prueba para tu proyecto, aunque este trabajo
-# no será entregado ni evaluado. Te dará la oportunidad de verificar que tu
-# programa funciona correctamente durante tu evaluación y la de otros compañeros.
-# Y sí, tienes permitido utilizar estas pruebas durante tu evaluación o la de otros compañeros.
+# %.o:%.c
+#	$(CC) $(CFLAGS) -c $<
