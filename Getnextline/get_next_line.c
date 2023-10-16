@@ -6,60 +6,74 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:34:15 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/16 15:37:57 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:49:26 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
 char	*ft_read(int fd)
 {
-	char *readed;
-	int	f;
+	char	*readed;
+	int		aux;
 
-	readed = ft_calloc(BUFFER_SIZE, sizeof(char));
+	readed = malloc(BUFFER_SIZE + 1);
 	if (!readed)
 		return (NULL);
-	f = read(fd, readed, BUFFER_SIZE);
-	if (f == -1)
+	aux = read(fd, readed, BUFFER_SIZE);
+	if (aux == -1)
 	{
 		free (readed);
 		return (NULL);
 	}
-	readed[f] = '\0';
+	readed[aux] = '\0';
 	return (readed);
 }
 
-int		ft_countlines(char *buf)
+int	ft_countlines(char *buf)
 {
 	int	j;
 
 	j = 0;
-	while (buf[j] != '\n' || buf[j] != '\n')
+	while (buf[j] != '\n')
+	{
+		printf("J: %i\n", j);
 		j++;
+	}
 	return (j);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char *line;
-	int	i;
+	char		*line;
+	int			i;
 
 	i = 0;
-	buffer = ft_read(fd);
-	while (!ft_strchr(buffer, '\n') || !ft_strchr(buffer, '\0'))
+	if (!fd)
+		return (NULL);
+	buffer = ft_read(fd); //el problema es que en buffer ya puede estar el salto de linea
+	while (!ft_strchr(buffer, '\n'))
 	{
 		buffer = ft_strjoin(buffer, ft_read(fd));
 	}
 	line = ft_substr(buffer, 0, ft_countlines(buffer));
-
-
-	ft_memcpy(buffer, buffer + ft_strlen(line), ft_strlen(buffer) - ft_strlen(line));
+	ft_memcpy(buffer, buffer + ft_strlen(line), \
+	ft_strlen(buffer) - ft_strlen(line));
 	return (line);
 }
 
-int	main()
+int	main(void)
 {
 	int		txt;
 	char	*strget;

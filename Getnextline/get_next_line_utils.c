@@ -6,21 +6,11 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:37:16 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/16 15:14:33 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:26:00 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
 
 char	*ft_strchr(const char *str, int c)
 {
@@ -87,36 +77,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memcpy(strnew + len1, s2, len2);
 	strnew [len1 + len2] = '\0';
 	return (strnew);
-}
-
-void	*ft_bzero(void *dest, size_t count)
-{
-	unsigned char	*destiny;
-	size_t			i;
-
-	destiny = dest;
-	i = 0;
-	while (i < count)
-	{
-		destiny[i] = 0;
-		i++;
-	}
-	return (destiny);
-}
-
-void	*ft_calloc(size_t number, size_t size)
-{
-	void	*assignmem;
-
-	if (number == 0 || size == 0)
-		return (malloc (0));
-	if (!(number < SIZE_MAX / size))
-		return (NULL);
-	assignmem = (void *)malloc(number * size);
-	if (assignmem == 0)
-		return (NULL);
-	ft_bzero(assignmem, number * size);
-	return (assignmem);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
