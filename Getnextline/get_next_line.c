@@ -6,57 +6,61 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:34:15 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/19 17:56:43 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:29:20 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(const char *str)
+int	ft_str_to_delimiter(const char *str, int delimiter)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (!str || !delimiter)
+		return (-1);
+	while (str[i] != delimiter)
 		i++;
 	return (i);
+}
+
+static char	*ft_freedom(char *read, char *buf, char *line)
+{
+	free (read);
+	free (buf);
+	free (line);
+	read = NULL;
+	buf = NULL;
+	line = NULL;
+	return (NULL);
 }
 
 static char	*ft_read(int fd, char *buffer)
 {
 	char	*readed;
-	int		aux_bool_len;
+	int		len_bool;
 
-	readed = malloc(BUFFER_SIZE + 1);
+	readed = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!readed)
-		return (NULL);
-	aux_bool_len = 123;
-	while (aux_bool_len && !ft_strchr(buffer, '\n'))
+		return (ft_freedom(readed, buffer, NULL));
+	len_bool = 1;
+	while (len_bool > 0 && !ft_strrchr(buffer, '\n'))
 	{
-		aux_bool_len = read(fd, readed, BUFFER_SIZE);
-		if (aux_bool_len == -1)
+		len_bool = read(fd, readed, BUFFER_SIZE);
+		if (len_bool == -1)
+			return (ft_freedom(readed, buffer, NULL));
+		readed[len_bool] = '\0';
+		if (readed[0] == '\0')
 		{
-			free (readed);
-			readed = NULL;
-			return (NULL);
+			ft_freedom(readed, NULL, NULL);
+			return (buffer);
 		}
-		readed[aux_bool_len] = '\0';
 		buffer = ft_strjoin(buffer, readed);
+		if (!buffer)
+			return (ft_freedom(readed, buffer, NULL));
 	}
+	ft_freedom(readed, NULL, NULL);
 	return (buffer);
-}
-
-static int	ft_countlines(char *buf)
-{
-	int	j;
-
-	j = 0;
-	while (buf[j] != '\n')
-	{
-		j++;
-	}
-	printf("J: %i\n", j);
-	return (j);
 }
 
 char	*get_next_line(int fd)
@@ -64,27 +68,38 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*line;
 	int			i;
+	int			line_len;
+	int			buffer_len;
 
 	i = 0;
 	if (!fd || !BUFFER_SIZE)
 		return (NULL);
+	if (!buffer)
+		buffer = (char *)malloc(1);
+	if (!buffer)
+		return (ft_freedom(NULL, buffer, NULL));
 	buffer = ft_read(fd, buffer);
-	line = ft_substr(buffer, 0, ft_countlines(buffer));
-	//tienes que resetear buffer con el valor deseado cuidado con los allocs
-	//calloc?????
-	buffer = ft_memcpy(buffer + ft_strlen(line), NULL, \
-	ft_strlen(line));
+	if (!buffer)
+		return (ft_freedom(NULL, buffer, NULL));
+	buffer_len = ft_str_to_delimiter(buffer, '\0');
+	line = ft_substr(buffer, 0, ft_str_to_delimiter(buffer, '\n'));
+	if (!line)
+		return (ft_freedom (NULL, NULL, line));
+	line_len = ft_str_to_delimiter(line, '\0');
+	buffer = ft_memcpy(buffer, buffer + line_len, buffer_len - line_len);
+	if (!buffer)
+		return (ft_freedom(NULL, buffer, NULL));
 	return (line);
-}
-//	buffer = ft_memcpy(buffer, buffer + ft_strlen(line),
-//	ft_strlen(buffer) - ft_strlen(line));
+}  
 
-/*int	main(void)
+int	main(void)
 {
 	int		txt;
 	char	*strget;
 
 	txt = open("/Users/fsantill/provisorios/Getnextline/Pruebas.txt", O_RDONLY);
+	if (txt == -1)
+		printf("\nError al intentar abrir el archivo para lectura\n");
 	strget = get_next_line(txt);
 	printf("\nLine: %s\n", strget);
 	while (strget)
@@ -92,10 +107,10 @@ char	*get_next_line(int fd)
 		strget = get_next_line(txt);
 		printf("\nLine: %s\n", strget);
 	}
-	if (txt == -1)
-		printf("Error de lectura");
+	close(txt);
 	return (0);
-}*/
+}
 
+// tienes que resetear buffer con el valor deseado cuidado con los allocs
 // strlen de line y sumarle al puntero de buffer
 // strchr de line en buffer y que buffer sea igual
