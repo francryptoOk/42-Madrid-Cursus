@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:23:23 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/20 15:49:20 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:52:46 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t count)
 	unsigned char	*source;
 	size_t			i;
 
+	if (!dest && !src)
+		return (NULL);
 	destiny = (unsigned char *)dest;
 	source = (unsigned char *)src;
 	i = 0;
-	if (destiny == 0 && source == 0)
-		return (0);
 	while (i < count)
 	{
 		if (i >= count)
