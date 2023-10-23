@@ -6,18 +6,30 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:37:16 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/20 17:17:27 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:20:58 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	ft_strlen_to_delimiter(const char *str, int delimiter)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !delimiter)
+		return (-1);
+	while (str[i] != delimiter)
+		i++;
+	return (i);
+}
 
 char	*ft_strrchr(const char *str, int c)
 {
 	int					i;
 	const unsigned char	caux = (unsigned char)c;
 
-	i = ft_str_to_delimiter(str, '\0') - 1;
+	i = ft_strlen_to_delimiter(str, '\0') - 1;
 	if (caux == '\0')
 		return ((char *)&str[i + 1]);
 	while (i >= 0)
@@ -29,91 +41,75 @@ char	*ft_strrchr(const char *str, int c)
 	return (NULL);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t count)
+char	*ft_strdup_mod(const char *str)
 {
-	unsigned char	*destiny;
-	unsigned char	*source;
-	size_t			i;
+	char	*dst;
+	int		len;
+	int		i;
 
-	if (!dest && !src)
-		return (NULL);
-	destiny = (unsigned char *)dest;
-	source = (unsigned char *)src;
+	len = 0;
 	i = 0;
-	while (i < count)
+	while (str[len])
+		len++;
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dst)
+		return (0);
+	while (i < len)
 	{
-		destiny[i] = source[i];
+		dst[i] = str[i];
 		i++;
 	}
-	return (destiny);
+	dst[i] = '\0';
+	return (dst);
 }
 
-char	*ft_strdup(const char *str)
+char	*ft_strjoin_mod(char const *s1, char const *s2)
 {
-	int		length;
-	char	*ptr;
+	char			*dst;
+	unsigned int	len;
+	unsigned int	i;
+	unsigned int	j;
 
-	if (!str)
+	len = ft_strlen_to_delimiter(s1, '\0') + ft_strlen_to_delimiter(s2, '\0');
+	dst = (char *)malloc(sizeof(char) * (len + 1));
+	if (!dst)
 		return (NULL);
-	length = ft_str_to_delimiter(str, '\0');
-	ptr = malloc (length + 1);
-	if (ptr == 0)
-		return (NULL);
-	ft_memcpy(ptr, str, length);
-	ptr[length] = '\0';
-	return (ptr);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	len1;
-	size_t	len2;
-	char	*strnew;
-
-	len1 = ft_str_to_delimiter(s1, '\0');
-	len2 = ft_str_to_delimiter(s2, '\0');
-	if (!s1)
-		return (ft_strdup(s2));
-	if (!s2)
-		return (ft_strdup(s1));
-	strnew = (char *)malloc((len1 + len2 + 1) * sizeof(char));
-	if (!strnew)
+	i = 0;
+	while (s1[i] != '\0')
 	{
-		free (strnew);
-		return (NULL);
-	}
-	ft_memcpy(strnew, s1, len1);
-	ft_memcpy(strnew + len1, s2, len2);
-	strnew [len1 + len2] = '\0';
-	return (strnew);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	size_t	sub_i;
-	char	*sub_s;
-
-	i = start;
-	sub_i = 0;
-	if (!s)
-		return (NULL);
-	if (start >= (unsigned int)ft_str_to_delimiter(s, '\0'))
-		return (ft_strdup(""));
-	if (len > ft_str_to_delimiter(s, '\0') - start)
-		len = ft_str_to_delimiter(s, '\0') - start;
-	sub_s = (char *)malloc((len + 1) * sizeof(char));
-	if (!sub_s)
-	{
-		free (sub_s);
-		return (NULL);
-	}
-	while (s[i] != '\0' && sub_i < len)
-	{
-		sub_s[sub_i] = s[i];
-		sub_i++;
+		dst[i] = s1[i];
 		i++;
 	}
-	sub_s[sub_i] = '\0';
-	return (sub_s);
+	j = 0;
+	while (s2[j] != '\0')
+	{
+		dst[i + j] = s2[j];
+		j++;
+	}
+	dst[i + j] = '\0';
+	return (dst);
+}
+
+char	*ft_substr_mod(char const *s, unsigned int start, size_t len)
+{
+	size_t			slen;
+	unsigned int	i;
+	char			*dest;
+
+	slen = ft_strlen_to_delimiter(s, '\0');
+	if (start > slen)
+		return (NULL);
+	if (len > slen - start)
+		len = slen - start;
+	dest = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s || !dest)
+		return (NULL);
+	i = 0;
+	while (start < slen && i < len && s[start + i])
+	{
+		dest[i] = s[start + i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

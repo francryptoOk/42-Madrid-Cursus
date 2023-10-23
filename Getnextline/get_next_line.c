@@ -6,23 +6,11 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:34:15 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/20 17:29:20 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:32:41 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_str_to_delimiter(const char *str, int delimiter)
-{
-	int	i;
-
-	i = 0;
-	if (!str || !delimiter)
-		return (-1);
-	while (str[i] != delimiter)
-		i++;
-	return (i);
-}
 
 static char	*ft_freedom(char *read, char *buf, char *line)
 {
@@ -38,6 +26,7 @@ static char	*ft_freedom(char *read, char *buf, char *line)
 static char	*ft_read(int fd, char *buffer)
 {
 	char	*readed;
+	char	*temp;
 	int		len_bool;
 
 	readed = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
@@ -55,9 +44,11 @@ static char	*ft_read(int fd, char *buffer)
 			ft_freedom(readed, NULL, NULL);
 			return (buffer);
 		}
-		buffer = ft_strjoin(buffer, readed);
+		temp = ft_strjoin_mod(buffer, readed);
+		free(buffer);
 		if (!buffer)
 			return (ft_freedom(readed, buffer, NULL));
+		buffer = temp;
 	}
 	ft_freedom(readed, NULL, NULL);
 	return (buffer);
@@ -81,16 +72,16 @@ char	*get_next_line(int fd)
 	buffer = ft_read(fd, buffer);
 	if (!buffer)
 		return (ft_freedom(NULL, buffer, NULL));
-	buffer_len = ft_str_to_delimiter(buffer, '\0');
-	line = ft_substr(buffer, 0, ft_str_to_delimiter(buffer, '\n'));
+	buffer_len = ft_strlen_to_delimiter(buffer, '\0');
+	line = ft_substr_mod(buffer, 0, ft_strlen_to_delimiter(buffer, '\n'));
 	if (!line)
 		return (ft_freedom (NULL, NULL, line));
-	line_len = ft_str_to_delimiter(line, '\0');
-	buffer = ft_memcpy(buffer, buffer + line_len, buffer_len - line_len);
+	line_len = ft_strlen_to_delimiter(line, '\0');
+	buffer = ft_strjoin_mod(buffer, line);
 	if (!buffer)
 		return (ft_freedom(NULL, buffer, NULL));
 	return (line);
-}  
+}
 
 int	main(void)
 {
