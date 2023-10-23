@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:40:44 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/12 14:29:26 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/23 10:54:42 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strdup(const char *str)
 	int		length;
 	char	*ptr;
 
+	if (!str)
+		return (NULL);
 	length = ft_strlen(str);
 	ptr = malloc (length + 1);
 	if (ptr == 0)
