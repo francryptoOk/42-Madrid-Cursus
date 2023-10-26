@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:34:15 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/26 14:49:41 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/26 16:00:35 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ static char	*remove_line(char *buffer)
 	while (buffer[i] != '\0' && buffer[i] != '\n')
 		i++;
 	i++;
-	result = (char *)malloc(ft_strlen_to_delimiter(buffer, '\0') - i + 1);
+	if (buffer[i] == '\n')
+		result = (char *)malloc(ft_strlen_to_delimiter(buffer, '\0') - i + 1);
+	else
+		result = (char *)malloc(ft_strlen_to_delimiter(buffer, '\0') + 1);
 	if (!result)
 		ft_freedom(&result);
 	j = 0;
