@@ -6,13 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:34:15 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/26 16:00:35 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:57:32 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*ft_freedom(char **p)
+char	*ft_freedom(char **p)
 {
 	if (p && *p)
 		free (*p);
@@ -28,7 +28,7 @@ static char	*ft_read(int fd, char *buffer)
 
 	readed = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!readed)
-		return (ft_freedom(&readed), NULL);
+		return (ft_freedom(&buffer), NULL);
 	len_bool = 1;
 	while (!ft_strchr_mod(buffer, '\n'))
 	{
@@ -54,13 +54,11 @@ static char	*remove_line(char *buffer)
 	i = 0;
 	while (buffer[i] != '\0' && buffer[i] != '\n')
 		i++;
-	i++;
 	if (buffer[i] == '\n')
-		result = (char *)malloc(ft_strlen_to_delimiter(buffer, '\0') - i + 1);
-	else
-		result = (char *)malloc(ft_strlen_to_delimiter(buffer, '\0') + 1);
+		i++;
+	result = (char *)malloc(ft_strlen_to_delimiter(buffer, '\0') - i + 1);
 	if (!result)
-		ft_freedom(&result);
+		return (ft_freedom(&buffer), NULL);
 	j = 0;
 	while (buffer[i])
 	{
@@ -80,25 +78,31 @@ char	*get_next_line(int fd)
 	int			buffer_len;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		ft_freedom(&buffer);
+		return (NULL);
 	buffer = ft_read(fd, buffer);
 	if (!buffer)
-		ft_freedom(&buffer);
+		return (ft_freedom(&buffer), NULL);
 	buffer_len = ft_strlen_to_delimiter(buffer, '\0');
-	line = ft_substr_mod(buffer, 0, ft_strlen_to_delimiter(buffer, '\n') + 1);
+	if (ft_strchr_mod(buffer, '\n'))
+		line = ft_substr_mod(buffer, 0, \
+		ft_strlen_to_delimiter(buffer, '\n') + 1);
+	else
+		line = ft_substr_mod(buffer, 0, \
+		ft_strlen_to_delimiter(buffer, '\0') + 1);
 	if (!line)
 		ft_freedom(&line);
 	buffer = remove_line(buffer);
 	return (line);
 }
 
-int main(void)
+int	main(void)
 {
-	int fd;
-	int line = 1;
-	char *lines;
-	fd = open("Pruebas.txt", O_RDONLY);
+	int		fd;
+	int		line;
+	char	*lines;
 
+	line = 1;
+	fd = open("Pruebas.txt", O_RDONLY);
 	printf("%s", lines = get_next_line(fd));
 	printf("%s", lines = get_next_line(fd));
 	printf("%s", lines = get_next_line(fd));

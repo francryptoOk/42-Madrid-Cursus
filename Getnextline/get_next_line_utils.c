@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:37:16 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/26 14:49:11 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:57:35 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strdup_mod(const char *str)
 		len++;
 	dst = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dst)
-		return (0);
+		return (free(&dst), NULL);
 	while (i < len)
 	{
 		dst[i] = str[i];
@@ -71,7 +71,7 @@ char	*ft_strjoin_mod(char const *s1, char const *s2)
 	len = ft_strlen_to_delimiter(s1, '\0') + ft_strlen_to_delimiter(s2, '\0');
 	dst = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dst)
-		return (NULL);
+		return (free(&dst), NULL);
 	i = 0;
 	while (s1[i] != '\0')
 	{
