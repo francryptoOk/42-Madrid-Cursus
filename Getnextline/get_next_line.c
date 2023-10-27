@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:34:15 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/27 12:57:32 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:55:08 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,18 @@ static char	*ft_read(int fd, char *buffer)
 
 	readed = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!readed)
-		return (ft_freedom(&buffer), NULL);
-	len_bool = 1;
+		return (ft_freedom(&readed), ft_freedom(&buffer));
 	while (!ft_strchr_mod(buffer, '\n'))
 	{
 		len_bool = read(fd, readed, BUFFER_SIZE);
 		if (len_bool == -1)
-			return (ft_freedom(&readed), NULL);
+			return (ft_freedom(&readed), ft_freedom(&buffer));
 		readed[len_bool] = '\0';
 		if (readed[0] == '\0')
 			return (ft_freedom(&readed), buffer);
 		temp = ft_strjoin_mod(buffer, readed);
+		if (!temp)
+			return (ft_freedom(&temp), ft_freedom(&buffer));
 		buffer = temp;
 	}
 	ft_freedom(&readed);
@@ -57,8 +58,8 @@ static char	*remove_line(char *buffer)
 	if (buffer[i] == '\n')
 		i++;
 	result = (char *)malloc(ft_strlen_to_delimiter(buffer, '\0') - i + 1);
-	if (!result)
-		return (ft_freedom(&buffer), NULL);
+	if (!buffer || !result)
+		return (ft_freedom(&buffer), ft_freedom(&result), NULL);
 	j = 0;
 	while (buffer[i])
 	{
@@ -82,6 +83,12 @@ char	*get_next_line(int fd)
 	buffer = ft_read(fd, buffer);
 	if (!buffer)
 		return (ft_freedom(&buffer), NULL);
+		
+	//Prueba
+		write(1,"\nLINEA INICIAL:\n", 17);
+		write(1, buffer, ft_strlen_to_delimiter(buffer, '\0'));
+	//Fin de prueba
+
 	buffer_len = ft_strlen_to_delimiter(buffer, '\0');
 	if (ft_strchr_mod(buffer, '\n'))
 		line = ft_substr_mod(buffer, 0, \
@@ -89,8 +96,14 @@ char	*get_next_line(int fd)
 	else
 		line = ft_substr_mod(buffer, 0, \
 		ft_strlen_to_delimiter(buffer, '\0') + 1);
+
+	//Prueba
+		write(1,"\n\nLINEA EXTRAIDA:\n", 18);
+		write(1, line, ft_strlen_to_delimiter(line, '\0'));
+	//Fin de prueba
+
 	if (!line)
-		ft_freedom(&line);
+		return (ft_freedom(&line), ft_freedom(&buffer));
 	buffer = remove_line(buffer);
 	return (line);
 }
@@ -98,10 +111,8 @@ char	*get_next_line(int fd)
 int	main(void)
 {
 	int		fd;
-	int		line;
 	char	*lines;
 
-	line = 1;
 	fd = open("Pruebas.txt", O_RDONLY);
 	printf("%s", lines = get_next_line(fd));
 	printf("%s", lines = get_next_line(fd));
@@ -114,5 +125,6 @@ int	main(void)
 	printf("%s", lines = get_next_line(fd));
 	printf("%s", lines = get_next_line(fd));
 	printf("%s", lines = get_next_line(fd));
+	system("leaks -q a.out");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:37:16 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/27 12:57:35 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/27 14:54:57 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ char	*ft_strdup_mod(const char *str)
 
 	len = 0;
 	i = 0;
+	if (!str)
+		return (NULL);
 	while (str[len])
 		len++;
 	dst = (char *)malloc(sizeof(char) * (len + 1));
 	if (!dst)
-		return (free(&dst), NULL);
+		return (NULL);
 	while (i < len)
 	{
 		dst[i] = str[i];
@@ -85,6 +87,7 @@ char	*ft_strjoin_mod(char const *s1, char const *s2)
 		j++;
 	}
 	dst[i + j] = '\0';
+	free((char *) s1);
 	return (dst);
 }
 
@@ -101,7 +104,7 @@ char	*ft_substr_mod(char const *s, unsigned int start, size_t len)
 		len = slen - start;
 	dest = (char *)malloc(sizeof(char) * (len + 1));
 	if (!s || !dest)
-		return (NULL);
+		return (free(&s), NULL);
 	i = 0;
 	while (start < slen && i < len && s[start + i])
 	{
