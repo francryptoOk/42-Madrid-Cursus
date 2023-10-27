@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:34:15 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/27 14:55:08 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/27 15:35:58 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char	*get_next_line(int fd)
 		return (ft_freedom(&buffer), NULL);
 		
 	//Prueba
-		write(1,"\nLINEA INICIAL:\n", 17);
+		write(1,"\n\nINITIAL BUFFER:\n", 19);
 		write(1, buffer, ft_strlen_to_delimiter(buffer, '\0'));
 	//Fin de prueba
 
@@ -98,13 +98,19 @@ char	*get_next_line(int fd)
 		ft_strlen_to_delimiter(buffer, '\0') + 1);
 
 	//Prueba
-		write(1,"\n\nLINEA EXTRAIDA:\n", 18);
+		write(1,"\n\nEXTRACTED LINE:\n", 19);
 		write(1, line, ft_strlen_to_delimiter(line, '\0'));
 	//Fin de prueba
 
 	if (!line)
 		return (ft_freedom(&line), ft_freedom(&buffer));
 	buffer = remove_line(buffer);
+
+	//Prueba
+		write(1,"\n\nBUFFER AFTER LINE REMOVE:\n", 29);
+		write(1, buffer, ft_strlen_to_delimiter(buffer, '\0'));
+	//Fin de prueba
+
 	return (line);
 }
 
@@ -114,17 +120,17 @@ int	main(void)
 	char	*lines;
 
 	fd = open("Pruebas.txt", O_RDONLY);
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	printf("%s", lines = get_next_line(fd));
-	system("leaks -q a.out");
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	printf("\n\nPRINT:\n%s", lines = get_next_line(fd));
+	system("\n\nleaks -q a.out");
 	return (0);
 }
