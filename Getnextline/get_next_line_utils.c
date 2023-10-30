@@ -6,13 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:37:16 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/27 14:54:57 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/30 15:52:41 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen_to_delimiter(const char *str, int delimiter)
+int	ft_strlen_to_delimiter(char *str, int delimiter)
 {
 	int	i;
 
@@ -24,11 +24,11 @@ int	ft_strlen_to_delimiter(const char *str, int delimiter)
 	return (i);
 }
 
-char	*ft_strchr_mod(const char *str, int c)
+char	*ft_strchr_mod(char *str, int c)
 {
 	if (!str)
 		return (NULL);
-	while (*str != '\0' || *str == (char)c)
+	while (*str != '\0' || *str == (unsigned char)c)
 	{
 		if (*str == (unsigned char) c)
 			return ((char *)str);
@@ -37,7 +37,7 @@ char	*ft_strchr_mod(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strdup_mod(const char *str)
+char	*ft_strdup_mod(char *str)
 {
 	char	*dst;
 	int		len;
@@ -47,9 +47,8 @@ char	*ft_strdup_mod(const char *str)
 	i = 0;
 	if (!str)
 		return (NULL);
-	while (str[len])
-		len++;
-	dst = (char *)malloc(sizeof(char) * (len + 1));
+	len = ft_strlen_to_delimiter(str, '\0');
+	dst = (char *)malloc((len + 1) * sizeof(char));
 	if (!dst)
 		return (NULL);
 	while (i < len)
@@ -61,17 +60,17 @@ char	*ft_strdup_mod(const char *str)
 	return (dst);
 }
 
-char	*ft_strjoin_mod(char const *s1, char const *s2)
+char	*ft_strjoin_mod(char *s1, char *s2)
 {
 	char			*dst;
-	unsigned int	len;
+	unsigned int	len_total;
 	unsigned int	i;
 	unsigned int	j;
 
 	if (!s1)
 		return (ft_strdup_mod(s2));
-	len = ft_strlen_to_delimiter(s1, '\0') + ft_strlen_to_delimiter(s2, '\0');
-	dst = (char *)malloc(sizeof(char) * (len + 1));
+	len_total = ft_strlen_to_delimiter(s1, '\0') + ft_strlen_to_delimiter(s2, '\0');
+	dst = (char *)malloc((len_total + 1) * sizeof(char));
 	if (!dst)
 		return (free(&dst), NULL);
 	i = 0;
@@ -87,11 +86,11 @@ char	*ft_strjoin_mod(char const *s1, char const *s2)
 		j++;
 	}
 	dst[i + j] = '\0';
-	free((char *) s1);
+	free(s1);
 	return (dst);
 }
 
-char	*ft_substr_mod(char const *s, unsigned int start, size_t len)
+char	*ft_substr_mod(char *s, unsigned int start, size_t len)
 {
 	size_t			slen;
 	unsigned int	i;
@@ -99,7 +98,7 @@ char	*ft_substr_mod(char const *s, unsigned int start, size_t len)
 
 	slen = ft_strlen_to_delimiter(s, '\0');
 	if (start > slen)
-		return (NULL);
+		return (free(&s), NULL);
 	if (len > slen - start)
 		len = slen - start;
 	dest = (char *)malloc(sizeof(char) * (len + 1));
