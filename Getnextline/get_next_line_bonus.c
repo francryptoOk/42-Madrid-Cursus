@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 11:34:15 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/31 12:26:31 by fsantill         ###   ########.fr       */
+/*   Created: 2023/10/31 12:21:05 by fsantill          #+#    #+#             */
+/*   Updated: 2023/10/31 12:24:55 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_freedom(char **p)
 {
@@ -75,28 +75,28 @@ static char	*remove_line(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[2048];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (buffer == NULL || !ft_strchr_mod(buffer, '\n'))
+	if (buffer[fd] == NULL || !ft_strchr_mod(buffer[fd], '\n'))
 	{
-		buffer = ft_read(fd, buffer);
-		if (!buffer)
+		buffer[fd] = ft_read(fd, buffer[fd]);
+		if (!buffer[fd])
 			return (NULL);
 	}
-	if (ft_strchr_mod(buffer, '\n'))
-		line = ft_substr_mod(buffer, 0, \
-		ft_strlen_to_limit(buffer, '\n') + 1);
+	if (ft_strchr_mod(buffer[fd], '\n'))
+		line = ft_substr_mod(buffer[fd], 0, \
+		ft_strlen_to_limit(buffer[fd], '\n') + 1);
 	else
-		line = ft_substr_mod(buffer, 0, \
-		ft_strlen_to_limit(buffer, '\0') + 1);
+		line = ft_substr_mod(buffer[fd], 0, \
+		ft_strlen_to_limit(buffer[fd], '\0') + 1);
 	if (!line)
 		return (NULL);
-	buffer = remove_line(buffer);
-	if (buffer[0] == '\0')
-		ft_freedom(&buffer);
+	buffer[fd] = remove_line(buffer[fd]);
+	if (buffer[fd][0] == '\0')
+		ft_freedom(&buffer[fd]);
 	return (line);
 }
 
@@ -110,22 +110,3 @@ char	*get_next_line(int fd)
  * @return The function `get_next_line` returns a line of text read from
  * a file descriptor.
  */
-
-/*int	main(void)
-{
-	int		fd;
-	char	*lines;
-
-	fd = open("Pruebas.txt", O_RDONLY);
-	lines = "";
-	while (lines)
-	{
-		lines = get_next_line(fd);
-		if (lines != NULL)
-			printf("Line:\n%s\n", lines);
-		free(lines);
-	}
-	printf("\n");
-	system("leaks -q a.out");
-	return (0);
-}*/
