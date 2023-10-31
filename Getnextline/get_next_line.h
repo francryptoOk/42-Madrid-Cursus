@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:37:42 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/31 11:34:10 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:45:22 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # endif
 
 char	*get_next_line(int fd);
-int		ft_strlen_to_delimiter(char *str, int delimiter);
+int		ft_strlen_to_limit(char *str, int delimiter);
 char	*ft_strchr_mod(char *str, int c);
 char	*ft_strdup_mod(char *str);
 char	*ft_strjoin_mod(char *s1, char *s2);

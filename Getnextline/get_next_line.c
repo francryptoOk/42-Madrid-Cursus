@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:34:15 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/31 11:34:02 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:53:54 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static char	*remove_line(char *buffer)
 		i++;
 	if (buffer[i] == '\n')
 		i++;
-	result = (char *)malloc((ft_strlen_to_delimiter(buffer, '\0') - i + 1) * sizeof(char));
+	result = (char *)malloc((ft_strlen_to_limit(buffer, '\0') \
+	- i + 1) * sizeof(char));
 	if (!result)
 		return (ft_freedom(&buffer), NULL);
 	j = 0;
@@ -85,76 +86,46 @@ char	*get_next_line(int fd)
 		if (!buffer)
 			return (NULL);
 	}
-	//Prueba
-//		write(1,"\nINITIAL BUFFER:\n\n", 19);
-//		write(1, buffer, ft_strlen_to_delimiter(buffer, '\0'));
-	//Fin de prueba
-
 	if (ft_strchr_mod(buffer, '\n'))
 		line = ft_substr_mod(buffer, 0, \
-		ft_strlen_to_delimiter(buffer, '\n') + 1);
+		ft_strlen_to_limit(buffer, '\n') + 1);
 	else
 		line = ft_substr_mod(buffer, 0, \
-		ft_strlen_to_delimiter(buffer, '\0') + 1);
+		ft_strlen_to_limit(buffer, '\0') + 1);
 	if (!line)
 		return (NULL);
-
-	//Prueba
-//		write(1,"\n\nEXTRACTED LINE:\n\n", 20);
-//		write(1, line, ft_strlen_to_delimiter(line, '\0'));
-	//Fin de prueba
-
 	buffer = remove_line(buffer);
 	if (buffer[0] == '\0')
 		ft_freedom(&buffer);
-
-	//Prueba
-//		write(1,"\n\nBUFFER AFTER LINE REMOVE:\n\n", 30);
-//		write(1, buffer, ft_strlen_to_delimiter(buffer, '\0'));
-	//Fin de prueba
-
 	return (line);
 }
 
-int	main(void)
+/**
+ * The function `get_next_line` reads a file descriptor line by line and
+ * returns each line as a string.
+ * 
+ * @param p p is a pointer to a pointer to a character (char **).
+ * It is used to store the address of a character pointer.
+ * 
+ * @return The function `get_next_line` returns a line of text read from
+ * a file descriptor.
+ */
+
+/*int	main(void)
 {
 	int		fd;
 	char	*lines;
 
 	fd = open("Pruebas.txt", O_RDONLY);
-	lines = get_next_line(fd);
-	printf("\n\nPRINT 1:\n%s\n", lines);
-	free(lines);
-	lines = get_next_line(fd);
-	printf("\n\nPRINT 2:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 3:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 4:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 5:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 6:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 7:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 8:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 9:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 10:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 11:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 12:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 13:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 14:\n%s\n", lines);
-	free(lines);	lines = get_next_line(fd);
-	printf("\n\nPRINT 15:\n%s\n", lines);
-	free(lines);
-	printf("\n\n");
-	system("\n\nleaks -q a.out");
+	lines = "";
+	while (lines)
+	{
+		lines = get_next_line(fd);
+		if (lines != NULL)
+			printf("Line:\n%s\n", lines);
+		free(lines);
+	}
+	printf("\n");
+	system("leaks -q a.out");
 	return (0);
-}
+}*/

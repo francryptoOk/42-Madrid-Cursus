@@ -6,13 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 11:37:16 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/31 11:34:06 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:44:29 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen_to_delimiter(char *str, int delimiter)
+int	ft_strlen_to_limit(char *str, int delimiter)
 {
 	int	i;
 
@@ -47,7 +47,7 @@ char	*ft_strdup_mod(char *str)
 	i = 0;
 	if (!str)
 		return (NULL);
-	len = ft_strlen_to_delimiter(str, '\0');
+	len = ft_strlen_to_limit(str, '\0');
 	dst = (char *)malloc((len + 1) * sizeof(char));
 	if (!dst)
 		return (NULL);
@@ -69,7 +69,7 @@ char	*ft_strjoin_mod(char *s1, char *s2)
 
 	if (!s1)
 		return (ft_strdup_mod(s2));
-	len_total = ft_strlen_to_delimiter(s1, '\0') + ft_strlen_to_delimiter(s2, '\0');
+	len_total = ft_strlen_to_limit(s1, '\0') + ft_strlen_to_limit(s2, '\0');
 	dst = (char *)malloc((len_total + 1) * sizeof(char));
 	if (!dst)
 		return (free(&dst), NULL);
@@ -86,8 +86,7 @@ char	*ft_strjoin_mod(char *s1, char *s2)
 		j++;
 	}
 	dst[i + j] = '\0';
-	free(s1);
-	return (dst);
+	return (free(s1), dst);
 }
 
 char	*ft_substr_mod(char *s, unsigned int start, size_t len)
@@ -96,7 +95,7 @@ char	*ft_substr_mod(char *s, unsigned int start, size_t len)
 	unsigned int	i;
 	char			*dest;
 
-	slen = ft_strlen_to_delimiter(s, '\0');
+	slen = ft_strlen_to_limit(s, '\0');
 	if (start > slen)
 		return (free(&s), NULL);
 	if (len > slen - start)
