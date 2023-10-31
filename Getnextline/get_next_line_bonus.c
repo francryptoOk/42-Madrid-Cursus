@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:21:05 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/31 12:24:55 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:49:21 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	*remove_line(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[2048];
+	static char	*buffer[OPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
