@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2023/11/14 15:53:46 by fsantill         ###   ########.fr        #
+#    Updated: 2023/11/15 17:54:52 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME=libftprintf.a
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 FT=		ft_printf.c	\
+		ft_printf_utils.c
 
 OBJ=$(FT:%.c=%.o)
 

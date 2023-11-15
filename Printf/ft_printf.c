@@ -6,41 +6,31 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/11/14 17:40:43 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/11/15 18:01:43 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putchar(char c, int printcount)
-{
-	write(1, &c, 1);
-	printcount++;
-	return (printcount);
-}
-
-int	ft_putstr(char *str, int printcount)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-		printcount++;
-		i++;
-	}
-	return (printcount);
-}
-
-int	ft_checking_the_format(char *str, int i, va_list args, int printcount)
+int	ft_checking_the_format(char *str, int i, \
+va_list args, int printcount)
 {
 	if (str[i] == 'c')
-		printcount = ft_putchar(va_arg(args, int), printcount);
+		printcount = ft_putchar_mod(va_arg(args, int), printcount);
 	else if (str[i] == 's')
-		printcount = ft_putstr(va_arg(args, char *), printcount);
-	else if (str[i] == 'p')
-		printf("TO CONTINUE with 'p' HEREEEEEE... JEJE");
+		printcount = ft_putstr_mod(va_arg(args, char *), printcount);
+//	else if (str[i] == 'p')
+//		ft_putptr / ft_puthex;
+	else if (str[i] == 'd' || str[i] == 'i')
+		printcount = ft_putnbr_mod(va_arg(args, int), printcount);
+	else if (str[i] == 'u')
+		printcount = 0;
+	else if (str[i] == 'x')
+		printcount = 0;
+	else if (str[i] == 'X')
+		printcount = 0;
+	else if (str[i] == '%')
+		printcount = ft_putchar_mod('%', printcount);
 	return (printcount);
 }
 
@@ -62,7 +52,7 @@ int	ft_printf(char const *str, ...)
 			args, printcount);
 		}
 		else
-			printcount = ft_putchar(str[i], printcount);
+			printcount = ft_putchar_mod(str[i], printcount);
 		i++;
 	}
 	va_end(args);
