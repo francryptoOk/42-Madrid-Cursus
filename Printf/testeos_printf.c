@@ -6,13 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:45 by fsantill          #+#    #+#             */
-/*   Updated: 2023/11/16 14:43:25 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:43:38 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 #define RESET_COLOR "\x1b[0m"
-#define YELLOW_COLOR "\x1b[33m"
+#define ORANGE_COLOR "\x1b[38;5;208m"
 #define GREEN_COLOR "\x1b[32m"
 #define RED_COLOR "\x1b[31m"
 
@@ -39,18 +39,18 @@ int	test_format_s(void)
 		return (0);
 }
 
-/*int	test_format_p(void)
+int	test_format_p(void)
 {
 	void	*auxptr;
 
-	auxptr = NULL;
+	auxptr = "1545364";
 	printf("\n");
 	if (ft_printf("Void Pointer: %p ", auxptr) \
 	== printf("Void Pointer: %p ", auxptr))
 		return (1);
 	else
 		return (0);
-}*/
+}
 
 int	test_format_d_and_i(void)
 {
@@ -82,9 +82,33 @@ int	test_format_u(void)
 		return (0);
 }
 
+int	test_format_x_and_X(void)
+{
+	int	auxhex;
+	int	auxhex2;
+
+	auxhex = 0x1a;
+	auxhex2 = 0xf21;
+	printf("\n");
+	if (ft_printf("Hex: %x and Hex2: %X ", auxhex, auxhex2) \
+	== printf("Hex: %x and Hex2: %X ", auxhex, auxhex2))
+		return (1);
+	else
+		return (0);
+}
+
+int	test_format_percentage(void)
+{
+	printf("\n");
+	if (ft_printf("Percentage: %% ") == printf("Percentage: %% "))
+		return (1);
+	else
+		return (0);
+}
+
 int	main(void)
 {
-	printf(YELLOW_COLOR "\n╔╗ FRANCRYPTO® 💡🔗💻\n╠╗  Tester by fsantill\n═╝\n \
+	printf(ORANGE_COLOR "\n╔╗ FRANCRYPTO® 💡🔗💻\n╠╗  Tester by fsantill\n═╝\n \
 	● Comparing my FT_PRINTF vs PRINTF ●\n" RESET_COLOR "\n");
 	if (test_format_c() == 1)
 		printf(GREEN_COLOR "\n\n<< Format 'c' = OKey! ✅ >>\n" RESET_COLOR);
@@ -94,10 +118,10 @@ int	main(void)
 		printf(GREEN_COLOR "\n\n<< Format 's' = OKey! ✅ >>\n" RESET_COLOR);
 	else
 		printf(RED_COLOR "\n\n<< Format 's' = KnOckout! ❌ >>\n" RESET_COLOR);
-/*	if (test_format_p() == 1)
-		printf(GREEN_COLOR "\n\nFormat 'p' = OKey! :D\n" RESET_COLOR);
+	if (test_format_p() == 1)
+		printf(GREEN_COLOR "\n\n<< Format 'p' = OKey! ✅ >>\n" RESET_COLOR);
 	else
-		printf(RED_COLOR "\n\nFormat 'p' = KnOckout! :(\n" RESET_COLOR);*/
+		printf(RED_COLOR "\n\n<< Format 'p' = KnOckout! ❌ >>\n" RESET_COLOR);
 	if (test_format_d_and_i() == 1)
 		printf(GREEN_COLOR "\n\n<< Format 'd' and 'i' = OKey! ✅ >>\n" RESET_COLOR);
 	else
@@ -106,6 +130,18 @@ int	main(void)
 		printf(GREEN_COLOR "\n\n<< Format 'u' = OKey! ✅ >>\n" RESET_COLOR);
 	else
 		printf(RED_COLOR "\n\n<< Format 'u' = KnOckout! ❌ >>\n" RESET_COLOR);
-	printf(YELLOW_COLOR "\n\t● 👋 Tester Finished 👋 ●\n" RESET_COLOR "\n");
+	if (test_format_u() == 1)
+		printf(GREEN_COLOR "\n\n<< Format 'u' = OKey! ✅ >>\n" RESET_COLOR);
+	else
+		printf(RED_COLOR "\n\n<< Format 'u' = KnOckout! ❌ >>\n" RESET_COLOR);
+	if (test_format_x_and_X() == 1)
+		printf(GREEN_COLOR "\n\n<< Format 'x' and 'X' = OKey! ✅ >>\n" RESET_COLOR);
+	else
+		printf(RED_COLOR "\n\n<< Format 'x' and 'X' = KnOckout! ❌ >>\n" RESET_COLOR);
+	if (test_format_percentage() == 1)
+		printf(GREEN_COLOR "\n\n<< Format '%%' = OKey! ✅ >>\n" RESET_COLOR);
+	else
+		printf(RED_COLOR "\n\n<< Format '%%' = KnOckout! ❌ >>\n" RESET_COLOR);
+	printf(ORANGE_COLOR "\n\t● 👋 Tester Finished 👋 ●\n" RESET_COLOR "\n");
 	return (0);
 }

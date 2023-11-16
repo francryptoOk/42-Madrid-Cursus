@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:49 by fsantill          #+#    #+#             */
-/*   Updated: 2023/11/16 11:37:18 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:43:35 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -21,8 +21,9 @@
 
 int	ft_putchar_mod(char c, int printcount);
 int	ft_putstr_mod(char *str, int printcount);
-//int	ft_puthex(unsigned long long h, int printcount);
-//int	ft_putptr(void *ptr, int printcount);
+int	ft_puthex_low(unsigned long long h, int printcount);
+int	ft_puthex_upp(unsigned long long h, int printcount);
+int	ft_putptr(void *ptr, int printcount);
 int	ft_putnbr_mod(int nb, int printcount);
 int	ft_putnbr_mod_unsigned(unsigned int nb, int printcount);
 int	ft_checking_the_format(char *str, int i, va_list args, int printcount);

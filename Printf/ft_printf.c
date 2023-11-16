@@ -6,11 +6,34 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/11/16 11:36:21 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/11/16 17:43:37 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
+
+int	ft_putchar_mod(char c, int printcount)
+{
+	write(1, &c, 1);
+	printcount++;
+	return (printcount);
+}
+
+int	ft_putstr_mod(char *str, int printcount)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		str = "(null)";
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		printcount++;
+		i++;
+	}
+	return (printcount);
+}
 
 int	ft_checking_the_format(char *str, int i, \
 va_list args, int printcount)
@@ -24,13 +47,14 @@ va_list args, int printcount)
 	else if (str[i] == 'd' || str[i] == 'i')
 		printcount = ft_putnbr_mod(va_arg(args, int), printcount);
 	else if (str[i] == 'u')
-		printcount = ft_putnbr_mod_unsigned(va_arg(args, unsigned int), printcount);
-//	else if (str[i] == 'p')
-//		ft_putptr / ft_puthex;
+		printcount = ft_putnbr_mod_unsigned(va_arg(args, unsigned int), \
+		printcount);
+	else if (str[i] == 'p')
+		printcount = ft_putptr(va_arg(args, void *), printcount);
 	else if (str[i] == 'x')
-		printcount = 0;
+		printcount = (ft_puthex_low(va_arg(args, unsigned int), printcount));
 	else if (str[i] == 'X')
-		printcount = 0;
+		printcount = (ft_puthex_upp(va_arg(args, unsigned int), printcount));
 	return (printcount);
 }
 
