@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/11/15 18:01:43 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:36:21 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 int	ft_checking_the_format(char *str, int i, \
 va_list args, int printcount)
 {
-	if (str[i] == 'c')
+	if (str[i] == '%')
+		printcount = ft_putchar_mod('%', printcount);
+	else if (str[i] == 'c')
 		printcount = ft_putchar_mod(va_arg(args, int), printcount);
 	else if (str[i] == 's')
 		printcount = ft_putstr_mod(va_arg(args, char *), printcount);
-//	else if (str[i] == 'p')
-//		ft_putptr / ft_puthex;
 	else if (str[i] == 'd' || str[i] == 'i')
 		printcount = ft_putnbr_mod(va_arg(args, int), printcount);
 	else if (str[i] == 'u')
-		printcount = 0;
+		printcount = ft_putnbr_mod_unsigned(va_arg(args, unsigned int), printcount);
+//	else if (str[i] == 'p')
+//		ft_putptr / ft_puthex;
 	else if (str[i] == 'x')
 		printcount = 0;
 	else if (str[i] == 'X')
 		printcount = 0;
-	else if (str[i] == '%')
-		printcount = ft_putchar_mod('%', printcount);
 	return (printcount);
 }
 

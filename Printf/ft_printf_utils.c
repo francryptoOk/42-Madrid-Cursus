@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/11/15 18:01:42 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:55:24 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,29 @@ int	ft_putnbr_mod(int nb, int printcount)
 	}
 	if (nb_aux >= 10)
 	{
-		ft_putnbr_mod(nb_aux / 10, printcount);
+		printcount = ft_putnbr_mod(nb_aux / 10, printcount);
+		digit = nb_aux % 10 + 48;
+		write(1, &digit, 1);
+		printcount++;
+	}
+	return (printcount);
+}
+
+int	ft_putnbr_mod_unsigned(unsigned int nb, int printcount)
+{
+	long	nb_aux;
+	char	digit;
+
+	nb_aux = nb;
+	if (nb_aux < 10)
+	{
+		digit = nb_aux + 48;
+		write(1, &digit, 1);
+		printcount++;
+	}
+	if (nb_aux >= 10)
+	{
+		printcount = ft_putnbr_mod(nb_aux / 10, printcount);
 		digit = nb_aux % 10 + 48;
 		write(1, &digit, 1);
 		printcount++;
