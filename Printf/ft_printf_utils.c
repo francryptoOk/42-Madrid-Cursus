@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/11/16 17:43:37 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/11/17 17:17:26 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_puthex_upp(unsigned long long h, int printcount)
 	hexupp = "0123456789ABCDEF";
 	if (h < 16)
 		printcount = ft_putchar_mod(hexupp[h], printcount);
-	else if (h)
+	else
 	{
 		printcount = ft_puthex_upp(h / 16, printcount);
 		printcount = ft_puthex_upp(h % 16, printcount);
@@ -61,19 +61,11 @@ int	ft_putnbr_mod(int nb, int printcount)
 		printcount++;
 		nb_aux = -nb_aux;
 	}
-	if (nb_aux < 10)
-	{
-		digit = nb_aux + 48;
-		write(1, &digit, 1);
-		printcount++;
-	}
 	if (nb_aux >= 10)
-	{
-		printcount = ft_putnbr_mod(nb_aux / 10, printcount);
-		digit = nb_aux % 10 + 48;
-		write(1, &digit, 1);
-		printcount++;
-	}
+			printcount = ft_putnbr_mod(nb_aux / 10, printcount);
+	digit = nb_aux % 10 + 48;
+	write(1, &digit, 1);
+	printcount++;
 	return (printcount);
 }
 
@@ -83,18 +75,10 @@ int	ft_putnbr_mod_unsigned(unsigned int nb, int printcount)
 	char	digit;
 
 	nb_aux = nb;
-	if (nb_aux < 10)
-	{
-		digit = nb_aux + 48;
-		write(1, &digit, 1);
-		printcount++;
-	}
 	if (nb_aux >= 10)
-	{
 		printcount = ft_putnbr_mod(nb_aux / 10, printcount);
-		digit = nb_aux % 10 + 48;
-		write(1, &digit, 1);
-		printcount++;
-	}
+	digit = nb_aux % 10 + 48;
+	write(1, &digit, 1);
+	printcount++;
 	return (printcount);
 }
