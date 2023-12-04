@@ -6,13 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/12/04 15:21:05 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:54:29 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	args_are_numbers(int argc, char **argv)
+int	args_are_numbers_or_spaces(int argc, char **argv)
 {
 	int	a;
 	int i;
@@ -30,8 +30,8 @@ int	args_are_numbers(int argc, char **argv)
 				i++;
 			if(argv[a][i] && !ft_isdigit(argv[a][i]))
 			{
-				ft_printf("Digits Error\n");
 				break ;
+				return (ft_printf("Digits Error\n"), -1);
 			}
 			a++;
 		}
@@ -41,7 +41,14 @@ int	args_are_numbers(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	args_are_numbers(argc, argv);
+	t_list	lst_a;
+	t_list	lst_b;
+	int		size;
+
+	if (args_are_numbers_or_spaces(argc, argv) == 0)
+	{
+		void;
+	}
 	return (0);
 }
 
