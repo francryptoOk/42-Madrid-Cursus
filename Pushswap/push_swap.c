@@ -6,25 +6,25 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/12/11 18:11:46 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:43:18 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_stack_add(int nb, t_list *new)
+void	ft_stack_add(int nb, t_stack *new)
 {
-	t_list	*aux;
+	t_stack	*aux;
 
-	aux = (t_list *)malloc(sizeof(t_list *));
+	aux = (t_stack *)malloc(sizeof(t_stack *));
 	if (!aux)
 		return (NULL);
-	aux->content = nb;
+	aux->number = nb;
 	aux->next = NULL;
 	if (!new)
 		new = aux;
 	else
-		ft_lstlast(new)->next = aux;
+		ft_stack_last(new)->next = aux;
 }
 
 int	args_are_only_numbers_or_spaces(int argc, char **argv)
@@ -57,7 +57,7 @@ int	args_are_only_numbers_or_spaces(int argc, char **argv)
 int	*args_to_integer(int argc, char **argv)
 {
 	int	i;
-	int a;
+	int	a;
 
 	a = 1;
 	i = 0;
@@ -74,28 +74,30 @@ int	*args_to_integer(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_list	**lst_a;
-	t_list	**lst_b;
+	t_stack	**lst_a;
+	t_stack	**lst_b;
+	int		i;
 	int		size;
 	int		*numbers;
 
+	i = 0;	
 	if (args_are_only_numbers_or_spaces(argc, argv) == 0)
 	{
 		args_to_integer(argc, argv);
-		while(numbers[i])
+		while (numbers[i])
 		{
 			ft_stack_add (numbers[i], lst_a);
-			++i;
+			i++;
 		}
 	}
 	return (0);
 }
+
 /*
 1 2 3 4 5 
 "1 2 3 4 5 "
 1 2 "3 4" 5
 */
-
 
 /*
 int		tree_states[][4] = {

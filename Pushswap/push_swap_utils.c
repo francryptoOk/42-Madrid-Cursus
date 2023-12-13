@@ -6,96 +6,31 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/12/12 13:02:33 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/12/13 12:40:51 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sa(t_list **lst_a)
+t_stack	*ft_stack_prev_last(t_stack *lst)
 {
-	int	aux;
+	t_stack	*prev;
 
-	if (!(*lst_a) || !(*lst_a)->next)
-		return ;
-	aux = (int)(*lst_a)->content;
-	(*lst_a)->content = (int)(*lst_a)->next->content;
-	(*lst_a)->next->content = aux;
-	ft_printf("sa\n");
+	if (!lst || !lst->next)
+		return (NULL);
+	while (lst->next != NULL)
+	{
+		prev = lst;
+		lst = lst->next;
+	}
+	return (prev);
 }
 
-void	ft_sb(t_list **lst_b)
+t_stack	*ft_stack_last(t_stack *lst)
 {
-	t_list	*aux;
-
-	if (!(*lst_b) || !(*lst_b)->next)
-		return ;
-//	aux = (*lst_b);
-//	(*lst_b) = (*lst_b)->next;
-//	(*lst_b)->next = aux;
-	ft_printf("sb\n");
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
-
-void	ft_ss(t_list **lst_a, t_list **lst_b)
-{
-	ft_sa(lst_a);
-	ft_sb(lst_b);
-	printf("ss\n");
-}
-
-void	ft_pa(t_list **lst_a, t_list **lst_b)
-{
-	t_list	*aux;
-
-	if (!lst_b)
-		return ;
-	aux = lst_b->next;
-	lst_b->next = lst_a;
-
-	lst_a = lst_b;
-	lst_b = aux;
-	ft_printf("pa\n");
-}
-
-void	ft_pb(t_list *lst_a, t_list *lst_b)
-{
-	t_list	*aux;
-
-	if (!lst_a)
-		return ;
-	aux = lst_a->next;
-	lst_b = lst_a;
-	lst_a = aux;
-	ft_printf("pb\n");
-}
-
-/*
-- sa * swap a: Intercambia los dos primeros elementos del stack a.
-No hace nada si hay uno o menos elementos.
-
-- sb * swap b: Intercambia los dos primeros elementos del stack b.
-No hace nada si hay uno o menos elementos.
-
-- ss * swap a y swap b a la vez.
-
-- pa * push a: Toma el primer elemento del stack b y lo pone el primero
-en el stack a. No hace nada si b está vacío.
-
-- pb * push b: Toma el primer elemento del stack a y lo pone el primero
-en el stack b. No hace nada si a está vacío.
-
-* ra * rotate a: Desplaza hacia arriba todos los elementos del stack a
-una posición, de forma que el primer elemento se convierte en el último.
-
-* rb * rotate b: Desplaza hacia arriba todos los elementos del stack b
-una posición, de forma que el primer elemento se convierte en el último.
-
-* rr * ra y rb al mismo tiempo.
-
-* rra * reverse rotate a: Desplaza hacia abajo todos los elementos del stack
-a una posición, de forma que el último elemento se convierte en el primero.
-
-* rrb * reverse rotate b: Desplaza hacia abajo todos los elementos del stack b
-una posición, de forma que el último elemento se convierte en el primero.
-
-* rrr * rra y rrb al mismo tiempo.*/
