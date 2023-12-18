@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:31:36 by fsantill          #+#    #+#             */
-/*   Updated: 2023/12/13 12:41:06 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:19:53 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ void	print_list(t_stack **lst)
 
 int	main(void)
 {
-	t_stack node_a1, node_a2, node_a3;
-	t_stack node_b1, node_b2, node_b3;
-	t_stack *start_a, *start_b;
+	t_stack	node_a1;
+	t_stack	node_a2;
+	t_stack	node_a3;
+	t_stack	node_b1;
+	t_stack	node_b2;
+	t_stack	node_b3;
+	t_stack	*start_a;
+	t_stack	*start_b;
 
 	start_a = &node_a1;
 	start_b = &node_b1;
@@ -45,15 +50,15 @@ int	main(void)
 	node_b3.number = 6;
 	node_b3.next = NULL;
 	print_list(&start_a);
-	//printf("------\n");
-	//print_list(&start_b);
+	printf("------\n");
+	print_list(&start_b);
 	ft_ra(&start_a);
 	print_list(&start_a);
-	//printf("------\n");
-	//print_list(&start_b);
-	// ft_pa(&start_a, &start_b);
-	// print_list(&start_a);
-	// printf("------\n");
-	// print_list(&start_b);
+	printf("------\n");
+	print_list(&start_b);
+	ft_pa(&start_a, &start_b);
+	print_list(&start_a);
+	printf("------\n");
+	print_list(&start_b);
 	return (0);
 }

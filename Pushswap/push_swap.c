@@ -6,26 +6,11 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/12/13 12:43:18 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/12/18 17:34:29 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_stack_add(int nb, t_stack *new)
-{
-	t_stack	*aux;
-
-	aux = (t_stack *)malloc(sizeof(t_stack *));
-	if (!aux)
-		return (NULL);
-	aux->number = nb;
-	aux->next = NULL;
-	if (!new)
-		new = aux;
-	else
-		ft_stack_last(new)->next = aux;
-}
 
 int	args_are_only_numbers_or_spaces(int argc, char **argv)
 {
@@ -40,8 +25,7 @@ int	args_are_only_numbers_or_spaces(int argc, char **argv)
 	{
 		while (a < argc)
 		{
-			while (argv[a][i] && ((ft_isdigit(argv[a][i])) || \
-			(argv[a][i] == 32 || (argv[a][i] > 9 && argv[a][i] < 15))))
+			while (argv[a][i] && (ft_isdigit(argv[a][i]) || argv[a][i] == 32))
 				i++;
 			if (argv[a][i] && !ft_isdigit(argv[a][i]))
 			{
@@ -54,11 +38,17 @@ int	args_are_only_numbers_or_spaces(int argc, char **argv)
 	return (0);
 }
 
+int	numbers_are_unique(int argc, char **argv)
+{
+}
+
 int	*args_to_integer(int argc, char **argv)
 {
-	int	i;
-	int	a;
+	t_stack	**aux;
+	int		i;
+	int		a;
 
+	aux = NULL;
 	a = 1;
 	i = 0;
 	while (a < argc)
@@ -67,9 +57,10 @@ int	*args_to_integer(int argc, char **argv)
 		{
 			i++;
 		}
-//		ft_stack_add = ft_split((char *s)argv[a], 32);
+		aux = ft_split(argv[a], 32);
 		a++;
 	}
+	return (aux);
 }
 
 int	main(int argc, char **argv)
@@ -80,10 +71,12 @@ int	main(int argc, char **argv)
 	int		size;
 	int		*numbers;
 
-	i = 0;	
+	lst_a = NULL;
+	lst_b = NULL;
+	i = 0;
 	if (args_are_only_numbers_or_spaces(argc, argv) == 0)
 	{
-		args_to_integer(argc, argv);
+		lst_a = args_to_integer(argc, argv);
 		while (numbers[i])
 		{
 			ft_stack_add (numbers[i], lst_a);

@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2023/12/13 12:41:29 by fsantill         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:52:14 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	ft_rr(t_stack **lst_a, t_stack **lst_b);
 void	ft_rra(t_stack **lst_a);
 void	ft_rrb(t_stack **lst_b);
 void	ft_rrr(t_stack **lst_a, t_stack **lst_b);
-t_stack	*ft_stack_prev_last(t_stack *lst);
+void	ft_stack_add(int nb, t_stack *new);
+t_stack	*ft_stack_second_last(t_stack *lst);
 t_stack	*ft_stack_last(t_stack *lst);
 
 #endif
