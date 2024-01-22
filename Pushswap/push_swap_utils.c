@@ -6,25 +6,54 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/12/13 14:51:46 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:36:01 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_stack_add(int nb, t_stack *new)
+int	ft_atol(char *str)
+{
+	int		i;
+	int		sign;
+	long	result;
+
+	i = 0;
+	sign = 0;
+	result = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign++;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result *= 10;
+		result += str[i] - '0';
+		++i;
+	}
+	if (sign % 2 == 0)
+		return (result);
+	else
+		return (-result);
+}
+
+void	ft_stack_add(int nb, t_stack **new)
 {
 	t_stack	*aux;
 
 	aux = (t_stack *)malloc(sizeof(t_stack *));
 	if (!aux)
-		return (NULL);
+		free(aux);
 	aux->number = nb;
 	aux->next = NULL;
-	if (!new)
-		new = aux;
+	if (!(*new))
+		*new = aux;
 	else
-		ft_stack_last(new)->next = aux;
+		ft_stack_last(*new)->next = aux;
 }
 
 t_stack	*ft_stack_second_last(t_stack *lst)

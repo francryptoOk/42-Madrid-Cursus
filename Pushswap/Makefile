@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2023/12/04 16:50:40 by fsantill         ###   ########.fr        #
+#    Updated: 2024/01/22 17:36:04 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,9 @@ CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 FT=		push_swap.c			\
 		push_swap_utils.c	\
+		push_movements.c	\
+		rotate_movements.c	\
+		reverse_movements.c
 
 OBJ=$(FT:%.c=%.o)
 

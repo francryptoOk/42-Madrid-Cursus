@@ -6,61 +6,86 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2023/12/18 17:34:29 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:36:02 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	args_are_only_numbers_or_spaces(int argc, char **argv)
+int	enough_args_with_only_numbers_or_spaces(int argc, char **argv)
 {
 	int	a;
 	int	i;
 
 	a = 1;
-	i = 0;
 	if (argc < 2)
-		return (ft_printf("No arguments\n"), -1);
+		return (ft_printf("No arguments\n"), 1);
 	else
 	{
 		while (a < argc)
 		{
-			while (argv[a][i] && (ft_isdigit(argv[a][i]) || argv[a][i] == 32))
+			i = 0;
+			while (argv[a][i] && (ft_isdigit(argv[a][i]) || argv[a][i] == ' '))
 				i++;
 			if (argv[a][i] && !ft_isdigit(argv[a][i]))
-			{
-				break ;
-				return (ft_printf("Digits Error\n"), -1);
-			}
+				return (ft_printf("Digits Error\n"), 1);
 			a++;
 		}
 	}
 	return (0);
 }
 
-int	numbers_are_unique(int argc, char **argv)
+int	not_repeated_args(int argc, char **argv)
 {
-}
-
-int	*args_to_integer(int argc, char **argv)
-{
-	t_stack	**aux;
 	int		i;
 	int		a;
+	int		j;
 
-	aux = NULL;
 	a = 1;
-	i = 0;
 	while (a < argc)
 	{
-		while (argv[a][i] != '\0')
+		i = 0;
+		while (argv[a][i])
 		{
+			if (argv[a][i] != ' ')
+			{
+				j = i + 1;
+				while (argv[a][j])
+				{
+					if (argv[a][i] == argv[a][j])
+						return (ft_printf("Repeated args\n"), -1);
+					j++;
+				}
+			}
 			i++;
 		}
-		aux = ft_split(argv[a], 32);
 		a++;
 	}
-	return (aux);
+	return (0);
+}
+
+t_stack	**args_to_integer_and_add(int argc, char **argv)
+{
+	t_stack	**lst_aux;
+	char	**res_split;
+	int		j;
+	int		a;
+
+	lst_aux = NULL;
+	a = 1;
+	while (a < argc)
+	{
+		res_split = ft_split(argv[a], ' ');
+		j = -1;
+		while (res_split[j++])
+			ft_stack_add(ft_atol((char *)res_split[j]), lst_aux);
+		a++;
+	}
+	j = -1;
+	while (res_split[j++])
+		free(res_split[j]);
+	free(res_split);
+	return (lst_aux);
 }
 
 int	main(int argc, char **argv)
@@ -68,20 +93,19 @@ int	main(int argc, char **argv)
 	t_stack	**lst_a;
 	t_stack	**lst_b;
 	int		i;
-	int		size;
-	int		*numbers;
+	t_stack	*print_test;
 
 	lst_a = NULL;
 	lst_b = NULL;
 	i = 0;
-	if (args_are_only_numbers_or_spaces(argc, argv) == 0)
+	if (enough_args_with_only_numbers_or_spaces(argc, argv) == 0
+		&& not_repeated_args(argc, argv) == 0)
+		lst_a = args_to_integer_and_add(argc, argv);
+	print_test = *lst_a;
+	while (print_test != NULL)
 	{
-		lst_a = args_to_integer(argc, argv);
-		while (numbers[i])
-		{
-			ft_stack_add (numbers[i], lst_a);
-			i++;
-		}
+		printf("%d\n", print_test->number);
+		print_test = print_test->next;
 	}
 	return (0);
 }

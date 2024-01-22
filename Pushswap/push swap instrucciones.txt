@@ -1,0 +1,77 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    push swap instrucciones.txt                        :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/18 16:32:54 by frsantil          #+#    #+#              #
+#    Updated: 2024/01/22 12:16:09 by fsantill         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+// Tomar los argumentos
+// Strjoin de argv, para guardar todos los numeros
+// char **matriz = ft_split(strjoin(argv))
+// ft_create_list (matriz)
+//
+// create list (funcion)
+// nbr = ft_atol(matrix[i])
+// si nbr (llamar a ft_is_digit)
+//exit
+// si nbr esta dentro de los rangos int_max  e int_min (limits.h)
+//exit
+//	stack_add(nbr, stack_a)
+//
+//
+//	dentro de stack_add
+//	crear el nodo, añadir el valor al nodo
+//	ponerlo al final de nuestra lista
+//
+//	interamos la i
+//	mmatriz[i = 1]
+//
+//	volvemos al main 
+//	comprobar si nuestra lista ya esta ordenada
+//	si lo esta, entonces
+//exit
+//
+//	sino 
+// if argc == 2
+// swap_a
+//
+// sino
+// si argc == 3
+// ft_pequeño_stack_3
+//
+// asi sucesivamente hasta el numero 5
+// y si argc > 5
+// ft_push swap
+// algortimo de  ordenacion
+//
+// como funciona RADIX
+//
+// 300
+// 311
+// 368
+//   6
+//   2
+//   9
+//
+//  ordenara primero la posicion por las unidades
+//
+// 300
+// 311
+//   2
+//   6
+// 368
+//   9
+//
+//  ordena decenas
+//
+// 300
+//   2
+//   6
+//   9
+// 311
+// 368
