@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/22 17:20:08 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/23 12:07:50 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ typedef struct t_stack
 	struct t_stack	*next;
 }					t_stack;
 
-int		enough_args_with_only_numbers_or_spaces(int argc, char **argv);
+int		args_with_only_numbers_or_spaces(int argc, char **argv);
 int		not_repeated_args(int argc, char **argv);
-t_stack	**args_to_integer_and_add(int argc, char **argv);
+t_stack	*args_to_integer_and_add(int argc, char **argv);
 void	ft_sa(t_stack **lst_a);
 void	ft_sb(t_stack **lst_b);
 void	ft_ss(t_stack **lst_a, t_stack **lst_b);

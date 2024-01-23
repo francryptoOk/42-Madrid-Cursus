@@ -6,9 +6,29 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/18 16:32:54 by frsantil          #+#    #+#              #
-#    Updated: 2024/01/22 12:16:09 by fsantill         ###   ########.fr        #
+#    Updated: 2024/01/23 11:18:34 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+// ARRAY = FUNCION PARA UNIR LOS DOS TIPOS DE ARGUMENTOS EJ:
+//(./Push_swap "1 3 5" 2 -7 -67) = STRJOIN CON ESTEROIDES
+// MATRIZ = SPLIT (ARRAY ' ')
+// MATRIX[1] = 1
+// MATRIX[2] = 3
+// MATRIX[3] = 5
+// ETC
+// FUNCION PARA COMPROBAR SI ESTAS ORDENADOS (CHAR **MATRIZ)
+// 	{
+// 		while(matriz)
+// 			if (matriz[i] < matriz[i + 1])
+// 				i++;
+// 			else 
+// 				return (1);
+// 	}
+// FUNCION PARA REVISAR LA MATRIZ, Y SU CONTENIDO(CHAR **MATRIZ, T_STACK LST_A)
+// 		{
+// 		FUNCION PARA REVISAR SINTAXIS (MATRIZ[1])
+// 		}
 
 // Tomar los argumentos
 // Strjoin de argv, para guardar todos los numeros
