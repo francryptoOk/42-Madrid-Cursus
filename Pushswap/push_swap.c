@@ -6,13 +6,21 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/23 12:07:47 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/23 15:54:53 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	args_with_only_numbers_or_spaces(int argc, char **argv)
+char	*ft_freedom(char **p)
+{
+	if (p && *p)
+		free (*p);
+	*p = NULL;
+	return (NULL);
+}
+
+int	args_sign_numbers_or_spaces(int argc, char **argv)
 {
 	int	a;
 	int	i;
@@ -21,39 +29,15 @@ int	args_with_only_numbers_or_spaces(int argc, char **argv)
 	while (a < argc)
 	{
 		i = 0;
-		while (argv[a][i] && (ft_isdigit(argv[a][i]) || argv[a][i] == ' '))
+		while ((argv[a][i]) && (ft_isdigit(argv[a][i])
+			|| (argv[a][i] == ' ')
+			|| (argv[a][i] == '-' && ft_isdigit(argv[a][i + 1])
+			&& !ft_isdigit(argv[a][i - 1]))
+			|| (argv[a][i] == '+' && ft_isdigit(argv[a][i + 1])
+			&& !ft_isdigit(argv[a][i - 1]))))
 			i++;
 		if (argv[a][i] && !ft_isdigit(argv[a][i]))
 			return (ft_printf("Digits Error\n"), 1);
-		a++;
-	}
-	return (0);
-}
-
-int	not_repeated_args(int argc, char **argv)
-{
-	int		i;
-	int		a;
-	int		j;
-
-	a = 1;
-	while (a < argc)
-	{
-		i = 0;
-		while (argv[a][i])
-		{
-			if (argv[a][i] != ' ')
-			{
-				j = i + 1;
-				while (argv[a][j])
-				{
-					if (argv[a][i] == argv[a][j] && argv[a][j + 1] == ' ')
-						return (ft_printf("Repeated args\n"), -1);
-					j++;
-				}
-			}
-			i++;
-		}
 		a++;
 	}
 	return (0);
@@ -74,18 +58,40 @@ t_stack	*args_to_integer_and_add(int argc, char **argv)
 		j = 0;
 		while (res_split[j])
 		{
-			ft_stack_add(ft_atol((char *)res_split[j]), &lst_aux);
+			if (ft_atol_int((char *)res_split[j]) > INT_MAX
+				|| ft_atol_int((char *)res_split[j]) < INT_MIN)
+				return (ft_printf("Error not integer\n"), NULL);
+			ft_stack_add(ft_atol_int((char *)res_split[j]), &lst_aux);
 			j++;
 		}
 		a++;
 	}
-	j = 0;
-	while (res_split[j])
+	ft_freedom(res_split);
+	return (lst_aux);
+}
+
+int	empty_or_not_repeated_numbers(t_stack *begin)
+{
+	t_stack	*i;
+	t_stack	*j;
+	int		i_number;
+
+	i = begin;
+	if (i == NULL)
+		return (ft_printf("Empty\n"), 1);
+	while (i != NULL)
 	{
-		free(res_split[j]);
-		j++;
+		i_number = i->number;
+		j = i->next;
+		while (j != NULL)
+		{
+			if (j->number == i_number)
+				return (ft_printf("Repeated numbers\n"), 1);
+			j = j->next;
+		}
+		i = i->next;
 	}
-	return (free(res_split), lst_aux);
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -97,9 +103,14 @@ int	main(int argc, char **argv)
 	lst_b = NULL;
 	if (argc != 1)
 	{
-		if (args_with_only_numbers_or_spaces(argc, argv) == 0
-			&& not_repeated_args(argc, argv) == 0)
+		if (args_sign_numbers_or_spaces(argc, argv) == 0)
 			lst_a = args_to_integer_and_add(argc, argv);
+		else
+			return (1);
+		if (empty_or_not_repeated_numbers(lst_a) == 0)
+			ft_printf("I need to develop the sorting algorithm :( \n\n");
+		else
+			return (1);
 		while (lst_a != NULL)
 		{
 			printf("Aca: %d\n", lst_a->number);
@@ -110,26 +121,3 @@ int	main(int argc, char **argv)
 		return (ft_printf("No arguments\n"), 1);
 	return (0);
 }
-
-/*
-1 2 3 4 5 
-"1 2 3 4 5 "
-1 2 "3 4" 5
-*/
-
-/*
-int		tree_states[][4] = {
-//	\s, -, D, Error
-	{0, 1, 3, 2}, // Empty
-	{2, 2, 3, 2}, // Negative -
-	{2, 2, 2, 2}, // Invalid
-	{4, 2, 3, 2}, // Digit found
-	{4, 1, 3, 2}, // Space after digit
-};
-
-void	tree_alphabet(t_automata *a)
-{
-	a->alphabet = ft_(NULL, " ");
-	a->alphabet = ft_(a->alphabet, "-");
-	a->alphabet = ft_(a->alphabet, "0123456789");
-}*/

@@ -6,27 +6,27 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/23 12:07:58 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/23 14:44:51 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atol(char *str)
+long long	ft_atol_int(char *str)
 {
-	int		i;
-	int		sign;
-	long	result;
+	int			i;
+	int			sign;
+	long long	result;
 
 	i = 0;
-	sign = 0;
+	sign = 1;
 	result = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-			sign++;
+			sign = sign * -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
@@ -35,10 +35,7 @@ int	ft_atol(char *str)
 		result += str[i] - '0';
 		++i;
 	}
-	if (sign % 2 == 0)
-		return (result);
-	else
-		return (-result);
+	return (result * sign);
 }
 
 void	ft_stack_add(int nb, t_stack **new)
