@@ -6,13 +6,25 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/23 14:44:51 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:23:50 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long long	ft_atol_int(char *str)
+int	numbers_in_order(t_stack *lst)
+{
+	while (lst && lst->next)
+	{
+		if (lst->number < lst->next->number)
+			lst = lst->next;
+		else
+			return (0);
+	}
+	return (ft_printf("Numbers in order\n"), 1);
+}
+
+long long	ft_atoll_int(char *str)
 {
 	int			i;
 	int			sign;

@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/23 15:49:14 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:44:52 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,12 @@ void		ft_rr(t_stack **lst_a, t_stack **lst_b);
 void		ft_rra(t_stack **lst_a);
 void		ft_rrb(t_stack **lst_b);
 void		ft_rrr(t_stack **lst_a, t_stack **lst_b);
-long long	ft_atol_int(char *str);
+int			numbers_in_order(t_stack *lst);
+long long	ft_atoll_int(char *str);
 void		ft_stack_add(int nb, t_stack **new);
 t_stack		*ft_stack_second_last(t_stack *lst);
 t_stack		*ft_stack_last(t_stack *lst);
+int			ft_algorithm(t_stack *lst_a);
+int			sorting_three_numbers(t_stack **lst_a);
 
 #endif

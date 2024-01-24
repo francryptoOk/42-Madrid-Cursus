@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/01/22 17:36:04 by fsantill         ###   ########.fr        #
+#    Updated: 2024/01/24 12:25:16 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ FT=		push_swap.c			\
 		push_swap_utils.c	\
 		push_movements.c	\
 		rotate_movements.c	\
-		reverse_movements.c
+		reverse_movements.c	\
+		algorithm.c
 
 OBJ=$(FT:%.c=%.o)
 

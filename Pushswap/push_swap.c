@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/23 15:54:53 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:39:20 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ t_stack	*args_to_integer_and_add(int argc, char **argv)
 		j = 0;
 		while (res_split[j])
 		{
-			if (ft_atol_int((char *)res_split[j]) > INT_MAX
-				|| ft_atol_int((char *)res_split[j]) < INT_MIN)
+			if (ft_atoll_int((char *)res_split[j]) > INT_MAX
+				|| ft_atoll_int((char *)res_split[j]) < INT_MIN)
 				return (ft_printf("Error not integer\n"), NULL);
-			ft_stack_add(ft_atol_int((char *)res_split[j]), &lst_aux);
+			ft_stack_add(ft_atoll_int((char *)res_split[j]), &lst_aux);
 			j++;
 		}
 		a++;
@@ -107,8 +107,9 @@ int	main(int argc, char **argv)
 			lst_a = args_to_integer_and_add(argc, argv);
 		else
 			return (1);
-		if (empty_or_not_repeated_numbers(lst_a) == 0)
-			ft_printf("I need to develop the sorting algorithm :( \n\n");
+		if (empty_or_not_repeated_numbers(lst_a) == 0
+			&& numbers_in_order(lst_a) == 0)
+			ft_algorithm(lst_a);
 		else
 			return (1);
 		while (lst_a != NULL)
