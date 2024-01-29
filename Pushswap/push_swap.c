@@ -6,19 +6,11 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/24 15:39:20 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:45:32 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-char	*ft_freedom(char **p)
-{
-	if (p && *p)
-		free (*p);
-	*p = NULL;
-	return (NULL);
-}
 
 int	args_sign_numbers_or_spaces(int argc, char **argv)
 {
@@ -55,6 +47,8 @@ t_stack	*args_to_integer_and_add(int argc, char **argv)
 	while (a < argc)
 	{
 		res_split = ft_split(argv[a], ' ');
+		if (!res_split)
+			return (ft_printf("Split error\n"), NULL);
 		j = 0;
 		while (res_split[j])
 		{
@@ -101,7 +95,7 @@ int	main(int argc, char **argv)
 
 	lst_a = NULL;
 	lst_b = NULL;
-	if (argc != 1)
+	if (argc > 1 && argv[1])
 	{
 		if (args_sign_numbers_or_spaces(argc, argv) == 0)
 			lst_a = args_to_integer_and_add(argc, argv);
@@ -109,10 +103,10 @@ int	main(int argc, char **argv)
 			return (1);
 		if (empty_or_not_repeated_numbers(lst_a) == 0
 			&& numbers_in_order(lst_a) == 0)
-			ft_algorithm(lst_a);
+			ft_algorithm(&lst_a);
 		else
 			return (1);
-		while (lst_a != NULL)
+		while (lst_a)
 		{
 			printf("Aca: %d\n", lst_a->number);
 			lst_a = lst_a->next;

@@ -6,11 +6,19 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/24 15:23:50 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:48:08 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+char	*ft_freedom(char **p)
+{
+	if (p && *p)
+		free (*p);
+	*p = NULL;
+	return (NULL);
+}
 
 int	numbers_in_order(t_stack *lst)
 {
@@ -54,36 +62,16 @@ void	ft_stack_add(int nb, t_stack **new)
 {
 	t_stack	*aux;
 
-	aux = (t_stack *)malloc(sizeof(t_stack *));
+	aux = (t_stack *)malloc(sizeof(t_stack));
 	if (!aux)
+	{
 		free(aux);
+		ft_printf("Stack add Mem Alloc error");
+	}
 	aux->number = nb;
 	aux->next = NULL;
 	if (!(*new))
 		*new = aux;
 	else
 		ft_stack_last(*new)->next = aux;
-}
-
-t_stack	*ft_stack_second_last(t_stack *lst)
-{
-	t_stack	*prev;
-
-	if (!lst || !lst->next)
-		return (NULL);
-	while (lst->next != NULL)
-	{
-		prev = lst;
-		lst = lst->next;
-	}
-	return (prev);
-}
-
-t_stack	*ft_stack_last(t_stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
 }
