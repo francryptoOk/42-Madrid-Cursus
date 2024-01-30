@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/30 19:25:45 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:45:03 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ int	main(int argc, char **argv)
 	}
 	else
 		return (ft_error(1));
+	ft_stack_clear(&lst_a);
+//	ft_stack_clear(&lst_b);
 	ft_printf("\n\n");
 	system("leaks -q push_swap");
 	return (0);

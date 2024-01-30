@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/30 19:19:15 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:43:14 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct t_stack
 	struct t_stack	*next;
 }					t_stack;
 
+void		ft_stack_clear(t_stack **stack);
 int			ft_algorithm(t_stack **lst_a);
 int			sorting_three_numbers(t_stack **lst_a);
 int			ft_error(int e);
