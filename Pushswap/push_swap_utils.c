@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/29 14:48:08 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:30:43 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	numbers_in_order(t_stack *lst)
 		else
 			return (0);
 	}
-	return (ft_printf("Numbers in order\n"), 1);
+	return (1);
 }
 
 long long	ft_atoll_int(char *str)
@@ -58,6 +58,23 @@ long long	ft_atoll_int(char *str)
 	return (result * sign);
 }
 
+void	ft_stack_add_back(t_stack **lst, t_stack *new)
+{
+	t_stack	*aux;
+
+	aux = *lst;
+	if (!lst)
+		return ;
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	while (aux->next)
+		aux = aux->next;
+	aux->next = new;
+}
+
 void	ft_stack_add(int nb, t_stack **new)
 {
 	t_stack	*aux;
@@ -66,12 +83,10 @@ void	ft_stack_add(int nb, t_stack **new)
 	if (!aux)
 	{
 		free(aux);
-		ft_printf("Stack add Mem Alloc error");
+		aux = NULL;
+		ft_error(1);
 	}
 	aux->number = nb;
 	aux->next = NULL;
-	if (!(*new))
-		*new = aux;
-	else
-		ft_stack_last(*new)->next = aux;
+	ft_stack_add_back(new, aux);
 }

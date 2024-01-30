@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/01/29 14:35:04 by fsantill         ###   ########.fr        #
+#    Updated: 2024/01/30 14:42:21 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,3 +40,7 @@ fclean: clean
 	rm -rf $(NAME)
 	make -C libft/ fclean
 re: fclean $(NAME)
+
+test: all
+	cp $(NAME) tester/
+	cd tester; bash push_swap_test.sh

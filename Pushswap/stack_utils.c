@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 14:24:14 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/29 15:00:41 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/30 12:38:33 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,11 @@ int	ft_max_node(t_stack *node)
 
 t_stack	*ft_stack_second_last(t_stack *node)
 {
-	t_stack	*prev;
-
 	if (!node || !node->next)
 		return (NULL);
 	while (node->next && node->next->next)
-	{
-		prev = node;
 		node = node->next;
-	}
-	return (prev);
+	return (node);
 }
 
 t_stack	*ft_stack_last(t_stack *node)

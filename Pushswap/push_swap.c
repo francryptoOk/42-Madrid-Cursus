@@ -6,11 +6,17 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/29 14:45:32 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:25:45 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_error(int e)
+{
+	write(2, "Error\n", 6);
+	return (e);
+}
 
 int	args_sign_numbers_or_spaces(int argc, char **argv)
 {
@@ -29,7 +35,7 @@ int	args_sign_numbers_or_spaces(int argc, char **argv)
 			&& !ft_isdigit(argv[a][i - 1]))))
 			i++;
 		if (argv[a][i] && !ft_isdigit(argv[a][i]))
-			return (ft_printf("Digits Error\n"), 1);
+			return (1);
 		a++;
 	}
 	return (0);
@@ -48,13 +54,13 @@ t_stack	*args_to_integer_and_add(int argc, char **argv)
 	{
 		res_split = ft_split(argv[a], ' ');
 		if (!res_split)
-			return (ft_printf("Split error\n"), NULL);
+			return (NULL);
 		j = 0;
 		while (res_split[j])
 		{
 			if (ft_atoll_int((char *)res_split[j]) > INT_MAX
 				|| ft_atoll_int((char *)res_split[j]) < INT_MIN)
-				return (ft_printf("Error not integer\n"), NULL);
+				return (NULL);
 			ft_stack_add(ft_atoll_int((char *)res_split[j]), &lst_aux);
 			j++;
 		}
@@ -64,15 +70,13 @@ t_stack	*args_to_integer_and_add(int argc, char **argv)
 	return (lst_aux);
 }
 
-int	empty_or_not_repeated_numbers(t_stack *begin)
+int	not_repeated_numbers(t_stack *begin)
 {
 	t_stack	*i;
 	t_stack	*j;
 	int		i_number;
 
 	i = begin;
-	if (i == NULL)
-		return (ft_printf("Empty\n"), 1);
 	while (i != NULL)
 	{
 		i_number = i->number;
@@ -80,7 +84,7 @@ int	empty_or_not_repeated_numbers(t_stack *begin)
 		while (j != NULL)
 		{
 			if (j->number == i_number)
-				return (ft_printf("Repeated numbers\n"), 1);
+				return (1);
 			j = j->next;
 		}
 		i = i->next;
@@ -98,21 +102,27 @@ int	main(int argc, char **argv)
 	if (argc > 1 && argv[1])
 	{
 		if (args_sign_numbers_or_spaces(argc, argv) == 0)
+		{
 			lst_a = args_to_integer_and_add(argc, argv);
+			if (lst_a == NULL)
+				return (ft_error(1));
+		}
 		else
-			return (1);
-		if (empty_or_not_repeated_numbers(lst_a) == 0
+			return (ft_error(1));
+		if (not_repeated_numbers(lst_a) == 0
 			&& numbers_in_order(lst_a) == 0)
 			ft_algorithm(&lst_a);
 		else
-			return (1);
+			return (ft_error(1));
 		while (lst_a)
 		{
-			printf("Aca: %d\n", lst_a->number);
+			printf("nodo: %d / %p\n", lst_a->number, &lst_a->number);
 			lst_a = lst_a->next;
 		}
 	}
 	else
-		return (ft_printf("No arguments\n"), 1);
+		return (ft_error(1));
+	ft_printf("\n\n");
+	system("leaks -q push_swap");
 	return (0);
 }

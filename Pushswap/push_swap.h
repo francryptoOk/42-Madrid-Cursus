@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/29 14:29:35 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:19:15 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ typedef struct t_stack
 
 int			ft_algorithm(t_stack **lst_a);
 int			sorting_three_numbers(t_stack **lst_a);
+int			ft_error(int e);
 int			args_sign_numbers_or_spaces(int argc, char **argv);
 t_stack		*args_to_integer_and_add(int argc, char **argv);
-int			empty_or_not_repeated_numbers(t_stack *begin);
+int			not_repeated_numbers(t_stack *begin);
 void		ft_sa(t_stack **lst_a);
 void		ft_sb(t_stack **lst_b);
 void		ft_ss(t_stack **lst_a, t_stack **lst_b);
@@ -39,6 +40,7 @@ void		ft_rrr(t_stack **lst_a, t_stack **lst_b);
 char		*ft_freedom(char **p);
 int			numbers_in_order(t_stack *lst);
 long long	ft_atoll_int(char *str);
+void		ft_stack_add_back(t_stack **lst, t_stack *new);
 void		ft_stack_add(int nb, t_stack **new);
 int			stack_length(t_stack *stack);
 int			ft_min_node(t_stack *node);
