@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:23:11 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/01 17:48:14 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:55:35 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int	ft_algorithm(t_stack **lst_a, t_stack **lst_b)
 {
-	if (stack_length(*lst_a) == 3)
-		sorting_three_numbers (lst_a);
+	if (stack_length(*lst_a) == 2)
+		return (ft_sa(lst_a), ft_printf("sa\n"), 0);
+	else if (stack_length(*lst_a) == 3)
+		sorting_three_numbers(lst_a);
 	else if (stack_length(*lst_a) == 4)
-		sorting_four_numbers (lst_a, lst_b);
+		sorting_four_numbers(lst_a, lst_b);
 	else if (stack_length(*lst_a) == 5)
-		sorting_five_numbers (lst_a, lst_b);
+		sorting_five_numbers(lst_a, lst_b);
 	return (0);
 }
 
