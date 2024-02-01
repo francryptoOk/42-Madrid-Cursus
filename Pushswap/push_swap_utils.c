@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/01 14:45:49 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:42:21 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,7 @@ void	ft_stack_add(int nb, t_stack **new)
 
 	aux = (t_stack *)malloc(sizeof(t_stack));
 	if (!aux)
-	{
-		free(aux);
-		aux = NULL;
 		ft_error(1);
-	}
 	aux->number = nb;
 	aux->next = NULL;
 	ft_stack_add_back(new, aux);

@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/01 14:47:19 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:26:24 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_stack	*args_to_integer_and_add(int argc, char **argv)
 	char	**res_split;
 	int		j;
 	int		a;
+	int		num;
 
 	lst_aux = NULL;
 	a = 1;
@@ -54,14 +55,14 @@ t_stack	*args_to_integer_and_add(int argc, char **argv)
 	{
 		res_split = ft_split(argv[a], ' ');
 		if (!res_split)
-			return (NULL);
+			return (ft_stack_clear(&lst_aux), NULL);
 		j = 0;
 		while (res_split[j])
 		{
-			if (ft_atoll_int((char *)res_split[j]) > INT_MAX
-				|| ft_atoll_int((char *)res_split[j]) < INT_MIN)
-				return (ft_freedom(res_split));
-			ft_stack_add(ft_atoll_int((char *)res_split[j]), &lst_aux);
+			num = ft_atoll_int((char *)res_split[j]);
+			if (num > INT_MAX || num < INT_MIN)
+				return (ft_freedom(res_split), ft_stack_clear(&lst_aux), NULL);
+			ft_stack_add(num, &lst_aux);
 			j++;
 		}
 		a++;
@@ -96,6 +97,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*lst_a;
 	t_stack	*lst_b;
+	t_stack	*tmp;
 
 	lst_a = NULL;
 	lst_b = NULL;
@@ -109,21 +111,21 @@ int	main(int argc, char **argv)
 		}
 		else
 			return (ft_error(1));
-		if (not_repeated_numbers(lst_a) == 0
-			&& numbers_in_order(lst_a) == 0)
-			ft_algorithm(&lst_a);
+		if (not_repeated_numbers(lst_a) == 0 && numbers_in_order(lst_a) == 0)
+			ft_algorithm(&lst_a, &lst_b);
 		else
 			return (ft_error(1));
-		while (lst_a)
+		tmp = lst_a;
+		while (tmp)
 		{
-			printf("nodo: %d / %p\n", lst_a->number, &lst_a->number);
-			lst_a = lst_a->next;
+			printf("nodo: %d / %p\n", tmp->number, &tmp->number);
+			tmp = tmp->next;
 		}
 	}
 	else
 		return (ft_error(1));
 	ft_stack_clear(&lst_a);
-//	ft_stack_clear(&lst_b);
+	ft_stack_clear(&lst_b);
 	ft_printf("\n\n");
 	system("leaks -q push_swap");
 	return (0);

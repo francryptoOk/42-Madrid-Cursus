@@ -6,16 +6,48 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:23:11 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/01 14:45:31 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:48:14 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_algorithm(t_stack **lst_a)
+int	ft_algorithm(t_stack **lst_a, t_stack **lst_b)
 {
 	if (stack_length(*lst_a) == 3)
 		sorting_three_numbers (lst_a);
+	else if (stack_length(*lst_a) == 4)
+		sorting_four_numbers (lst_a, lst_b);
+	else if (stack_length(*lst_a) == 5)
+		sorting_five_numbers (lst_a, lst_b);
+	return (0);
+}
+
+int	sorting_five_numbers(t_stack **lst_a, t_stack **lst_b)
+{
+	t_stack	**fifth;
+
+	fifth = NULL;
+	(*fifth)->number = ft_min_node((*lst_a));
+	ft_pb(fifth, lst_b);
+	ft_printf("pb\n");
+	sorting_four_numbers(&(*lst_a), &(*lst_b));
+	ft_pa(lst_a, lst_b);
+	ft_printf("pa\n");
+	return (0);
+}
+
+int	sorting_four_numbers(t_stack **lst_a, t_stack **lst_b)
+{
+	t_stack	**fourth;
+
+	fourth = NULL;
+	(*fourth)->number = ft_min_node((*lst_a));
+	ft_pb(fourth, lst_b);
+	ft_printf("pb\n");
+	sorting_three_numbers(&(*lst_a));
+	ft_pa(lst_a, lst_b);
+	ft_printf("pa\n");
 	return (0);
 }
 
