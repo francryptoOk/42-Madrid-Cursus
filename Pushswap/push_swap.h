@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/30 19:43:14 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:43:17 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void		ft_rr(t_stack **lst_a, t_stack **lst_b);
 void		ft_rra(t_stack **lst_a);
 void		ft_rrb(t_stack **lst_b);
 void		ft_rrr(t_stack **lst_a, t_stack **lst_b);
-char		*ft_freedom(char **p);
+void		*ft_freedom(char **splt);
 int			numbers_in_order(t_stack *lst);
 long long	ft_atoll_int(char *str);
 void		ft_stack_add_back(t_stack **lst, t_stack *new);

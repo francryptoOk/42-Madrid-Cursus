@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/01/30 14:42:21 by fsantill         ###   ########.fr        #
+#    Updated: 2024/02/01 14:48:47 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ FT=		push_swap.c			\
 		algorithm.c			\
 		push_swap_utils.c	\
 		stack_utils.c		\
+		free_clean.c		\
 		push_movements.c	\
 		rotate_movements.c	\
 		reverse_movements.c

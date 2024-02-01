@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/30 19:45:03 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:47:19 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ t_stack	*args_to_integer_and_add(int argc, char **argv)
 		{
 			if (ft_atoll_int((char *)res_split[j]) > INT_MAX
 				|| ft_atoll_int((char *)res_split[j]) < INT_MIN)
-				return (NULL);
+				return (ft_freedom(res_split));
 			ft_stack_add(ft_atoll_int((char *)res_split[j]), &lst_aux);
 			j++;
 		}
 		a++;
+		ft_freedom(res_split);
 	}
-	ft_freedom(res_split);
 	return (lst_aux);
 }
 

@@ -6,19 +6,11 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/30 19:30:43 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:45:49 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-char	*ft_freedom(char **p)
-{
-	if (p && *p)
-		free (*p);
-	*p = NULL;
-	return (NULL);
-}
 
 int	numbers_in_order(t_stack *lst)
 {

@@ -6,20 +6,11 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:23:11 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/30 19:43:17 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/01 14:45:31 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_stack_clear(t_stack **stack)
-{
-	if (!stack || !(*stack))
-		return ;
-	ft_stack_clear(&(*stack)->next);
-	free(*stack);
-	*stack = NULL;
-}
 
 int	ft_algorithm(t_stack **lst_a)
 {
