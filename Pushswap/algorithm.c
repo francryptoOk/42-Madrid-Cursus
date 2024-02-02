@@ -6,51 +6,112 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:23:11 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/01 17:55:35 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:24:28 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_algorithm(t_stack **lst_a, t_stack **lst_b)
-{
-	if (stack_length(*lst_a) == 2)
-		return (ft_sa(lst_a), ft_printf("sa\n"), 0);
-	else if (stack_length(*lst_a) == 3)
-		sorting_three_numbers(lst_a);
-	else if (stack_length(*lst_a) == 4)
-		sorting_four_numbers(lst_a, lst_b);
-	else if (stack_length(*lst_a) == 5)
-		sorting_five_numbers(lst_a, lst_b);
-	return (0);
-}
-
 int	sorting_five_numbers(t_stack **lst_a, t_stack **lst_b)
 {
-	t_stack	**fifth;
+	int	min;
 
-	fifth = NULL;
-	(*fifth)->number = ft_min_node((*lst_a));
-	ft_pb(fifth, lst_b);
-	ft_printf("pb\n");
-	sorting_four_numbers(&(*lst_a), &(*lst_b));
-	ft_pa(lst_a, lst_b);
-	ft_printf("pa\n");
-	return (0);
+	if (!lst_a)
+		return (1);
+	min = ft_min_node((*lst_a));
+	if (min != (*lst_a)->number && min != (*lst_a)->next->number)
+		sorting_five_numbers_bis(lst_a, lst_b, min);
+	else if (min == (*lst_a)->number)
+	{
+		ft_pb(lst_a, lst_b);
+		ft_printf("pb\n");
+	}
+	else if (min == (*lst_a)->next->number)
+	{
+		ft_sa(lst_a);
+		ft_pb(lst_a, lst_b);
+		ft_printf("sa\npb\n");
+	}
+	else
+		return (1);
+	sorting_four_numbers(lst_a, lst_b);
+	return (ft_pa(lst_a, lst_b), ft_printf("pa\n"), 0);
+}
+
+int	sorting_five_numbers_bis(t_stack **lst_a, t_stack **lst_b, int min)
+{
+	if (min == (*lst_a)->next->next->number)
+	{
+		ft_rra(lst_a);
+		ft_rra(lst_a);
+		ft_rra(lst_a);
+		ft_pb(lst_a, lst_b);
+		ft_printf("rra\nrra\nrra\npb\n");
+	}
+	if (min == ft_stack_second_last((*lst_a))->number)
+	{
+		ft_rra(lst_a);
+		ft_rra(lst_a);
+		ft_pb(lst_a, lst_b);
+		ft_printf("rra\nrra\npb\n");
+	}
+	else if (min == ft_stack_last((*lst_a))->number)
+	{
+		ft_rra(lst_a);
+		ft_pb(lst_a, lst_b);
+		ft_printf("rra\npb\n");
+	}
+	else
+		return (1);
+	sorting_four_numbers(lst_a, lst_b);
+	return (ft_pa(lst_a, lst_b), ft_printf("pa\n"), 0);
 }
 
 int	sorting_four_numbers(t_stack **lst_a, t_stack **lst_b)
 {
-	t_stack	**fourth;
+	int	min;
 
-	fourth = NULL;
-	(*fourth)->number = ft_min_node((*lst_a));
-	ft_pb(fourth, lst_b);
-	ft_printf("pb\n");
-	sorting_three_numbers(&(*lst_a));
-	ft_pa(lst_a, lst_b);
-	ft_printf("pa\n");
-	return (0);
+	if (!lst_a)
+		return (1);
+	min = ft_min_node((*lst_a));
+	if (min != (*lst_a)->number && min != (*lst_a)->next->number)
+		sorting_four_numbers_bis(lst_a, lst_b, min);
+	else if (min == (*lst_a)->number)
+	{
+		ft_pb(lst_a, lst_b);
+		ft_printf("pb\n");
+	}
+	else if (min == (*lst_a)->next->number)
+	{
+		ft_sa(lst_a);
+		ft_pb(lst_a, lst_b);
+		ft_printf("sa\npb\n");
+	}
+	else
+		return (1);
+	sorting_three_numbers(lst_a);
+	return (ft_pa(lst_a, lst_b), ft_printf("pa\n"), 0);
+}
+
+int	sorting_four_numbers_bis(t_stack **lst_a, t_stack **lst_b, int min)
+{
+	if (min == ft_stack_second_last((*lst_a))->number)
+	{
+		ft_ra(lst_a);
+		ft_ra(lst_a);
+		ft_pb(lst_a, lst_b);
+		ft_printf("ra\nra\npb\n");
+	}
+	else if (min == ft_stack_last((*lst_a))->number)
+	{
+		ft_rra(lst_a);
+		ft_pb(lst_a, lst_b);
+		ft_printf("rra\npb\n");
+	}
+	else
+		return (1);
+	sorting_three_numbers(lst_a);
+	return (ft_pa(lst_a, lst_b), ft_printf("pa\n"), 0);
 }
 
 int	sorting_three_numbers(t_stack **lst_a)
@@ -62,9 +123,9 @@ int	sorting_three_numbers(t_stack **lst_a)
 	first = (*lst_a)->number;
 	second = ft_stack_second_last((*lst_a))->number;
 	third = ft_stack_last((*lst_a))->number;
-	ft_printf("Stack inicial:\n\n1er nodo> %p / %i\n", &first, first);
-	ft_printf("2do nodo> %p / %i\n", &second, second);
-	ft_printf("3er nodo> %p / %i\n", &third, third);
+//	ft_printf("Stack inicial:\n\n1er nodo> %p / %i\n", &first, first);
+//	ft_printf("2do nodo> %p / %i\n", &second, second);
+//	ft_printf("3er nodo> %p / %i\n", &third, third);
 	if (ft_min_node((*lst_a)) == third && ft_max_node((*lst_a)) == second)
 		return (ft_rra(lst_a), ft_printf("rra\n"), 0);
 	else if (ft_min_node((*lst_a)) == second && ft_max_node((*lst_a)) == first)

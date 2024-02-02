@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/01 17:25:27 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:14:27 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ typedef struct t_stack
 
 int			ft_algorithm(t_stack **lst_a, t_stack **lst_b);
 int			sorting_five_numbers(t_stack **lst_a, t_stack **lst_b);
+int			sorting_five_numbers_bis(t_stack **lst_a, t_stack **lst_b, int min);
 int			sorting_four_numbers(t_stack **lst_a, t_stack **lst_b);
+int			sorting_four_numbers_bis(t_stack **lst_a, t_stack **lst_b, int min);
 int			sorting_three_numbers(t_stack **lst_a);
-void		*ft_freedom(char **splt);
-void		ft_stack_clear(t_stack **stack);
+void		*ft_arr_free(char **splt);
+void		ft_stk_free(t_stack **stack);
 int			ft_error(int e);
 int			args_sign_numbers_or_spaces(int argc, char **argv);
 t_stack		*args_to_integer_and_add(int argc, char **argv);

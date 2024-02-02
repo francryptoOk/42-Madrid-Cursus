@@ -6,20 +6,20 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/02/01 14:48:47 by fsantill         ###   ########.fr        #
+#    Updated: 2024/02/02 17:11:27 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=push_swap
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
-FT=		push_swap.c			\
-		algorithm.c			\
-		push_swap_utils.c	\
-		stack_utils.c		\
-		free_clean.c		\
-		push_movements.c	\
-		rotate_movements.c	\
+FT=		push_swap.c				\
+		algorithm.c				\
+		push_swap_utils.c		\
+		stack_utils.c			\
+		errors_and_free.c		\
+		push_movements.c		\
+		rotate_movements.c		\
 		reverse_movements.c
 
 OBJ=$(FT:%.c=%.o)
