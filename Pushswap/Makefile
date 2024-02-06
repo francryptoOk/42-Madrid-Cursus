@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
+#    By: francrypto <francrypto@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/02/02 17:11:27 by fsantill         ###   ########.fr        #
+#    Updated: 2024/02/06 04:52:14 by francrypto       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

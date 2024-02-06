@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francrypto <francrypto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/02 17:14:27 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/06 04:52:55 by francrypto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "Libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct t_stack
 {

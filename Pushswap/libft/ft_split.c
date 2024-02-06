@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francrypto <francrypto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 11:00:43 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/01 14:59:05 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/06 04:54:51 by francrypto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,10 @@ size_t aux_countsubstr)
 
 char	**ft_split(const char *s, char c)
 {
-	int		j;
 	size_t	countsubstr;
 	char	**strsplit;
 	char	**result;
 
-	j = 0;
 	countsubstr = count_substr_in_str(s, c);
 	strsplit = (char **)malloc((countsubstr + 1) * sizeof(char *));
 	if (!strsplit)
