@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
+/*   By: francrypto <francrypto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/02 17:31:54 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:38:23 by francrypto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	ft_algorithm(t_stack **lst_a, t_stack **lst_b)
 		sorting_four_numbers(lst_a, lst_b);
 	else if (stack_length(*lst_a) == 5)
 		sorting_five_numbers(lst_a, lst_b);
+	else
+		ft_radix(lst_a, lst_b);
 	return (0);
 }
 

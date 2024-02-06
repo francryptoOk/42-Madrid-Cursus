@@ -6,7 +6,7 @@
 /*   By: francrypto <francrypto@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/06 04:52:55 by francrypto       ###   ########.fr       */
+/*   Updated: 2024/02/06 16:21:26 by francrypto       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 typedef struct t_stack
 {
 	int				number;
+	int				id;
 	struct t_stack	*next;
 }					t_stack;
 
@@ -52,5 +53,9 @@ void		ft_rr(t_stack **lst_a, t_stack **lst_b);
 void		ft_rra(t_stack **lst_a);
 void		ft_rrb(t_stack **lst_b);
 void		ft_rrr(t_stack **lst_a, t_stack **lst_b);
+int			ft_stacksize(t_stack *lst);
+void		ft_node_id_assignment(t_stack **stack);
+int			ft_bits(int lst_size);
+void		ft_radix(t_stack **lst_a, t_stack **lst_b);
 
 #endif

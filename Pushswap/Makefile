@@ -6,7 +6,7 @@
 #    By: francrypto <francrypto@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/02/06 04:52:14 by francrypto       ###   ########.fr        #
+#    Updated: 2024/02/06 16:17:21 by francrypto       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 FT=		push_swap.c				\
 		algorithm.c				\
+		radix.c					\
 		push_swap_utils.c		\
 		stack_utils.c			\
 		errors_and_free.c		\
