@@ -6,13 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:19:38 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/12 13:04:29 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:13:17 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sa(t_stack **lst_a)
+void	ft_sa(t_stack **lst_a, char *str)
 {
 	t_stack	*aux;
 
@@ -22,9 +22,10 @@ void	ft_sa(t_stack **lst_a)
 	(*lst_a) = aux->next;
 	aux->next = (*lst_a)->next;
 	(*lst_a)->next = aux;
+	ft_printf("%s", str);
 }
 
-void	ft_sb(t_stack **lst_b)
+void	ft_sb(t_stack **lst_b, char *str)
 {
 	t_stack	*aux;
 
@@ -34,15 +35,17 @@ void	ft_sb(t_stack **lst_b)
 	(*lst_b) = aux->next;
 	aux->next = (*lst_b)->next;
 	(*lst_b)->next = aux;
+	ft_printf("%s", str);
 }
 
-void	ft_ss(t_stack **lst_a, t_stack **lst_b)
+void	ft_ss(t_stack **lst_a, t_stack **lst_b, char *str)
 {
-	ft_sa(lst_a);
-	ft_sb(lst_b);
+	ft_sa(lst_a, "");
+	ft_sb(lst_b, "");
+	ft_printf("%s", str);
 }
 
-void	ft_pa(t_stack **lst_a, t_stack **lst_b)
+void	ft_pa(t_stack **lst_a, t_stack **lst_b, char *str)
 {
 	t_stack	*aux;
 
@@ -52,9 +55,10 @@ void	ft_pa(t_stack **lst_a, t_stack **lst_b)
 	(*lst_b)->next = (*lst_a);
 	(*lst_a) = (*lst_b);
 	(*lst_b) = aux;
+	ft_printf("%s", str);
 }
 
-void	ft_pb(t_stack **lst_a, t_stack **lst_b)
+void	ft_pb(t_stack **lst_a, t_stack **lst_b, char *str)
 {
 	t_stack	*aux;
 
@@ -64,6 +68,7 @@ void	ft_pb(t_stack **lst_a, t_stack **lst_b)
 	(*lst_a)->next = (*lst_b);
 	(*lst_b) = (*lst_a);
 	(*lst_a) = aux;
+	ft_printf("%s", str);
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/12 14:27:04 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:59:35 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int			ft_min_node(t_stack *node);
 int			ft_max_node(t_stack *node);
 t_stack		*ft_stack_second_last(t_stack *node);
 t_stack		*ft_stack_last(t_stack *node);
-void		ft_sa(t_stack **lst_a);
-void		ft_sb(t_stack **lst_b);
-void		ft_ss(t_stack **lst_a, t_stack **lst_b);
-void		ft_pa(t_stack **lst_a, t_stack **lst_b);
-void		ft_pb(t_stack **lst_a, t_stack **lst_b);
-void		ft_ra(t_stack **lst_a);
-void		ft_rb(t_stack **lst_b);
-void		ft_rr(t_stack **lst_a, t_stack **lst_b);
-void		ft_rra(t_stack **lst_a);
-void		ft_rrb(t_stack **lst_b);
-void		ft_rrr(t_stack **lst_a, t_stack **lst_b);
+void		ft_sa(t_stack **lst_a, char *str);
+void		ft_sb(t_stack **lst_b, char *str);
+void		ft_ss(t_stack **lst_a, t_stack **lst_b, char *str);
+void		ft_pa(t_stack **lst_a, t_stack **lst_b, char *str);
+void		ft_pb(t_stack **lst_a, t_stack **lst_b, char *str);
+void		ft_ra(t_stack **lst_a, char *str);
+void		ft_rb(t_stack **lst_b, char *str);
+void		ft_rr(t_stack **lst_a, t_stack **lst_b, char *str);
+void		ft_rra(t_stack **lst_a, char *str);
+void		ft_rrb(t_stack **lst_b, char *str);
+void		ft_rrr(t_stack **lst_a, t_stack **lst_b, char *str);
 int			ft_stacksize(t_stack *lst);
 void		ft_node_id_assignment(t_stack **stack);
 int			ft_bits(int lst_size);

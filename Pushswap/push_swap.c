@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/12 15:51:15 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:00:46 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_algorithm(t_stack **lst_a, t_stack **lst_b)
 {
 	if (stack_length(*lst_a) == 2)
-		return (ft_sa(lst_a), ft_printf("sa\n"), 0);
+		return (ft_sa(lst_a, "sa\n"), 0);
 	else if (stack_length(*lst_a) == 3)
 		sorting_three_numbers(lst_a);
 	else if (stack_length(*lst_a) == 4)

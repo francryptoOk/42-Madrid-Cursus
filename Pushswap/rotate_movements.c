@@ -6,13 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 12:25:56 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/01 16:42:06 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:13:46 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_ra(t_stack **lst_a)
+void	ft_ra(t_stack **lst_a, char *str)
 {
 	t_stack	*last;
 
@@ -20,9 +20,10 @@ void	ft_ra(t_stack **lst_a)
 	last->next = (*lst_a);
 	(*lst_a) = (*lst_a)->next;
 	last->next->next = NULL;
+	ft_printf("%s", str);
 }
 
-void	ft_rb(t_stack **lst_b)
+void	ft_rb(t_stack **lst_b, char *str)
 {
 	t_stack	*last;
 
@@ -30,12 +31,14 @@ void	ft_rb(t_stack **lst_b)
 	last->next = (*lst_b);
 	(*lst_b) = (*lst_b)->next;
 	last->next->next = NULL;
+	ft_printf("%s", str);
 }
 
-void	ft_rr(t_stack **lst_a, t_stack **lst_b)
+void	ft_rr(t_stack **lst_a, t_stack **lst_b, char *str)
 {
-	ft_ra(lst_a);
-	ft_rb(lst_b);
+	ft_ra(lst_a, "");
+	ft_rb(lst_b, "");
+	ft_printf("%s", str);
 }
 
 /*

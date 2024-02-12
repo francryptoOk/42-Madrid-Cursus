@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:09:35 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/12 14:26:30 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:11:40 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,21 +83,12 @@ void	ft_radix_iteration(int i, int size, t_stack **lst_a, t_stack **lst_b)
 		while (j++ < size)
 		{
 			if (((*lst_a)->id >> i & 1) == 1)
-			{
-				ft_ra(lst_a);
-				ft_printf("ra\n");
-			}
+				ft_ra(lst_a, "ra\n");
 			else if (((*lst_a)->id >> i & 1) == 0)
-			{
-				ft_pb(lst_a, lst_b);
-				ft_printf("pb\n");
-			}
+				ft_pb(lst_a, lst_b, "pb\n");
 		}
 		while (ft_stacksize(*lst_b) != 0)
-		{
-			ft_pa(lst_a, lst_b);
-			ft_printf("pa\n");
-		}
+			ft_pa(lst_a, lst_b, "pa\n");
 		i++;
 	}
 }
