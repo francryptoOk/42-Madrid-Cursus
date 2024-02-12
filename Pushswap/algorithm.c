@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 12:23:11 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/02 17:24:28 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:48:27 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int	sorting_five_numbers(t_stack **lst_a, t_stack **lst_b)
 		ft_pb(lst_a, lst_b);
 		ft_printf("sa\npb\n");
 	}
-	else
-		return (1);
 	sorting_four_numbers(lst_a, lst_b);
 	return (ft_pa(lst_a, lst_b), ft_printf("pa\n"), 0);
 }
@@ -61,8 +59,6 @@ int	sorting_five_numbers_bis(t_stack **lst_a, t_stack **lst_b, int min)
 		ft_pb(lst_a, lst_b);
 		ft_printf("rra\npb\n");
 	}
-	else
-		return (1);
 	sorting_four_numbers(lst_a, lst_b);
 	return (ft_pa(lst_a, lst_b), ft_printf("pa\n"), 0);
 }
@@ -87,8 +83,6 @@ int	sorting_four_numbers(t_stack **lst_a, t_stack **lst_b)
 		ft_pb(lst_a, lst_b);
 		ft_printf("sa\npb\n");
 	}
-	else
-		return (1);
 	sorting_three_numbers(lst_a);
 	return (ft_pa(lst_a, lst_b), ft_printf("pa\n"), 0);
 }
@@ -108,8 +102,6 @@ int	sorting_four_numbers_bis(t_stack **lst_a, t_stack **lst_b, int min)
 		ft_pb(lst_a, lst_b);
 		ft_printf("rra\npb\n");
 	}
-	else
-		return (1);
 	sorting_three_numbers(lst_a);
 	return (ft_pa(lst_a, lst_b), ft_printf("pa\n"), 0);
 }
@@ -123,9 +115,6 @@ int	sorting_three_numbers(t_stack **lst_a)
 	first = (*lst_a)->number;
 	second = ft_stack_second_last((*lst_a))->number;
 	third = ft_stack_last((*lst_a))->number;
-//	ft_printf("Stack inicial:\n\n1er nodo> %p / %i\n", &first, first);
-//	ft_printf("2do nodo> %p / %i\n", &second, second);
-//	ft_printf("3er nodo> %p / %i\n", &third, third);
 	if (ft_min_node((*lst_a)) == third && ft_max_node((*lst_a)) == second)
 		return (ft_rra(lst_a), ft_printf("rra\n"), 0);
 	else if (ft_min_node((*lst_a)) == second && ft_max_node((*lst_a)) == first)
@@ -145,4 +134,6 @@ int	sorting_three_numbers(t_stack **lst_a)
 // ...<2>1>0 OKEY
 // ...>0<2>1 OKEY
 
-// algoritmo turco> dividir a la mitad o buscar la media para optimizarlo
+//	ft_printf("Stack inicial:\n\n1er nodo> %p / %i\n", &first, first);
+//	ft_printf("2do nodo> %p / %i\n", &second, second);
+//	ft_printf("3er nodo> %p / %i\n", &third, third);

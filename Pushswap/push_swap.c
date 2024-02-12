@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francrypto <francrypto@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/06 16:38:23 by francrypto       ###   ########.fr       */
+/*   Updated: 2024/02/12 15:51:15 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_algorithm(t_stack **lst_a, t_stack **lst_b)
 	else if (stack_length(*lst_a) == 5)
 		sorting_five_numbers(lst_a, lst_b);
 	else
-		ft_radix(lst_a, lst_b);
+		ft_radix_start(lst_a, lst_b);
 	return (0);
 }
 
@@ -52,11 +52,11 @@ int	args_sign_numbers_or_spaces(int argc, char **argv)
 
 t_stack	*args_to_integer_and_add(int argc, char **argv)
 {
-	t_stack	*lst_aux;
-	char	**res_split;
-	int		j;
-	int		a;
-	int		num;
+	t_stack		*lst_aux;
+	char		**res_split;
+	int			j;
+	int			a;
+	long long	num;
 
 	lst_aux = NULL;
 	a = 1;
@@ -65,14 +65,13 @@ t_stack	*args_to_integer_and_add(int argc, char **argv)
 		res_split = ft_split(argv[a], ' ');
 		if (!res_split)
 			return (ft_stk_free(&lst_aux), NULL);
-		j = 0;
-		while (res_split[j])
+		j = -1;
+		while (res_split[++j])
 		{
 			num = ft_atoll_int((char *)res_split[j]);
 			if (num > INT_MAX || num < INT_MIN)
-				return (ft_arr_free(res_split), ft_stk_free(&lst_aux), ft_error(1), NULL);
-			ft_stack_add(num, &lst_aux);
-			j++;
+				return (ft_arr_free(res_split), ft_stk_free(&lst_aux), NULL);
+			ft_stack_add((int)num, &lst_aux);
 		}
 		a++;
 		ft_arr_free(res_split);
@@ -118,24 +117,33 @@ int	main(int argc, char **argv)
 			if (lst_a == NULL)
 				return (ft_error(1));
 		}
-		else
-			return (ft_error(1));
 		if (not_repeated_numbers(lst_a) == 0 && numbers_in_order(lst_a) == 0)
 			ft_algorithm(&lst_a, &lst_b);
 		else
 			return (ft_error(1));
-		tmp = lst_a;
-		while (tmp)
-		{
-			printf("nodo: %d / %p\n", tmp->number, &tmp->number);
-			tmp = tmp->next;
-		}
 	}
 	else
 		return (ft_error(1));
+	tmp = lst_a;
+	while (tmp)
+	{
+		printf("nodo: %d / %p\n", tmp->number, &tmp->number);
+		tmp = tmp->next;
+	}
 	ft_stk_free(&lst_a);
 	ft_stk_free(&lst_b);
-	ft_printf("\n\n");
-	system("leaks -q push_swap");
+	atexit(leaks);
 	return (0);
 }
+
+//	ft_printf("Stack Length: %d\n", stack_length(*lst_a));
+
+//	t_stack	*tmp;
+// -to print stack, between lines 126/127)-
+
+//	tmp = lst_a;
+//	while (tmp)
+//	{
+//		printf("nodo: %d / %p\n", tmp->number, &tmp->number);
+//		tmp = tmp->next;
+//	}

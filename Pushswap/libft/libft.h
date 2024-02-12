@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 11:19:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/01/29 12:08:41 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:14:31 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <limits.h>
 # include <stdarg.h>
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-#endif
+#  define BUFFER_SIZE 42
+# endif
 
 /* LIBFT ------------------------------------------------------------------- */
 int				ft_isalpha(int c);

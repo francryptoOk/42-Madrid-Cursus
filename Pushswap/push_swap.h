@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: francrypto <francrypto@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/06 16:21:26 by francrypto       ###   ########.fr       */
+/*   Updated: 2024/02/12 14:27:04 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ int			sorting_five_numbers_bis(t_stack **lst_a, t_stack **lst_b, int min);
 int			sorting_four_numbers(t_stack **lst_a, t_stack **lst_b);
 int			sorting_four_numbers_bis(t_stack **lst_a, t_stack **lst_b, int min);
 int			sorting_three_numbers(t_stack **lst_a);
+void		leaks(void);
+int			ft_error(int e);
 void		*ft_arr_free(char **splt);
 void		ft_stk_free(t_stack **stack);
-int			ft_error(int e);
 int			args_sign_numbers_or_spaces(int argc, char **argv);
 t_stack		*args_to_integer_and_add(int argc, char **argv);
 int			not_repeated_numbers(t_stack *begin);
@@ -56,6 +57,8 @@ void		ft_rrr(t_stack **lst_a, t_stack **lst_b);
 int			ft_stacksize(t_stack *lst);
 void		ft_node_id_assignment(t_stack **stack);
 int			ft_bits(int lst_size);
-void		ft_radix(t_stack **lst_a, t_stack **lst_b);
+void		ft_radix_start(t_stack **lst_a, t_stack **lst_b);
+void		ft_radix_iteration(int i, int size, t_stack **lst_a, \
+t_stack **lst_b);
 
 #endif

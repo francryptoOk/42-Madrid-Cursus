@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: francrypto <francrypto@student.42.fr>      +#+  +:+       +#+         #
+#    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/02/06 16:17:21 by francrypto       ###   ########.fr        #
+#    Updated: 2024/02/08 14:11:04 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 FT=		push_swap.c				\
 		algorithm.c				\
-		radix.c					\
+		algorithm_radix.c		\
 		push_swap_utils.c		\
 		stack_utils.c			\
 		errors_and_free.c		\
