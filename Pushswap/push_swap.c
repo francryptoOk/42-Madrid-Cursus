@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 12:15:54 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/12 16:00:46 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:39:14 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_algorithm(t_stack **lst_a, t_stack **lst_b)
 	else if (stack_length(*lst_a) == 5)
 		sorting_five_numbers(lst_a, lst_b);
 	else
-		ft_radix_start(lst_a, lst_b);
+		ft_radix(lst_a, lst_b);
 	return (0);
 }
 
@@ -105,34 +105,28 @@ int	main(int argc, char **argv)
 {
 	t_stack	*lst_a;
 	t_stack	*lst_b;
-	t_stack	*tmp;
 
 	lst_a = NULL;
 	lst_b = NULL;
 	if (argc > 1 && argv[1])
 	{
-		if (args_sign_numbers_or_spaces(argc, argv) == 0)
+		if (args_sign_numbers_or_spaces(argc, argv) != 0)
+			ft_error(1);
+		else
 		{
 			lst_a = args_to_integer_and_add(argc, argv);
 			if (lst_a == NULL)
-				return (ft_error(1));
+				ft_error(1);
 		}
+		if (numbers_in_order(lst_a) != 0)
+			return (0);
 		if (not_repeated_numbers(lst_a) == 0 && numbers_in_order(lst_a) == 0)
 			ft_algorithm(&lst_a, &lst_b);
 		else
-			return (ft_error(1));
-	}
-	else
-		return (ft_error(1));
-	tmp = lst_a;
-	while (tmp)
-	{
-		printf("nodo: %d / %p\n", tmp->number, &tmp->number);
-		tmp = tmp->next;
+			ft_error(1);
 	}
 	ft_stk_free(&lst_a);
 	ft_stk_free(&lst_b);
-	atexit(leaks);
 	return (0);
 }
 
@@ -147,3 +141,4 @@ int	main(int argc, char **argv)
 //		printf("nodo: %d / %p\n", tmp->number, &tmp->number);
 //		tmp = tmp->next;
 //	}
+//	atexit(leaks);

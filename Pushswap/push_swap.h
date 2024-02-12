@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 12:06:05 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/12 15:59:35 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:10:55 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void		ft_rrr(t_stack **lst_a, t_stack **lst_b, char *str);
 int			ft_stacksize(t_stack *lst);
 void		ft_node_id_assignment(t_stack **stack);
 int			ft_bits(int lst_size);
-void		ft_radix_start(t_stack **lst_a, t_stack **lst_b);
-void		ft_radix_iteration(int i, int size, t_stack **lst_a, \
-t_stack **lst_b);
+void		ft_radix(t_stack **lst_a, t_stack **lst_b);
 
 #endif

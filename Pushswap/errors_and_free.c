@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 14:45:06 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/12 16:01:07 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:05:17 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	leaks(void)
 
 int	ft_error(int e)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	return (e);
 }
 
