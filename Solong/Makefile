@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/02/13 16:26:28 by fsantill         ###   ########.fr        #
+#    Updated: 2024/02/13 19:24:23 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME=so_long
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra -Imlx
 FT=		so_long.c				\
-		errors_and_free.c		\
-		stack_utils.c
+		so_long_utils.c			\
+		errors_and_free.c
 
 OBJ=$(FT:%.c=%.o)
 
