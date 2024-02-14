@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/13 18:07:53 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:51:26 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,47 @@
 
 }*/
 
-int	parsing_map_and_add(int argc, char **argv, t_map **map)
+char	**parsing_map_and_add(int argc, char **argv, t_map **map)
 {
 	int		file;
-	char	**map_aux;
+	char	**map_aux = NULL;
 	int		y;
 	int		x;
 
-	file = open(argv[1], O_RDONLY);
-	if (!file)
-		return (perror("Error opening file\n"), 1);
-	map_aux = "";
-	y = 0;
-	x = 0;
-	while (map_aux[y])
+	if (argc > 1)
 	{
-		while (map_aux[y][x])
+		file = open(argv[1], O_RDONLY);
+		if (!file)
+			return (perror("Error opening file\n"), NULL);
+		map_aux[1] = "";
+		y = 0;
+		x = 0;
+		while (map_aux[y])
 		{
-			map_aux[y][x] = get_next_line(file);
-			(*map)->map = map_aux;
-			if (map_aux)
-				printf("Map Line:\n%s\n", map_aux);
+			while (map_aux[y][x])
+			{
+				map_aux[y][x] = *get_next_line(file);
+				(*map)->map = map_aux;
+				if (map_aux)
+					printf("Map Line:\n%s\n", map_aux[y]);
+				x++;
+			}
 			y++;
 		}
-		y++;
 	}
 	free(map_aux);
-	return (printf("\n"), map);
+	return (printf("\n"), map_aux);
 }
 
 int	main(int argc, char **argv)
 {
 	void	*mlx_win;
 	void	*mlx;
-	t_map	*map;
+	t_map	*startmap;
 
-	map = parsing_map_and_add(argc, argv, &map);
+	mlx_win = NULL;
+	mlx = NULL;
+	startmap->map = parsing_map_and_add(argc, argv, &startmap);
 	mlx_init();
 	mlx_win = mlx_new_window(mlx, 1920, 1080, "Game");
 	mlx_loop(mlx);

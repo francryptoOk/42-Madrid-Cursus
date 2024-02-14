@@ -6,13 +6,13 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/02/13 19:24:23 by fsantill         ###   ########.fr        #
+#    Updated: 2024/02/14 14:51:24 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=so_long
 CC=gcc
-CFLAGS=-Wall -Werror -Wextra -Imlx
+CFLAGS=-Wall -Werror -Wextra
 FT=		so_long.c				\
 		so_long_utils.c			\
 		errors_and_free.c
@@ -21,17 +21,21 @@ OBJ=$(FT:%.c=%.o)
 
 all:$(NAME)
 
-$(NAME): $(OBJ) libft/libft.a
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) -Llibft/ -lft
+$(NAME): $(OBJ) libft/libft.a minilibx_opengl_20191021/mlx.a
+	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) -Llibft/ -lft
 
 libft/libft.a:
 	make -C libft/
+
+minilibx_opengl_20191021/mlx.a:	
+	make -C minilibx_opengl_20191021/
 
 .PHONY: clean fclean re
 
 clean:
 	rm -rf $(OBJ)
 	make -C libft/ clean
+	make -C minilibx_opengl_20191021/ clean
 fclean: clean
 	rm -rf $(NAME)
 	make -C libft/ fclean
