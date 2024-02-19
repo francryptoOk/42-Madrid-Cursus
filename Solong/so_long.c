@@ -6,20 +6,15 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/14 15:24:56 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:19:31 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*void drawing()
+char	**parsing_map_and_add(int argc, char **argv, t_map **mapa)
 {
-
-}*/
-
-char	**parsing_map_and_add(int argc, char **argv, t_map **map)
-{
-	int		fd;
+	int		opening;
 	char	**map_aux;
 	int		y;
 	int		x;
@@ -27,9 +22,9 @@ char	**parsing_map_and_add(int argc, char **argv, t_map **map)
 	map_aux = NULL;
 	if (argc > 1)
 	{
-		fd = open(argv[1], O_RDONLY);
-		if (!fd)
-			return (perror("Error opening file\n"), NULL);
+		opening = open(argv[1], O_RDONLY);
+		if (!opening)
+			ft_error(1);
 		map_aux[1] = "";
 		y = 0;
 		x = 0;
@@ -37,8 +32,8 @@ char	**parsing_map_and_add(int argc, char **argv, t_map **map)
 		{
 			while (map_aux[y][x])
 			{
-				map_aux[y][x] = *get_next_line(fd);
-				(*map)->map = map_aux;
+				map_aux[y][x] = *get_next_line(opening);
+				(*mapa)->content = map_aux;
 				if (map_aux)
 					printf("Map Line:\n%s\n", map_aux[y]);
 				x++;
@@ -61,21 +56,27 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 int	main(/*int argc, char **argv*/)
 {
 	t_data	img;
-	void	*mlx;
+	void	*mlx_ptr;
 	void	*mlx_win;
 //	t_map	*startmap;
 
-//	mlx_win = NULL;
-//	mlx = NULL;
 //	startmap->map = parsing_map_and_add(argc, argv, &startmap);
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Game");
-	img.img = mlx_new_image(mlx, 1920, 1080);
+	mlx_ptr = mlx_init();
+	if (!mlx_ptr)
+		ft_error(1);
+	mlx_win = mlx_new_window(mlx_ptr, 640, 480, "Game");
+	if (!mlx_win)
+	{
+		free(mlx_ptr);
+		ft_error(1);
+	}
+	img.img = mlx_new_image(mlx_ptr, 640, 480);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
 	&img.line_length, &img.endian);
 	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	mlx_put_image_to_window(mlx_ptr, mlx_win, img.img, 0, 0);
+	mlx_loop(mlx_ptr);
+	free(mlx_ptr);
 	return (0);
 }
 
