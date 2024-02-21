@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/02/14 14:51:24 by fsantill         ###   ########.fr        #
+#    Updated: 2024/02/20 12:06:13 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME=so_long
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 FT=		so_long.c				\
-		so_long_utils.c			\
+		map_check.c				\
+		args_utils.c			\
 		errors_and_free.c
 
 OBJ=$(FT:%.c=%.o)
@@ -39,6 +40,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	make -C libft/ fclean
+	make -C minilibx_opengl_20191021/ clean
 re: fclean $(NAME)
 
 ## For Linux:

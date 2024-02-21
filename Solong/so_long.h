@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/19 13:13:36 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:50:32 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,49 @@
 # include "libft/libft.h"
 # include "minilibx_opengl_20191021/mlx.h"
 
-typedef struct t_data
+typedef struct s_map
+{
+	char	**map_orig;
+	char	**map_copy;
+	int		player_x;
+	int		player_y;
+	int		steps;
+	int		credits;
+}					t_map;
+
+typedef struct s_window
 {
 	void	*img;
+	void	*mlx_ptr;
+	void	*mlx_win;
+	t_map	*map;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}					t_data;
-
-typedef struct t_map
-{
-	char			**content;
-}					t_map;
+}					t_window;
 
 void	leaks(void);
-int		ft_error(int e);
+int		ft_error_msg(char *msg, int e);
 void	*ft_arr_free(char **arr);
-int		map_is_rectangular(t_map **mapa);
-char	**parsing_map_and_add(int argc, char **argv, t_map **map);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int		map_parsing(t_map *map);
+int		map_is_rectangular(t_map *map);
+int		map_is_closed(t_map *map);
+int		verifying_extension(char **argv);
+void	args_to_maps(char **argv, t_map *map);
+int		len_of_x(t_map *map);
+int		len_of_y(t_map *map);
+void	my_mlx_pixel_put(t_window *data, int x, int y, int color);
 
 #endif
 
 /*
-typedef struct s_data
+typedef struct s_window
 {
 	void		*mlx_ptr; // MLX pointer
 	void		*win_ptr; // MLX window pointer
 	void		*textures[5]; // MLX image pointers (on the stack)
 	t_map		*map; 	// Map pointer (contains map details
 						// preferably kept on the stack)
-}	t_data;
+}	t_window;
 */

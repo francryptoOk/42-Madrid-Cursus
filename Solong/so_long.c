@@ -6,46 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/19 13:19:31 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:52:40 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**parsing_map_and_add(int argc, char **argv, t_map **mapa)
-{
-	int		opening;
-	char	**map_aux;
-	int		y;
-	int		x;
-
-	map_aux = NULL;
-	if (argc > 1)
-	{
-		opening = open(argv[1], O_RDONLY);
-		if (!opening)
-			ft_error(1);
-		map_aux[1] = "";
-		y = 0;
-		x = 0;
-		while (map_aux[y])
-		{
-			while (map_aux[y][x])
-			{
-				map_aux[y][x] = *get_next_line(opening);
-				(*mapa)->content = map_aux;
-				if (map_aux)
-					printf("Map Line:\n%s\n", map_aux[y]);
-				x++;
-			}
-			y++;
-		}
-	}
-	free(map_aux);
-	return (printf("\n"), map_aux);
-}
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_window *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -53,31 +20,38 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	main(/*int argc, char **argv*/)
+int	main(int argc, char **argv)
 {
-	t_data	img;
-	void	*mlx_ptr;
-	void	*mlx_win;
-//	t_map	*startmap;
+	t_window	startwindow;
+	t_map		startmaps;
+	void		*mlx_ptr;
+	void		*mlx_win;
 
-//	startmap->map = parsing_map_and_add(argc, argv, &startmap);
-	mlx_ptr = mlx_init();
-	if (!mlx_ptr)
-		ft_error(1);
-	mlx_win = mlx_new_window(mlx_ptr, 640, 480, "Game");
-	if (!mlx_win)
+	if (argc == 2)
 	{
-		free(mlx_ptr);
-		ft_error(1);
+		verifying_extension(argv);
+		args_to_maps(argv, &startmaps);
+		map_parsing(&startmaps);
+		startwindow.map = &startmaps;
+		mlx_ptr = mlx_init();
+		if (!mlx_ptr)
+			ft_error_msg("Mlx error", 1);
+		mlx_win = mlx_new_window(mlx_ptr, 640, 480, "Game");
+		if (!mlx_win)
+		{
+			free(mlx_ptr);
+			ft_error_msg("Mlx window error", 1);
+		}
+//		img.img = mlx_new_image(mlx_ptr, 640, 480);
+//		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
+//		&img.line_length, &img.endian);
+//		my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
+//		mlx_put_image_to_window(mlx_ptr, mlx_win, img.img, 0, 0);
+//		mlx_loop(mlx_ptr);
+//		free(mlx_ptr);
+		return (0);
 	}
-	img.img = mlx_new_image(mlx_ptr, 640, 480);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
-	&img.line_length, &img.endian);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(mlx_ptr, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx_ptr);
-	free(mlx_ptr);
-	return (0);
+	ft_error_msg("Arguments error", 1);
 }
 
 //	mlx_key_hook(); bind keys for the game in the keyboard
