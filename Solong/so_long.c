@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/21 14:52:40 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:19:55 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,37 +22,41 @@ void	my_mlx_pixel_put(t_window *data, int x, int y, int color)
 
 int	main(int argc, char **argv)
 {
-	t_window	startwindow;
-	t_map		startmaps;
+	t_window	window;
+	t_map		maps;
 	void		*mlx_ptr;
 	void		*mlx_win;
 
 	if (argc == 2)
 	{
-		verifying_extension(argv);
-		args_to_maps(argv, &startmaps);
-		map_parsing(&startmaps);
-		startwindow.map = &startmaps;
+		if (verify_exist_extension(argv) == 1)
+			return (1);
+		maps = args_to_maps(argv, &maps);
+		if (map_parsing(&maps) == 1)
+			return (1);
+		window.map = &maps;
 		mlx_ptr = mlx_init();
 		if (!mlx_ptr)
-			ft_error_msg("Mlx error", 1);
+			return (ft_error_msg("Error: Mlx pointer doesn't exist"), 1);
 		mlx_win = mlx_new_window(mlx_ptr, 640, 480, "Game");
 		if (!mlx_win)
 		{
 			free(mlx_ptr);
-			ft_error_msg("Mlx window error", 1);
+			return (ft_error_msg("Error: Mlx window doesn't exist"), 1);
 		}
-//		img.img = mlx_new_image(mlx_ptr, 640, 480);
-//		img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, \
-//		&img.line_length, &img.endian);
-//		my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-//		mlx_put_image_to_window(mlx_ptr, mlx_win, img.img, 0, 0);
-//		mlx_loop(mlx_ptr);
-//		free(mlx_ptr);
+		window.img = mlx_new_image(mlx_ptr, 640, 480);
+		window.addr = mlx_get_data_addr(window.img, &window.bits_per_pixel, \
+		&window.line_length, &window.endian);
+		my_mlx_pixel_put(&window, 5, 5, 0x00FF0000);
+		mlx_put_image_to_window(mlx_ptr, mlx_win, window.img, 0, 0);
+		mlx_loop(mlx_ptr);
+		free(mlx_ptr);
 		return (0);
 	}
-	ft_error_msg("Arguments error", 1);
+	return (ft_error_msg("Error: Invalid arguments"), 1);
 }
+
+//	ft_printf("Llega\n");
 
 //	mlx_key_hook(); bind keys for the game in the keyboard
 //	mlx_loop_hook(drawing, .....); add a loop in the game

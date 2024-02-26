@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/21 14:50:32 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/26 12:43:40 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ typedef struct s_window
 }					t_window;
 
 void	leaks(void);
-int		ft_error_msg(char *msg, int e);
+int		ft_error_msg(char *msg);
 void	*ft_arr_free(char **arr);
 int		map_parsing(t_map *map);
 int		map_is_rectangular(t_map *map);
 int		map_is_closed(t_map *map);
-int		verifying_extension(char **argv);
-void	args_to_maps(char **argv, t_map *map);
+int		verify_exist_extension(char **argv);
+t_map	args_to_maps(char **argv, t_map *map);
 int		len_of_x(t_map *map);
 int		len_of_y(t_map *map);
 void	my_mlx_pixel_put(t_window *data, int x, int y, int color);

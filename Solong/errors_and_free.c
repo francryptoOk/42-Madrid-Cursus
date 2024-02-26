@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:06:28 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/20 14:38:32 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:16:32 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	leaks(void)
 	system("leaks -q so_long");
 }
 
-int	ft_error_msg(char *msg, int e)
+int	ft_error_msg(char *msg)
 {
 	ft_printf("%s", msg);
 	write(2, "\n", 1);
-	return (e);
+	return (1);
 }
 
 void	*ft_arr_free(char **arr)
@@ -39,5 +39,5 @@ void	*ft_arr_free(char **arr)
 	return (NULL);
 }
 
-// -to print liberations, between lines 32/33)-
+// -to print liberations, between lines 33/34)-
 // ft_printf("Liberando %s\n", arr[i]);
