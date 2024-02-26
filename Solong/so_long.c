@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/26 15:19:55 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:32:32 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	main(int argc, char **argv)
 		window.map = &maps;
 		mlx_ptr = mlx_init();
 		if (!mlx_ptr)
-			return (ft_error_msg("Error: Mlx pointer doesn't exist"), 1);
+			return (error_msg("Error: Mlx pointer doesn't exist"), 1);
 		mlx_win = mlx_new_window(mlx_ptr, 640, 480, "Game");
 		if (!mlx_win)
 		{
 			free(mlx_ptr);
-			return (ft_error_msg("Error: Mlx window doesn't exist"), 1);
+			return (error_msg("Error: Mlx window doesn't exist"), 1);
 		}
 		window.img = mlx_new_image(mlx_ptr, 640, 480);
 		window.addr = mlx_get_data_addr(window.img, &window.bits_per_pixel, \
@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 		free(mlx_ptr);
 		return (0);
 	}
-	return (ft_error_msg("Error: Invalid arguments"), 1);
+	return (error_msg("Error: Invalid arguments"), 1);
 }
 
 //	ft_printf("Llega\n");
