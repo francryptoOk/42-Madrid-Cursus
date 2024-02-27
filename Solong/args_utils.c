@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:07:31 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/26 17:31:39 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/27 11:38:19 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	verify_exist_extension(char **argv)
 	i = 0;
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		return (error_msg("Error: File doesn't exist"), 1);
+		return (error_msg("Error\n\t• File doesn't exist"), 1);
 	while (argv[1][i])
 		i++;
 	i--;
@@ -28,7 +28,7 @@ int	verify_exist_extension(char **argv)
 		argv[1][--i] == 'b' && argv[1][--i] == '.')
 		;
 	else
-		return (error_msg("Error: Not '.ber' extension"), 1);
+		return (error_msg("Error\n\t• Not '.ber' extension"), 1);
 	return (0);
 }
 
@@ -47,7 +47,7 @@ t_map	args_to_maps(char **argv, t_map *map)
 	result_orig = ft_split(str_mem, '\n');
 	result_copy = ft_split(str_mem, '\n');
 	if (result_orig == NULL || result_copy == NULL)
-		error_msg("Error: Split failed");
+		error_msg("Error\n\t• Split failed");
 	map->map_orig = result_orig;
 	map->map_copy = result_copy;
 	free(str_mem);
@@ -62,7 +62,7 @@ int	len_of_x(t_map *map)
 
 	str = map->map_copy[0];
 	len = ft_strlen(str);
-	return (ft_printf("Colums: %i\n", len), len);
+	return (len);
 }
 
 int	len_of_y(t_map *map)
@@ -72,5 +72,5 @@ int	len_of_y(t_map *map)
 	len = 0;
 	while (map->map_copy[len])
 		len++;
-	return (ft_printf("Lines: %i\n", len), len);
+	return (len);
 }

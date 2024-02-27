@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/26 17:31:42 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:25:53 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		map_parsing(t_map *map);
 int		map_is_rectangular(t_map *map);
 int		map_is_closed(t_map *map);
 int		map_search_and_count(t_map *map, char *str);
+int		map_flood(int y, int x, t_map *map);
 int		verify_exist_extension(char **argv);
 t_map	args_to_maps(char **argv, t_map *map);
 int		len_of_x(t_map *map);
