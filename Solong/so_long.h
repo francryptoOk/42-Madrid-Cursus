@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/27 12:25:53 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:35:19 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,18 @@ typedef struct s_map
 	int		credits;
 }					t_map;
 
-typedef struct s_window
+typedef struct s_win
 {
 	void	*img;
 	void	*mlx_ptr;
 	void	*mlx_win;
 	t_map	*map;
+	int		dim;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}					t_window;
+}					t_win;
 
 void	leaks(void);
 int		error_msg(char *msg);
@@ -45,11 +46,12 @@ int		map_is_rectangular(t_map *map);
 int		map_is_closed(t_map *map);
 int		map_search_and_count(t_map *map, char *str);
 int		map_flood(int y, int x, t_map *map);
-int		verify_exist_extension(char **argv);
+int		verify_extension(char **argv);
 t_map	args_to_maps(char **argv, t_map *map);
+int		chr_of_invalid_void(char *str, char voidline);
 int		len_of_x(t_map *map);
 int		len_of_y(t_map *map);
-void	my_mlx_pixel_put(t_window *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_win *data, int x, int y, int color);
 
 #endif
 

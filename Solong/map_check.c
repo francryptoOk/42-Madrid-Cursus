@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/27 14:26:46 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:49:20 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 int	map_parsing(t_map *map)
 {
 	if (map_is_rectangular(map) == 1)
-		return (1);
+		exit (error_msg("Error\n\t• Not a rectangular map"));
 	else if (map_is_closed(map) == 1)
-		return (1);
+		exit (1);
 	else if (map_search_and_count(map, "E") != 1)
-		return (error_msg("Error\n\t• Map Exit problem\n"), 1);
+		exit (error_msg("Error\n\t• Map Exit problem\n"));
 	else if (map_search_and_count(map, "P") != 1)
-		return (error_msg("Error\n\t• Map Player problem\n"), 1);
-	else if (map_search_and_count(map, "C") < 0)
-		return (error_msg("Error\n\t• Map Collectibles problem\n"), 1);
+		exit (error_msg("Error\n\t• Map Player problem\n"));
+	else if (map_search_and_count(map, "C") <= 0)
+		exit (error_msg("Error\n\t• Map Collectibles problem\n"));
 	else if (map_flood(1, 1, map) == 1)
-		return (error_msg("Error\n\t• Cannot take collectibles or exit\n"), 1);
+		exit (error_msg("Error\n\t• Cannot take collectibles or exit\n"));
 	return (0);
 }
 
@@ -43,7 +43,7 @@ int	map_is_rectangular(t_map *map)
 	{
 		ft_printf("MAP LINE: %s\n", map->map_copy[i]);
 		if (ft_strlen(map->map_copy[i]) != columns)
-			return (error_msg("Error\n\t• Not a rectangular map"), 1);
+			return (1);
 		i++;
 	}
 	return (ft_printf("\n--- Map Rectangular: OK ---\n"), 0);

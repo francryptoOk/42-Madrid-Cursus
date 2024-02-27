@@ -6,13 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:07:31 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/27 11:38:19 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:48:46 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	verify_exist_extension(char **argv)
+int	verify_extension(char **argv)
 {
 	int	i;
 	int	fd;
@@ -44,15 +44,33 @@ t_map	args_to_maps(char **argv, t_map *map)
 	str_mem = (char *)malloc(BUFFER_SIZE * sizeof(char *));
 	read_end = read(fd, str_mem, BUFFER_SIZE);
 	str_mem[read_end] = '\0';
+	if (chr_of_invalid_void(str_mem, '\n'))
+		exit (error_msg("Error\n\t• Map with invalid void lines"));
 	result_orig = ft_split(str_mem, '\n');
 	result_copy = ft_split(str_mem, '\n');
 	if (result_orig == NULL || result_copy == NULL)
-		error_msg("Error\n\t• Split failed");
+		exit (error_msg("Error\n\t• Split failed"));
 	map->map_orig = result_orig;
 	map->map_copy = result_copy;
 	free(str_mem);
 	str_mem = NULL;
 	return ((*map));
+}
+
+int	chr_of_invalid_void(char *str, char voidline)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == voidline)
+		return (1);
+	while (str[i])
+	{
+		if (str[i] == voidline && str[i - 1] == voidline)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 int	len_of_x(t_map *map)
