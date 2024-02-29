@@ -6,11 +6,13 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/27 16:49:20 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:09:16 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+// Errors of 'map_is_closed' are inside the function depending the open side
 
 int	map_parsing(t_map *map)
 {

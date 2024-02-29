@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:07:31 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/27 16:48:46 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/29 12:14:34 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	verify_extension(char **argv)
 	i = 0;
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		return (error_msg("Error\n\t• File doesn't exist"), 1);
+		return (error_msg("Error\n\t• Map doesn't exist or cannot be open"), 1);
 	while (argv[1][i])
 		i++;
 	i--;
