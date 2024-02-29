@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/29 14:46:39 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:36:07 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_map
 typedef struct s_win
 {
 	void	*img;
-	void	*mlx_ptr;
+	void	*mlx;
 	void	*mlx_win;
 	t_map	*map;
 	int		dim;
@@ -51,11 +51,11 @@ t_map	args_to_maps(char **argv, t_map *map);
 int		chr_of_invalid_void(char *str, char voidline);
 int		len_of_x(t_map *map);
 int		len_of_y(t_map *map);
-void	my_mlx_pixel_put(t_win *data, int x, int y, int color);
-int		assign_images_in_map(t_win win/*, t_map map*/);
+int		assign_images_in_map(t_win win, t_map *map);
 
 #endif
 
+//void	my_mlx_pixel_put(t_win *data, int x, int y, int color);
 /*
 typedef struct s_window
 {
