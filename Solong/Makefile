@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/02/27 15:55:34 by fsantill         ###   ########.fr        #
+#    Updated: 2024/03/04 16:46:39 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ CFLAGS=-Wall -Werror -Wextra
 FT=		so_long.c				\
 		map_check.c				\
 		args_utils.c			\
+		move_utils.c			\
+		move_player.c			\
 		errors_and_free.c
 
 OBJ=$(FT:%.c=%.o)

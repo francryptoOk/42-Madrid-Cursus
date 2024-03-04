@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/29 16:36:07 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/04 16:41:38 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,14 @@ t_map	args_to_maps(char **argv, t_map *map);
 int		chr_of_invalid_void(char *str, char voidline);
 int		len_of_x(t_map *map);
 int		len_of_y(t_map *map);
-int		assign_images_in_map(t_win win, t_map *map);
+void	assign_images_in_map(t_win win, t_map *map);
+void	player_first_y_x_position(t_map *map, char *str);
+void	data_count(t_map *map);
+void	ft_move_up(t_win *win);
+void	ft_move_down(t_win *win);
+void	ft_move_left(t_win *win);
+void	ft_move_right(t_win *win);
+int		key_bind(int keycode, t_win *win);
 
 #endif
 

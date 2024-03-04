@@ -6,13 +6,16 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/29 12:09:16 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:21:48 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// Errors of 'map_is_closed' are inside the function depending the open side
+//	Errors of 'map_is_closed' are inside the function depending the open side
+//	For bonus:
+//	else if (map_search_and_count(map, "R") != 1)
+//		exit (error_msg("Error\n\t• Map Rival problem\n"));
 
 int	map_parsing(t_map *map)
 {
@@ -50,6 +53,7 @@ int	map_is_rectangular(t_map *map)
 	}
 	return (ft_printf("\n--- Map Rectangular: OK ---\n"), 0);
 }
+
 // ft_printf("Diferencia: %i // %i\n", ft_strlen(map->map_copy[i]), columns)
 
 int	map_is_closed(t_map *map)
