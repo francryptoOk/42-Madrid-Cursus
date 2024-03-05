@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:29 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/04 16:48:30 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:53:52 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,39 @@ int	key_bind(int keycode, t_win *win)
 	return (0);
 }
 
-void	player_first_y_x_position(t_map *map, char *str)
+void	collectibles_count_and_player_first_y_x_position(t_map *map)
+{
+	int	columns;
+	int	x;
+	int	lines;
+	int	y;
+	int	count;
+
+	map->collectibles = map_orig_search_and_count(map, "C");
+	ft_printf("Collectibles: %i\n\n", map->collectibles);
+	columns = len_of_x(map);
+	lines = len_of_y(map);
+	y = -1;
+	count = 0;
+	while (++y < lines)
+	{
+		x = -1;
+		while (++x < columns)
+		{
+			if (map->map_orig[y][x] == 'P')
+			{
+				map->player_y = y;
+				map->player_x = x;
+				break ;
+			}
+		}
+	}
+}
+
+// ft_printf("\nP starting x: %i\n", x);
+// ft_printf("\nP starting y: %i\n", y);
+
+int	map_orig_search_and_count(t_map *map, char *str)
 {
 	int	columns;
 	int	x;
@@ -51,19 +83,19 @@ void	player_first_y_x_position(t_map *map, char *str)
 		x = 0;
 		while (x < columns)
 		{
-			if (map->map_copy[y][x] == (*str))
-			{
-				map->player_y = y;
-				map->player_x = x;
-			}
+			if (map->map_orig[y][x] == (*str))
+				count++;
 			x++;
 		}
 		y++;
 	}
+	return (count);
 }
 
-void	data_count(t_map *map)
-{
-	map->credits = map_search_and_count(map, "C");
-}
-
+//	int i = -1;
+//	int j = 0;
+//	while (map->map_orig[j][++i])
+//	{
+//		ft_printf("MAP LINE: %s\n", map->map_orig[i]);
+//		j++;
+//	}

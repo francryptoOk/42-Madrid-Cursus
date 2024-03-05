@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:50:57 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/04 16:54:17 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:18:20 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_move_up(t_win *win)
 		(win->map->map_orig[y - 1][x] != 'E'))
 	{
 		if (win->map->map_orig[y - 1][x] == 'C')
-			win->map->credits--;
+			win->map->collectibles--;
 		win->map->steps++;
 		ft_printf("Steps: %i\n", win->map->steps);
 		win->map->map_orig[y][x] = '0';
@@ -33,8 +33,12 @@ void	ft_move_up(t_win *win)
 		win->map->player_y = y - 1;
 	}
 	else if ((win->map->map_orig[y - 1][x] == 'E') && \
-		(win->map->credits == 0))
+		(win->map->collectibles == 0))
+	{
+		win->map->steps++;
+		ft_printf("Steps: %i\n", win->map->steps);
 		exit(0);
+	}
 }
 
 void	ft_move_down(t_win *win)
@@ -48,7 +52,7 @@ void	ft_move_down(t_win *win)
 		(win->map->map_orig[y + 1][x] != 'E'))
 	{
 		if (win->map->map_orig[y + 1][x] == 'C')
-			win->map->credits--;
+			win->map->collectibles--;
 		win->map->steps++;
 		ft_printf("Steps: %i\n", win->map->steps);
 		win->map->map_orig[y][x] = '0';
@@ -58,8 +62,12 @@ void	ft_move_down(t_win *win)
 		win->map->player_y = y + 1;
 	}
 	else if ((win->map->map_orig[y + 1][x] == 'E') && \
-		(win->map->credits == 0))
+		(win->map->collectibles == 0))
+	{
+		win->map->steps++;
+		ft_printf("Steps: %i\n", win->map->steps);
 		exit(0);
+	}
 }
 
 void	ft_move_left(t_win *win)
@@ -73,7 +81,7 @@ void	ft_move_left(t_win *win)
 		(win->map->map_orig[y][x - 1] != 'E'))
 	{
 		if (win->map->map_orig[y][x - 1] == 'C')
-			win->map->credits--;
+			win->map->collectibles--;
 		win->map->steps++;
 		ft_printf("Steps: %i\n", win->map->steps);
 		win->map->map_orig[y][x] = '0';
@@ -83,8 +91,12 @@ void	ft_move_left(t_win *win)
 		win->map->player_x = x - 1;
 	}
 	else if ((win->map->map_orig[y][x - 1] == 'E') && \
-		(win->map->credits == 0))
+		(win->map->collectibles == 0))
+	{
+		win->map->steps++;
+		ft_printf("Steps: %i\n", win->map->steps);
 		exit(0);
+	}
 }
 
 void	ft_move_right(t_win *win)
@@ -98,7 +110,7 @@ void	ft_move_right(t_win *win)
 		(win->map->map_orig[y][x + 1] != 'E'))
 	{
 		if (win->map->map_orig[y][x + 1] == 'C')
-			win->map->credits--;
+			win->map->collectibles--;
 		win->map->steps++;
 		ft_printf("Steps: %i\n", win->map->steps);
 		win->map->map_orig[y][x] = '0';
@@ -108,6 +120,10 @@ void	ft_move_right(t_win *win)
 		win->map->player_x = x + 1;
 	}
 	else if ((win->map->map_orig[y][x + 1] == 'E') && \
-		(win->map->credits == 0))
+		(win->map->collectibles == 0))
+	{
+		win->map->steps++;
+		ft_printf("Steps: %i\n", win->map->steps);
 		exit(0);
+	}
 }

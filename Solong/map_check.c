@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/04 14:21:48 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/05 14:27:25 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ int	map_parsing(t_map *map)
 		exit (error_msg("Error\n\t• Not a rectangular map"));
 	else if (map_is_closed(map) == 1)
 		exit (1);
-	else if (map_search_and_count(map, "E") != 1)
+	else if (map_copy_search_and_count(map, "E") != 1)
 		exit (error_msg("Error\n\t• Map Exit problem\n"));
-	else if (map_search_and_count(map, "P") != 1)
+	else if (map_copy_search_and_count(map, "P") != 1)
 		exit (error_msg("Error\n\t• Map Player problem\n"));
-	else if (map_search_and_count(map, "C") <= 0)
+	else if (map_copy_search_and_count(map, "C") <= 0)
 		exit (error_msg("Error\n\t• Map Collectibles problem\n"));
 	else if (map_flood(1, 1, map) == 1)
 		exit (error_msg("Error\n\t• Cannot take collectibles or exit\n"));
-	return (0);
+	return (ft_printf("\n--- Map E, P, C and accesible: OK---\n\n"), 0);
 }
 
 int	map_is_rectangular(t_map *map)
@@ -42,11 +42,9 @@ int	map_is_rectangular(t_map *map)
 
 	columns = len_of_x(map);
 	lines = len_of_y(map);
-	ft_printf("\nLines: %i\nColumns: %i\n", columns, lines);
 	i = 0;
 	while (map->map_copy[i] && i < lines)
 	{
-		ft_printf("MAP LINE: %s\n", map->map_copy[i]);
 		if (ft_strlen(map->map_copy[i]) != columns)
 			return (1);
 		i++;
@@ -54,6 +52,8 @@ int	map_is_rectangular(t_map *map)
 	return (ft_printf("\n--- Map Rectangular: OK ---\n"), 0);
 }
 
+//	ft_printf("\nLines: %i\nColumns: %i\n", columns, lines);
+// ft_printf("MAP LINE: %s\n", map->map_copy[i]);
 // ft_printf("Diferencia: %i // %i\n", ft_strlen(map->map_copy[i]), columns)
 
 int	map_is_closed(t_map *map)
@@ -82,7 +82,7 @@ int	map_is_closed(t_map *map)
 	return (ft_printf("\n--- Map Closed: OK---\n"), 0);
 }
 
-int	map_search_and_count(t_map *map, char *str)
+int	map_copy_search_and_count(t_map *map, char *str)
 {
 	int	columns;
 	int	x;
@@ -105,9 +105,10 @@ int	map_search_and_count(t_map *map, char *str)
 		}
 		y++;
 	}
-	ft_printf("\n--- Map amount of %s: %i ---\n", str, count);
 	return (count);
 }
+
+//	ft_printf("\n--- Map amount of %s: %i ---\n", str, count);
 
 int	map_flood(int y, int x, t_map *map)
 {
@@ -125,13 +126,14 @@ int	map_flood(int y, int x, t_map *map)
 			map_flood(y + 1, x, map);
 		if (map->map_copy[y][x - 1] != '1')
 			map_flood(y, x - 1, map);
-		ft_printf("MAP COPY LINE %i: %s\n\n", y, map->map_copy[y]);
 	}
-	if (map_search_and_count(map, "0") != 0 || \
-		map_search_and_count(map, "E") != 0)
+	if (map_copy_search_and_count(map, "0") != 0 || \
+		map_copy_search_and_count(map, "E") != 0)
 		return (1);
 	return (0);
 }
+
+//	ft_printf("MAP COPY LINE %i: %s\n\n", y, map->map_copy[y]);
 
 /*
 if (all_collectables_collected && exit_count == 1)
