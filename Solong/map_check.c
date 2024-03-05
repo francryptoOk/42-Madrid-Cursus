@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/05 14:27:25 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:44:56 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,33 @@
 //	Errors of 'map_is_closed' are inside the function depending the open side
 //	For bonus:
 //	else if (map_search_and_count(map, "R") != 1)
-//		exit (error_msg("Error\n\t• Map Rival problem\n"));
+//		exit (ft_error_msg("Error\n\t• Map Rival problem\n"));
 
-int	map_parsing(t_map *map)
+int	ft_map_parsing(t_map *map)
 {
-	if (map_is_rectangular(map) == 1)
-		exit (error_msg("Error\n\t• Not a rectangular map"));
-	else if (map_is_closed(map) == 1)
+	if (ft_map_is_rectangular(map) == 1)
+		exit (ft_error_msg("Error\n\t• Not a rectangular map"));
+	else if (ft_map_is_closed(map) == 1)
 		exit (1);
-	else if (map_copy_search_and_count(map, "E") != 1)
-		exit (error_msg("Error\n\t• Map Exit problem\n"));
-	else if (map_copy_search_and_count(map, "P") != 1)
-		exit (error_msg("Error\n\t• Map Player problem\n"));
-	else if (map_copy_search_and_count(map, "C") <= 0)
-		exit (error_msg("Error\n\t• Map Collectibles problem\n"));
-	else if (map_flood(1, 1, map) == 1)
-		exit (error_msg("Error\n\t• Cannot take collectibles or exit\n"));
+	else if (ft_map_copy_search_and_count(map, "E") != 1)
+		exit (ft_error_msg("Error\n\t• Map Exit problem\n"));
+	else if (ft_map_copy_search_and_count(map, "P") != 1)
+		exit (ft_error_msg("Error\n\t• Map Player problem\n"));
+	else if (ft_map_copy_search_and_count(map, "C") <= 0)
+		exit (ft_error_msg("Error\n\t• Map Collectibles problem\n"));
+	else if (ft_map_flood(1, 1, map) == 1)
+		exit (ft_error_msg("Error\n\t• Cannot take collectibles or exit\n"));
 	return (ft_printf("\n--- Map E, P, C and accesible: OK---\n\n"), 0);
 }
 
-int	map_is_rectangular(t_map *map)
+int	ft_map_is_rectangular(t_map *map)
 {
 	int	columns;
 	int	lines;
 	int	i;
 
-	columns = len_of_x(map);
-	lines = len_of_y(map);
+	columns = ft_len_of_x(map);
+	lines = ft_len_of_y(map);
 	i = 0;
 	while (map->map_copy[i] && i < lines)
 	{
@@ -56,7 +56,7 @@ int	map_is_rectangular(t_map *map)
 // ft_printf("MAP LINE: %s\n", map->map_copy[i]);
 // ft_printf("Diferencia: %i // %i\n", ft_strlen(map->map_copy[i]), columns)
 
-int	map_is_closed(t_map *map)
+int	ft_map_is_closed(t_map *map)
 {
 	int	x;
 	int	y;
@@ -66,23 +66,23 @@ int	map_is_closed(t_map *map)
 	while (map->map_copy[y][x] && map->map_copy[y][x] == '1')
 		x++;
 	if (map->map_copy[y][x] != '\0')
-		return (error_msg("Error\n\t• Map is open on top"), 1);
-	while (++y < (len_of_y(map) - 1))
+		return (ft_error_msg("Error\n\t• Map is open on top"), 1);
+	while (++y < (ft_len_of_y(map) - 1))
 	{
 		if (map->map_copy[y][0] != '1')
-			return (error_msg("Error\n\t• Map is open on left"), 1);
-		if (map->map_copy[y][len_of_x(map) - 1] != '1')
-			return (error_msg("Error\n\t• Map is open on right"), 1);
+			return (ft_error_msg("Error\n\t• Map is open on left"), 1);
+		if (map->map_copy[y][ft_len_of_x(map) - 1] != '1')
+			return (ft_error_msg("Error\n\t• Map is open on right"), 1);
 	}
 	x = 0;
 	while (map->map_copy[y][x] && map->map_copy[y][x] == '1')
 		x++;
 	if (map->map_copy[y][x] != '\0')
-		return (error_msg("Error\n\t• Map is open on bottom"), 1);
+		return (ft_error_msg("Error\n\t• Map is open on bottom"), 1);
 	return (ft_printf("\n--- Map Closed: OK---\n"), 0);
 }
 
-int	map_copy_search_and_count(t_map *map, char *str)
+int	ft_map_copy_search_and_count(t_map *map, char *str)
 {
 	int	columns;
 	int	x;
@@ -90,8 +90,8 @@ int	map_copy_search_and_count(t_map *map, char *str)
 	int	y;
 	int	count;
 
-	columns = len_of_x(map);
-	lines = len_of_y(map);
+	columns = ft_len_of_x(map);
+	lines = ft_len_of_y(map);
 	y = 0;
 	count = 0;
 	while (y < lines)
@@ -110,25 +110,25 @@ int	map_copy_search_and_count(t_map *map, char *str)
 
 //	ft_printf("\n--- Map amount of %s: %i ---\n", str, count);
 
-int	map_flood(int y, int x, t_map *map)
+int	ft_map_flood(int y, int x, t_map *map)
 {
-	if (x < len_of_x(map) && x > 0 && \
-		y < len_of_y(map) && y > 0)
+	if (x < ft_len_of_x(map) && x > 0 && \
+		y < ft_len_of_y(map) && y > 0)
 	{
 		if (map->map_copy[y][x] == 'E')
 			map->map_copy[y][x] = '1';
 		map->map_copy[y][x] = '1';
 		if (map->map_copy[y - 1][x] != '1')
-			map_flood(y - 1, x, map);
+			ft_map_flood(y - 1, x, map);
 		if (map->map_copy[y][x + 1] != '1')
-			map_flood(y, x + 1, map);
+			ft_map_flood(y, x + 1, map);
 		if (map->map_copy[y + 1][x] != '1')
-			map_flood(y + 1, x, map);
+			ft_map_flood(y + 1, x, map);
 		if (map->map_copy[y][x - 1] != '1')
-			map_flood(y, x - 1, map);
+			ft_map_flood(y, x - 1, map);
 	}
-	if (map_copy_search_and_count(map, "0") != 0 || \
-		map_copy_search_and_count(map, "E") != 0)
+	if (ft_map_copy_search_and_count(map, "0") != 0 || \
+		ft_map_copy_search_and_count(map, "E") != 0)
 		return (1);
 	return (0);
 }

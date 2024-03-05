@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/05 14:53:32 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:39:19 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,28 @@ typedef struct s_win
 	int		endian;
 }					t_win;
 
-void	leaks(void);
-int		error_msg(char *msg);
+void	ft_leaks(void);
+int		ft_error_msg(char *msg);
 void	*ft_arr_free(char **arr);
-int		map_parsing(t_map *map);
-int		map_is_rectangular(t_map *map);
-int		map_is_closed(t_map *map);
-int		map_copy_search_and_count(t_map *map, char *str);
-int		map_flood(int y, int x, t_map *map);
-int		verify_extension(char **argv);
-t_map	args_to_maps(char **argv, t_map *map);
-int		chr_of_invalid_void(char *str, char voidline);
-int		len_of_x(t_map *map);
-int		len_of_y(t_map *map);
-void	assign_images_in_map(t_win win, t_map *map);
-void	collectibles_count_and_player_first_y_x_position(t_map *map);
-void	data_count(t_map *map);
+int		ft_map_parsing(t_map *map);
+int		ft_map_is_rectangular(t_map *map);
+int		ft_map_is_closed(t_map *map);
+int		ft_map_copy_search_and_count(t_map *map, char *str);
+int		ft_map_flood(int y, int x, t_map *map);
+int		ft_verify_extension(char **argv);
+t_map	ft_args_to_maps(char **argv, t_map *map);
+int		ft_chr_of_invalid_void(char *str, char voidline);
+int		ft_len_of_x(t_map *map);
+int		ft_len_of_y(t_map *map);
+void	ft_assign_images_in_map(t_win win, t_map *map);
+void	ft_collectibles_count_and_player_first_y_x_position(t_map *map);
+void	ft_data_count(t_map *map);
 void	ft_move_up(t_win *win);
 void	ft_move_down(t_win *win);
 void	ft_move_left(t_win *win);
 void	ft_move_right(t_win *win);
-int		key_bind(int keycode, t_win *win);
-int		map_orig_search_and_count(t_map *map, char *str);
+int		ft_key_bind(int keycode, t_win *win);
+int		ft_map_orig_search_and_count(t_map *map, char *str);
 
 #endif
 

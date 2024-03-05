@@ -6,18 +6,18 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:06:28 by fsantill          #+#    #+#             */
-/*   Updated: 2024/02/27 15:16:38 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/05 15:39:33 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	leaks(void)
+void	ft_leaks(void)
 {
 	system("leaks -q so_long");
 }
 
-int	error_msg(char *msg)
+int	ft_error_msg(char *msg)
 {
 	ft_printf("%s", msg);
 	write(2, "\n", 1);
