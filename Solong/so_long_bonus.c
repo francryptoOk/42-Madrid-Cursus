@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/06 14:20:41 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:24:57 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	ft_click_to_close_window(t_win *win)
 void	*ft_exit_animation(t_win *win, t_map *map, void *p)
 {
 	if (map->steps % 2 == 0)
-		p = mlx_xpm_file_to_image(win->mlx, "E.xpm", &win->dim, &win->dim);
+		p = mlx_xpm_file_to_image(win->mlx, TXTE, &win->dim, &win->dim);
 	else
-		p = mlx_xpm_file_to_image(win->mlx, "E2.xpm", &win->dim, &win->dim);
+		p = mlx_xpm_file_to_image(win->mlx, TXTE2, &win->dim, &win->dim);
 	return (p);
 }
 
@@ -52,17 +52,17 @@ void	ft_assign_images_in_map(t_win win, t_map *map)
 		while (map->map_orig[y][++x])
 		{
 			if (map->map_orig[y][x] == '1')
-				p = mlx_xpm_file_to_image(win.mlx, "1.xpm", &win.dim, &win.dim);
+				p = mlx_xpm_file_to_image(win.mlx, TXT1, &win.dim, &win.dim);
 			else if (map->map_orig[y][x] == '0')
-				p = mlx_xpm_file_to_image(win.mlx, "0.xpm", &win.dim, &win.dim);
+				p = mlx_xpm_file_to_image(win.mlx, TXT0, &win.dim, &win.dim);
 			else if (map->map_orig[y][x] == 'C')
-				p = mlx_xpm_file_to_image(win.mlx, "C.xpm", &win.dim, &win.dim);
+				p = mlx_xpm_file_to_image(win.mlx, TXTC, &win.dim, &win.dim);
 			else if (map->map_orig[y][x] == 'E')
 				p = ft_exit_animation(&win, map, p);
 			else if (map->map_orig[y][x] == 'P')
-				p = mlx_xpm_file_to_image(win.mlx, "P.xpm", &win.dim, &win.dim);
+				p = mlx_xpm_file_to_image(win.mlx, TXTP, &win.dim, &win.dim);
 			else if (map->map_orig[y][x] == 'R')
-				p = mlx_xpm_file_to_image(win.mlx, "R.xpm", &win.dim, &win.dim);
+				p = mlx_xpm_file_to_image(win.mlx, TXTR, &win.dim, &win.dim);
 			ft_steps_and_image_to_window(&win, p, x, y);
 		}
 	}

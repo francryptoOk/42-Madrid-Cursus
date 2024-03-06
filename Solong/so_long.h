@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/05 15:39:19 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/06 15:26:14 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define SO_LONG_H
 # include "libft/libft.h"
 # include "minilibx_opengl_20191021/mlx.h"
+
+# define TXT1 "textures/1.xpm"
+# define TXT0 "textures/0.xpm"
+# define TXTC "textures/C.xpm"
+# define TXTE "textures/E.xpm"
+# define TXTE2 "textures/E2.xpm"
+# define TXTP "textures/P.xpm"
+# define TXTR "textures/R.xpm"
 
 typedef struct s_map
 {
