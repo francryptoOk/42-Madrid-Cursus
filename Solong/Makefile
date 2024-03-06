@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/03/06 14:34:21 by fsantill         ###   ########.fr        #
+#    Updated: 2024/03/06 14:56:39 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,19 +34,17 @@ OBJBONUS=$(BONUS:%.c=%.o)
 
 all:$(NAME)
 
-$(NAME): $(OBJ) libft/libft.a minilibx_opengl_20191021/mlx.a
-	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) -Llibft/ -lft
+$(NAME): $(OBJ)
+	make -C ./libft
+	make -C ./minilibx_opengl_20191021
+	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) ./libft/libft.a ./minilibx_opengl_20191021/libmlx.a
 
 bonus:$(NAMEBONUS)
 
-$(NAMEBONUS): $(OBJBONUS) libft/libft.a minilibx_opengl_20191021/mlx.a
-	$(CC) $(OBJBONUS) -lmlx -framework OpenGL -framework AppKit -o $(NAMEBONUS) -Llibft/ -lft
-
-libft/libft.a:
-	make -C libft/
-
-minilibx_opengl_20191021/mlx.a:	
-	make -C minilibx_opengl_20191021/
+$(NAMEBONUS): $(OBJBONUS)
+	make -C ./libft
+	make -C ./minilibx_opengl_20191021
+	$(CC) $(OBJBONUS) -lmlx -framework OpenGL -framework AppKit -o $(NAMEBONUS) ./libft/libft.a ./minilibx_opengl_20191021/libmlx.a
 
 .PHONY: clean fclean re
 
