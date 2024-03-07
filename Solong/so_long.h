@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/06 15:26:14 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:37:51 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,16 @@
 # define TXTE2 "textures/E2.xpm"
 # define TXTP "textures/P.xpm"
 # define TXTR "textures/R.xpm"
+# define TXTPW "textures/Pup.xpm"
+# define TXTPS "textures/Pdown.xpm"
+# define TXTPD "textures/Pright.xpm"
+# define TXTPA "textures/Pleft.xpm"
 
 typedef struct s_map
 {
 	char	**map_orig;
 	char	**map_copy;
+	char	player_flag;
 	int		player_x;
 	int		player_y;
 	int		steps;
@@ -67,6 +72,7 @@ void	ft_move_down(t_win *win);
 void	ft_move_left(t_win *win);
 void	ft_move_right(t_win *win);
 int		ft_key_bind(int keycode, t_win *win);
+void	*ft_player_animation(t_win *win, t_map *map, void *p);
 int		ft_map_orig_search_and_count(t_map *map, char *str);
 
 #endif

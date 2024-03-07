@@ -1,37 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_utils.c                                       :+:      :+:    :+:   */
+/*   move_utils_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:29 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/05 15:45:22 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:39:24 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-//buscar al jugador y guardar X e Y del jugador en el mapa
-//si pulso arriba, ver que hay, si es 1 no pasa nada, si es 0 tengo que
-//printear la imagen del jugador
-//y donde esta el jugador tengo que printear 0, si es una coin lo mismo
-//pero una variable collectable
-//si es exit ver si alcanzò todos los colectables
 
 int	ft_key_bind(int keycode, t_win *win)
 {
 	if (keycode == 53)
 		exit(0);
 	else if (keycode == 13 || keycode == 126)
+	{
+		win->map->player_flag = 'W';
 		ft_move_up(win);
-	else if (keycode == 2 || keycode == 124)
-		ft_move_right(win);
+	}
 	else if (keycode == 1 || keycode == 125)
+	{
+		win->map->player_flag = 'S';
 		ft_move_down(win);
+	}
 	else if (keycode == 0 || keycode == 123)
+	{
+		win->map->player_flag = 'A';
 		ft_move_left(win);
+	}
+	else if (keycode == 2 || keycode == 124)
+	{
+		win->map->player_flag = 'D';
+		ft_move_right(win);
+	}
 	return (0);
+}
+
+void	*ft_player_animation(t_win *win, t_map *map, void *p)
+{
+	if (map->player_flag == 'W')
+		p = mlx_xpm_file_to_image(win->mlx, TXTPW, &win->dim, &win->dim);
+	else if (map->player_flag == 'S')
+		p = mlx_xpm_file_to_image(win->mlx, TXTPS, &win->dim, &win->dim);
+	else if (map->player_flag == 'A')
+		p = mlx_xpm_file_to_image(win->mlx, TXTPA, &win->dim, &win->dim);
+	else if (map->player_flag == 'D')
+		p = mlx_xpm_file_to_image(win->mlx, TXTPD, &win->dim, &win->dim);
+	else
+		p = mlx_xpm_file_to_image(win->mlx, TXTP, &win->dim, &win->dim);
+	return (p);
 }
 
 void	ft_collectibles_count_and_player_first_y_x_position(t_map *map)

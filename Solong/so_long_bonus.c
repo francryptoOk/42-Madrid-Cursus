@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/06 15:24:57 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:37:20 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_assign_images_in_map(t_win win, t_map *map)
 			else if (map->map_orig[y][x] == 'E')
 				p = ft_exit_animation(&win, map, p);
 			else if (map->map_orig[y][x] == 'P')
-				p = mlx_xpm_file_to_image(win.mlx, TXTP, &win.dim, &win.dim);
+				p = ft_player_animation(&win, map, p);
 			else if (map->map_orig[y][x] == 'R')
 				p = mlx_xpm_file_to_image(win.mlx, TXTR, &win.dim, &win.dim);
 			ft_steps_and_image_to_window(&win, p, x, y);
