@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:07:31 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/05 15:48:55 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:58:53 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_verify_extension(char **argv)
 	while (argv[1][i])
 		i++;
 	i--;
-	if (argv[1][i] == 'r' && argv[1][--i] == 'e' && \
+	if (i >= 5 && argv[1][i] == 'r' && argv[1][--i] == 'e' && \
 		argv[1][--i] == 'b' && argv[1][--i] == '.')
 		;
 	else
