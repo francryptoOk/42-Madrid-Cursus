@@ -6,11 +6,18 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/19 12:51:26 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/03/20 15:37:31 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+void	ft_execute(char **argv, t_pip father, char **env)
+{
+//	if (ft_strncmp(PATH))
+	ft_split(argv, ' ');
+	ft_split(argv, '/');
+}
 
 void	ft_son(char **argv, t_pip father, char **env)
 {
@@ -37,8 +44,6 @@ void	ft_father(char **argv, t_pip father, char **env)
 	execve(argv[3], &argv[3], env);
 	perror("execve");
 }
-
-
 
 int	main(int argc, char **argv, char **env)
 {
