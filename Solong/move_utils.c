@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:29 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/05 15:45:22 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:37:13 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,12 @@ void	ft_collectibles_count_and_player_first_y_x_position(t_map *map)
 	int	x;
 	int	lines;
 	int	y;
-	int	count;
 
 	map->collectibles = ft_map_orig_search_and_count(map, "C");
 	ft_printf("Collectibles: %i\n\n", map->collectibles);
 	columns = ft_len_of_x(map);
 	lines = ft_len_of_y(map);
 	y = -1;
-	count = 0;
 	while (++y < lines)
 	{
 		x = -1;

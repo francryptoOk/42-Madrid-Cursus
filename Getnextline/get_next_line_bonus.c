@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:21:05 by fsantill          #+#    #+#             */
-/*   Updated: 2023/10/31 12:49:21 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:48:22 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	*remove_line(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[OPEN_MAX];
+	static char	*buffer[FOPEN_MAX];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
@@ -110,3 +110,22 @@ char	*get_next_line(int fd)
  * @return The function `get_next_line` returns a line of text read from
  * a file descriptor.
  */
+
+/*int	main(void)
+{
+	int		fd;
+	char	*lines;
+
+	fd = open("Pruebas.txt", O_RDONLY);
+	lines = "";
+	while (lines)
+	{
+		lines = get_next_line(fd);
+		if (lines != NULL)
+			printf("Line:\n%s\n", lines);
+		free(lines);
+	}
+	printf("\n");
+	system("leaks -q a.out");
+	return (0);
+}*/
