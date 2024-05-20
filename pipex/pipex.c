@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/05/20 10:28:51 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/20 10:34:08 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ int	main(int argc, char **argv, char **env)
 		else if (pid == 0)
 			ft_son(argv, father, env);
 		else
+		{
+			wait(NULL);
 			ft_father(argv, father, env);
+		}
 		return (0);
 	}
 	else
