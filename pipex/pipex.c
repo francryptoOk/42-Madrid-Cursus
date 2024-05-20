@@ -6,17 +6,20 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/20 15:37:31 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/20 10:01:46 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*	./pipex 	infile	ls -l	|	sort	outfile
+	0			1		2			3		4
+*/
 #include "pipex.h"
 
 void	ft_execute(char **argv, t_pip father, char **env)
 {
 //	if (ft_strncmp(PATH))
-	ft_split(argv, ' ');
-	ft_split(argv, '/');
+	ft_split((const char *)argv, ' ');
+	ft_split((const char *)argv, '/');
 }
 
 void	ft_son(char **argv, t_pip father, char **env)

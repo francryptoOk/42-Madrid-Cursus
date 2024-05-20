@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/03/12 14:35:03 by fsantill         ###   ########.fr        #
+#    Updated: 2024/05/20 09:59:39 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,10 +47,3 @@ fclean: clean
 	rm -rf $(NAME) $(NAMEBONUS)
 	make -C libft/ fclean
 re: fclean $(NAME) $(NAMEBONUS)
-
-## For Linux:
-## sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
-## %.o: %.c
-##	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
-## $(NAME): $(OBJ)
-##	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)

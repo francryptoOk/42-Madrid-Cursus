@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:06:28 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/14 16:16:44 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/20 09:58:33 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_leaks(void)
 {
-	system("leaks -q so_long");
+	system("leaks -q pipex");
 }
 
 void	ft_exit_error_msg(char *msg)
