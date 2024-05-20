@@ -6,13 +6,14 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/05/20 10:19:59 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/20 10:28:51 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*	./pipex 	infile	ls -l	|	sort	outfile
-	0			1		2			3		4
+/*	./pipex 	infile	com1	|	com2	outfile
+	0			1		2			3		4			<- argv Nº
 */
+
 #include "pipex.h"
 
 void	ft_execute(char **argv, t_pip father, char **env)
