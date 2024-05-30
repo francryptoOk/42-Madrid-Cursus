@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   map_check_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/06 12:07:51 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:43:22 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	ft_map_is_rectangular(t_map *map)
 }
 
 //	ft_printf("\nLines: %i\nColumns: %i\n", columns, lines);
-// ft_printf("MAP LINE: %s\n", map->map_copy[i]);
-// ft_printf("Diferencia: %i // %i\n", ft_strlen(map->map_copy[i]), columns)
+//	ft_printf("MAP LINE: %s\n", map->map_copy[i]);
+//	ft_printf("Diferencia: %i // %i\n", ft_strlen(map->map_copy[i]), columns)
 
 int	ft_map_is_closed(t_map *map)
 {

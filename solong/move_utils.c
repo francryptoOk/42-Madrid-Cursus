@@ -6,18 +6,11 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:29 by fsantill          #+#    #+#             */
-/*   Updated: 2024/05/30 15:07:54 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:45:11 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-//buscar al jugador y guardar X e Y del jugador en el mapa
-//si pulso arriba, ver que hay, si es 1 no pasa nada, si es 0 tengo que
-//printear la imagen del jugador
-//y donde esta el jugador tengo que printear 0, si es una coin lo mismo
-//pero una variable collectable
-//si es exit ver si alcanzò todos los colectables
 
 int	ft_key_bind(int keycode, t_win *win)
 {
@@ -61,9 +54,6 @@ void	ft_collectibles_count_and_player_first_y_x_position(t_map *map)
 	}
 }
 
-// ft_printf("\nP starting x: %i\n", x);
-// ft_printf("\nP starting y: %i\n", y);
-
 int	ft_map_orig_search_and_count(t_map *map, char *str)
 {
 	int	columns;
@@ -90,6 +80,8 @@ int	ft_map_orig_search_and_count(t_map *map, char *str)
 	return (count);
 }
 
+//	ft_printf("\nP starting x: %i\n", x);
+//	ft_printf("\nP starting y: %i\n", y);
 //	int i = -1;
 //	int j = 0;
 //	while (map->map_orig[j][++i])

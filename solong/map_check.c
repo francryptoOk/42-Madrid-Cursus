@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:25:34 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/05 15:44:56 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:41:58 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	ft_map_is_rectangular(t_map *map)
 }
 
 //	ft_printf("\nLines: %i\nColumns: %i\n", columns, lines);
-// ft_printf("MAP LINE: %s\n", map->map_copy[i]);
-// ft_printf("Diferencia: %i // %i\n", ft_strlen(map->map_copy[i]), columns)
+//	ft_printf("MAP LINE: %s\n", map->map_copy[i]);
+//	ft_printf("Diferencia: %i // %i\n", ft_strlen(map->map_copy[i]), columns)
 
 int	ft_map_is_closed(t_map *map)
 {

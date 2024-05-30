@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:29 by fsantill          #+#    #+#             */
-/*   Updated: 2024/05/30 15:03:47 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/30 16:44:58 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ int	ft_key_bind(int keycode, t_win *win)
 	}
 	return (0);
 }
-
-//ft_printf("keycode: %i", keycode);
 
 void	*ft_player_animation(t_win *win, t_map *map, void *p)
 {
@@ -83,9 +81,6 @@ void	ft_collectibles_count_and_player_first_y_x_position(t_map *map)
 	}
 }
 
-// ft_printf("\nP starting x: %i\n", x);
-// ft_printf("\nP starting y: %i\n", y);
-
 int	ft_map_orig_search_and_count(t_map *map, char *str)
 {
 	int	columns;
@@ -112,6 +107,9 @@ int	ft_map_orig_search_and_count(t_map *map, char *str)
 	return (count);
 }
 
+//	ft_printf("keycode: %i", keycode);
+//	ft_printf("\nP starting x: %i\n", x);
+//	ft_printf("\nP starting y: %i\n", y);
 //	int i = -1;
 //	int j = 0;
 //	while (map->map_orig[j][++i])
