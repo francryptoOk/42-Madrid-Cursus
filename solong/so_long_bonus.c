@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/07 15:37:20 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/30 15:27:17 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_steps_and_image_to_window(t_win *win, void *p, int x, int y)
 
 	mlx_put_image_to_window(win->mlx, win->mlx_win, p, x * 48, y * 48);
 	str_steps = ft_itoa(win->map->steps);
-	mlx_string_put(win->mlx, win->mlx_win, 1, 1, 0x40E0D0, str_steps);
+	mlx_string_put(win->mlx, win->mlx_win, 18, 35, 0xFF0000, str_steps);
 	free(str_steps);
 	return (0);
 }

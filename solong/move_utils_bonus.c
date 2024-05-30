@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:22:29 by fsantill          #+#    #+#             */
-/*   Updated: 2024/05/10 14:37:25 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/30 15:03:47 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,32 @@
 
 int	ft_key_bind(int keycode, t_win *win)
 {
-	if (keycode == 53)
+	if (keycode == 65307)
 		exit(0);
-	else if (keycode == 13 || keycode == 126)
+	else if (keycode == 65362 || keycode == 119)
 	{
 		win->map->player_flag = 'W';
 		ft_move_up(win);
 	}
-	else if (keycode == 1 || keycode == 125)
+	else if (keycode == 65364 || keycode == 115)
 	{
 		win->map->player_flag = 'S';
 		ft_move_down(win);
 	}
-	else if (keycode == 0 || keycode == 123)
+	else if (keycode == 65361 || keycode == 97)
 	{
 		win->map->player_flag = 'A';
 		ft_move_left(win);
 	}
-	else if (keycode == 2 || keycode == 124)
+	else if (keycode == 65363 || keycode == 100)
 	{
 		win->map->player_flag = 'D';
 		ft_move_right(win);
 	}
 	return (0);
 }
+
+//ft_printf("keycode: %i", keycode);
 
 void	*ft_player_animation(t_win *win, t_map *map, void *p)
 {

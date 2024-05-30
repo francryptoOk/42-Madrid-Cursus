@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:50:57 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/05 15:40:13 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/30 15:15:22 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_move_up(t_win *win)
 		ft_printf("Steps: %i\n", win->map->steps);
 		win->map->map_orig[y][x] = '0';
 		win->map->map_orig[y - 1][x] = 'P';
-		mlx_clear_window(win->mlx, win->mlx_win);
+//		mlx_clear_window(win->mlx, win->mlx_win);
 		ft_assign_images_in_map(*win, win->map);
 		win->map->player_y = y - 1;
 	}
@@ -57,7 +57,7 @@ void	ft_move_down(t_win *win)
 		ft_printf("Steps: %i\n", win->map->steps);
 		win->map->map_orig[y][x] = '0';
 		win->map->map_orig[y + 1][x] = 'P';
-		mlx_clear_window(win->mlx, win->mlx_win);
+//		mlx_clear_window(win->mlx, win->mlx_win);
 		ft_assign_images_in_map(*win, win->map);
 		win->map->player_y = y + 1;
 	}
@@ -86,7 +86,7 @@ void	ft_move_left(t_win *win)
 		ft_printf("Steps: %i\n", win->map->steps);
 		win->map->map_orig[y][x] = '0';
 		win->map->map_orig[y][x - 1] = 'P';
-		mlx_clear_window(win->mlx, win->mlx_win);
+//		mlx_clear_window(win->mlx, win->mlx_win);
 		ft_assign_images_in_map(*win, win->map);
 		win->map->player_x = x - 1;
 	}
@@ -115,7 +115,7 @@ void	ft_move_right(t_win *win)
 		ft_printf("Steps: %i\n", win->map->steps);
 		win->map->map_orig[y][x] = '0';
 		win->map->map_orig[y][x + 1] = 'P';
-		mlx_clear_window(win->mlx, win->mlx_win);
+//		mlx_clear_window(win->mlx, win->mlx_win);
 		ft_assign_images_in_map(*win, win->map);
 		win->map->player_x = x + 1;
 	}
