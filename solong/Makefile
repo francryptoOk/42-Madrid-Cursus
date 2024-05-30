@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/05/30 14:18:05 by fsantill         ###   ########.fr        #
+#    Updated: 2024/05/30 14:47:28 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,8 @@ NAME=so_long
 NAMEBONUS=so_long_bonus
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
+MLX_FLAGS=-Lminilibx-linux -lmlx -L/usr/lib/X11 -lXext -lX11
+LIBFT_FLAGS=-Llibft -lft
 FT=			so_long.c				\
 			map_check.c				\
 			args_utils.c			\
@@ -36,31 +38,24 @@ all:$(NAME)
 
 $(NAME): $(OBJ)
 	make -C ./libft
-	make -C ./minilibx_opengl_20191021
-	$(CC) $(OBJ) -lmlx -framework OpenGL -framework AppKit -o $(NAME) ./libft/libft.a ./minilibx_opengl_20191021/libmlx.a
+	make -C ./minilibx-linux
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX_FLAGS) $(LIBFT_FLAGS)
 
 bonus:$(NAMEBONUS)
 
 $(NAMEBONUS): $(OBJBONUS)
 	make -C ./libft
-	make -C ./minilibx_opengl_20191021
-	$(CC) $(OBJBONUS) -lmlx -framework OpenGL -framework AppKit -o $(NAMEBONUS) ./libft/libft.a ./minilibx_opengl_20191021/libmlx.a
+	make -C ./minilibx-linux
+	$(CC) $(CFLAGS) -o $(NAMEBONUS) $(OBJBONUS) $(MLX_FLAGS) $(LIBFT_FLAGS)
 
 .PHONY: clean fclean re
 
 clean:
 	rm -rf $(OBJ) $(OBJBONUS)
 	make -C libft/ clean
-	make -C minilibx_opengl_20191021/ clean
+	make -C minilibx-linux/ clean
 fclean: clean
 	rm -rf $(NAME) $(NAMEBONUS)
 	make -C libft/ fclean
-	make -C minilibx_opengl_20191021/ clean
+	make -C minilibx-linux/ clean
 re: fclean $(NAME) $(NAMEBONUS)
-
-## For Linux:
-## sudo apt-get update && sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
-## %.o: %.c
-##	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
-## $(NAME): $(OBJ)
-##	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)

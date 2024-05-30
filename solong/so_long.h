@@ -6,14 +6,14 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/03/07 15:37:51 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:47:30 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "libft/libft.h"
-# include "minilibx_opengl_20191021/mlx.h"
+# include "minilibx-linux/mlx.h"
 
 # define TXT1 "textures/1.xpm"
 # define TXT0 "textures/0.xpm"
