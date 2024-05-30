@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 14:50:57 by fsantill          #+#    #+#             */
-/*   Updated: 2024/05/30 15:47:45 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/05/30 15:50:39 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	ft_add_steps(t_win *win)
 	if (win->map->steps % 50 == 0)
 		mlx_clear_window(win->mlx, win->mlx_win);
 }
-
-// mlx_clear_window in those steps multiple of 50 to avoid lag
 
 void	ft_move_up(t_win *win)
 {
@@ -133,3 +131,6 @@ void	ft_move_right(t_win *win)
 		exit(0);
 	}
 }
+
+/* on function ft_add_steps I put an mlx_clear_window for
+those steps multiple of 50 to avoid lag */
