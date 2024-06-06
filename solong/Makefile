@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/05/30 16:54:02 by fsantill         ###   ########.fr        #
+#    Updated: 2024/06/06 11:53:10 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,5 +57,5 @@ clean:
 fclean: clean
 	rm -rf $(NAME) $(NAMEBONUS)
 	make -C libft/ fclean
-	make -C minilibx-linux/ fclean
+	make -C minilibx-linux/ clean
 re: fclean $(NAME) $(NAMEBONUS)
