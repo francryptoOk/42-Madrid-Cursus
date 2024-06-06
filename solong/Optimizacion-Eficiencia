@@ -1,0 +1,12 @@
+Optimización/Eficiencia
+
+1. Se puede mejorar el parseo de los "0", problema con las lineas centrales "1        1" en el mapa
+
+2. Un 0 encerrado, se da como mal pero podria ser valido.
+
+3. En la parte de movimientos que dice:
+
+if (map->player_flag == 'W')
+	p = mlx_xpm_file_to_image(win->mlx, TXTPW, &win->dim, &win->dim)
+	
+p esta leyendo todo el tiempo el archivo (podria leer una sóla vez cada textura, guardarla en la estructura y después llamarla cuando la necesite sin necesidad de estar leyendo continuamente el archivo)
