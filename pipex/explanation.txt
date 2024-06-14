@@ -1,0 +1,51 @@
+- "env" es el conjunto de variables del sistema (se agrega en el main como char** env)
+se lo puede recorrer hasta encontrar un null y te muestra todas las variables del sistema
+
+- funcion "execve" es de la familia de funciones exec.
+Execve recibe:
+* El path o dirección completa (pathname) -ej. /home/fsantill/a.out-
+* Los argumentos (donde estoy pasando el comando o el archivo)
+* El enviorment (env).
+
+- funcion "fork" es una forma de duplicar un proceso padre a un proceso hijo (la unica diferencia entre ambos es la ID del nuevo proceso)
+si pid es 0, es el proceso hijo
+caso contrario, es el proceso padre
+
+- función "sleep" sirve para hacer esperar en segundos -ej. sleep (2) espera dos segundos-
+
+Prácticas a evitar:
+- un problema es el proceso huerfano, es cuando el proceso padre murió y el hijo continuó ejecutándose
+- otro problema es el proceso zombie, es cuando el proceso hijo murió y el padre continuó ejecutándose sin recoger la información del proceso hijo
+
+El proceso padre tiene que esperar al proceso hijo para recabar su información y terminar correctamente.
+
+- función "waitpid" sirve para que un proceso espere a otro específico (según su pid) y recibe tres argumentos:
+* el pid del proceso que quiere esperar, sin embargo si hacemos "waitpid(-1, &status, 0)" tenemos el mismo comportamiento que "wait"
+* un integer que suele servir para identificar un return o exit con código específico
+* el último es 0, son opciones específicas del waitpid
+
+- función "wait" sólo recibe un argumento y espera a que termine cualquier proceso, sin identificar cúal será el que termine
+
+- función "access ("./explanation.txt", F_OK)"
+Verifica si existe el archivo
+
+con R_OK verifica si lo puede leer
+con W_OK verifica si lo puede escribir/modificar
+con X_OK verifica si lo puede ejecutar
+
+- función "unlink ("./explanation.txt")"
+borra el archivo
+
+- función "dup" copia un file descriptor FD con la misma ruta -ej. int fd2 = dup(fd1)-
+
+- función "dup2" cambia la ruta del file descriptor FD por otro -ej.    int fd1 = open("hola", O_WRONLY)
+                                                                        int fd2 = open("chau", O_WRONLY)
+                                                                        dup2(fd2, STDOUT_FILENO)- En este caso le estoy pidiendo que guarde en STDOUT se guarde el fd2.
+
+Cuando creamos un proceso siempre hay 3 file descriptors FD por defecto, el 0 es la entrada de datos por escritura estandar, el 1 es la salida estandar por pantalla, y el 2 es la salida de errores
+estas tres defines permiten acceder a esas tres:
+STDIN_FILENO es la 0
+STDOUT_FILENO es la 1
+STDERR_FILENO es la 2
+
+- función "pipe" crea dos file descriptors FD temporales uno para la escritura fd[1] y otro para la lectura fd[2] por intermedio de una tubería.
