@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:20:34 by fsantill          #+#    #+#             */
-/*   Updated: 2023/12/04 12:43:45 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/06/20 15:11:28 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*ft_strjoin_mod(char *s1, char *s2)
 	len_total = ft_strlen_to_limit(s1, '\0') + ft_strlen_to_limit(s2, '\0');
 	dst = (char *)malloc((len_total + 1) * sizeof(char));
 	if (!dst)
-		return (free(&dst), NULL);
+		return (NULL);
 	i = 0;
 	while (s1[i] != '\0')
 	{
@@ -97,12 +97,12 @@ char	*ft_substr_mod(char *s, unsigned int start, size_t len)
 
 	slen = ft_strlen_to_limit(s, '\0');
 	if (start > slen)
-		return (free(&s), NULL);
+		return (NULL);
 	if (len > slen - start)
 		len = slen - start;
 	dest = (char *)malloc(sizeof(char) * (len + 1));
 	if (!s || !dest)
-		return (free(&s), NULL);
+		return (NULL);
 	i = 0;
 	while (start < slen && i < len && s[start + i])
 	{

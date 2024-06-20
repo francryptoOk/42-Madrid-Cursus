@@ -5,7 +5,7 @@ se lo puede recorrer hasta encontrar un null y te muestra todas las variables de
 Execve recibe:
 * El path o dirección completa (pathname) -ej. /home/fsantill/a.out-
 * Los argumentos (donde estoy pasando el comando o el archivo)
-* El enviorment (env).
+* El environment (env).
 
 - funcion "fork" es una forma de duplicar un proceso padre a un proceso hijo (la unica
 diferencia entre ambos es la ID del nuevo proceso)
@@ -51,7 +51,8 @@ borra el archivo
 - función "dup2" cambia la ruta del file descriptor FD por otro
 -ej.int fd1 = open("hola", O_WRONLY)
     int fd2 = open("chau", O_WRONLY)
-    dup2(fd2, STDOUT_FILENO)- Aquí le estoy pidiendo que en STDOUT se guarde el fd2.
+    dup2(fd2, STDOUT_FILENO)- Aquí le estoy pidiendo que cambie mi salida desde
+    STDOUT hacia la salida en fd2.
 
 Cuando creamos un proceso siempre hay 3 file descriptors FD por defecto,
 el 0 es la entrada de datos por escritura estandar,
