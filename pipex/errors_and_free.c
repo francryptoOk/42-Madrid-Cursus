@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:06:28 by fsantill          #+#    #+#             */
-/*   Updated: 2024/05/20 09:58:33 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:14:24 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@ void	ft_leaks(void)
 	system("leaks -q pipex");
 }
 
-void	ft_exit_error_msg(char *msg)
+void	ft_exit_msg(char *msg, int perrorbool)
 {
-	ft_printf("%s", msg);
-	write(2, "\n", 1);
-	exit (EXIT_FAILURE);
-}
-
-void	ft_exit_perror_msg(char *msg)
-{
-	perror(msg);
+	if (perrorbool == 1)
+		perror(msg);
+	else
+		ft_printf("%s", msg);
 	write(2, "\n", 1);
 	exit (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/05/20 10:34:08 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/06/20 14:15:43 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ int	main(int argc, char **argv, char **env)
 	if (argc == 5 && argv)
 	{
 		if (pipe(father.fd) == -1)
-			ft_exit_perror_msg("Error\n\t• Pipe ");
+			ft_exit_msg("Error\n\t• Pipe, failed FD's", 1);
 		pid = fork();
-		if (pid == -1)
-			ft_exit_perror_msg("Error\n\t• Fork ");
+		if (pid < 0)
+			ft_exit_msg("Error\n\t• Fork, cannot duplicate process", 1);
 		else if (pid == 0)
 			ft_son(argv, father, env);
 		else
@@ -71,5 +71,5 @@ int	main(int argc, char **argv, char **env)
 		return (0);
 	}
 	else
-		ft_exit_error_msg("Error\n\t• Invalid arguments");
+		ft_exit_msg("Error\n\t• Invalid arguments", 0);
 }
