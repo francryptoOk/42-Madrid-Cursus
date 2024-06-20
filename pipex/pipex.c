@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/06/20 15:30:05 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/06/20 16:42:36 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_son(char **argv, t_pip father, char **env)
 		ft_exit_msg("Error\n\t• Problem open infile", 1);
 	dup2(fd, STDIN_FILENO); //Here I change the input from standard (terminal) to FD (infile)
 	dup2(father.fd[1], STDOUT_FILENO); //Here I change the output from standard to FD[1] (in structure)
-	close(fd); //I ended the fd use, so it's better closing
+	close(fd); //I ended using the FD (open infile), so it's better closing
 	execve(argv[2], &argv[2], env);
 	ft_exit_msg("execve", 1);
 }
