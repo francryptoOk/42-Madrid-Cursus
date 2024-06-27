@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/06/27 12:13:59 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:08:36 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	ft_son(char **argv, t_pip father, char **env)
 	int	fd;
 
 	close(father.fd[0]); //I don't use this reading FD in child process, so it's better closing
-	fd = open(argv[1], O_RDONLY); //open in read only
+	fd = open(argv[1], O_RDONLY); //open infile in read only mode
 	if (fd == -1)
-		ft_exit_msg("Error\n\t• Problem open infile", 1);
+		ft_exit_msg("Error\n\t• Problem opening infile", 1);
 	dup2(fd, STDIN_FILENO); //Here I change the input from standard (terminal) to FD (infile)
 	dup2(father.fd[1], STDOUT_FILENO); //Here I change the output from standard to FD[1] (in structure)
 	close(fd); //I ended using the FD (the open infile), so it's better closing
@@ -44,9 +44,9 @@ void	ft_father(char **argv, t_pip father, char **env)
 	int	fd;
 
 	close(father.fd[1]); //I don't use this writing FD in parent process, so it's better closing
-	fd = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0666); // open in write only, trunc file (erasing old data in it) or create new file (if doesn't exist), 0666 for all permitions
+	fd = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0666); // open outfile in write only, trunc file (erasing old data in it) or create new file (if doesn't exist), 0666 for all permitions
 	if (fd == -1)
-		ft_exit_msg("Error\n\t• Problem open outfile", 1);
+		ft_exit_msg("Error\n\t• Problem opening outfile", 1);
 	dup2(fd, STDOUT_FILENO); //Here I change the output from standard (terminal) to FD (infile)
 	dup2(father.fd[0], STDIN_FILENO); //Here I change the output from standard to FD[0] (in structure)
 	close(fd); //I ended using the FD (the open outfile), so it's better closing
@@ -62,11 +62,11 @@ int	main(int argc, char **argv, char **env)
 	if (argc == 5)
 	{
 		if (pipe(father.fd) == -1)
-			ft_exit_msg("Error\n\t• Pipe, failed FD's", 1);
+			ft_exit_msg("Error\n\t• Pipe failed", 1);
 		return (0);
 		pid = fork();
 		if (pid == -1)
-			ft_exit_msg("Error\n\t• Fork, cannot duplicate process", 1);
+			ft_exit_msg("Error\n\t• Fork cannot duplicate process", 1);
 		else if (pid == 0)
 			ft_son(argv, father, env);
 		else
