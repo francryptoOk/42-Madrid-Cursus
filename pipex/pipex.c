@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/06/27 16:08:36 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/06/27 17:36:36 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_son(char **argv, t_pip father, char **env)
 	dup2(father.fd[1], STDOUT_FILENO); //Here I change the output from standard to FD[1] (in structure)
 	close(fd); //I ended using the FD (the open infile), so it's better closing
 	execve(argv[2], &argv[2], env); //First command execution
-	ft_exit_msg("execve", 1); //If execve fails, exit with perror
+	ft_exit_msg("Error\n\t• execve failed", 1);
 }
 
 void	ft_father(char **argv, t_pip father, char **env)
@@ -51,7 +51,7 @@ void	ft_father(char **argv, t_pip father, char **env)
 	dup2(father.fd[0], STDIN_FILENO); //Here I change the output from standard to FD[0] (in structure)
 	close(fd); //I ended using the FD (the open outfile), so it's better closing
 	execve(argv[3], &argv[3], env); //Second command execution
-	ft_exit_msg("execve", 1); //If execve fails, exit with perror
+	ft_exit_msg("Error\n\t• execve failed", 1);
 }
 
 int	main(int argc, char **argv, char **env)
