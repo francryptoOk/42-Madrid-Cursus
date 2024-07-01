@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/06/27 17:36:36 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:33:49 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,26 @@
 
 #include "pipex.h"
 
-void	ft_execute(char **argv, t_pip father, char **env)
+char	**ft_path(char **env)
 {
-//	if (ft_strncmp(PATH))
-	ft_split((const char *)argv, ' ');
-	ft_split((const char *)argv, '/');
-	ft_exit_msg("Error\n\t• Command not found", 1);
+	int	i;
+	int j;
+	char **route;
+	
+	i = 0;
+	route = NULL;
+	while (env[i])
+	{
+		if (ft_strnstr(env[i], "PATH=", ft_strlen("PATH=")))
+			route = ft_split(env[i] + ft_strlen("PATH="), ':');
+		i++;
+	}
+	if (!route)
+		ft_exit_msg("Error\n\t• Path/Route not found", 1);
+	j = -1;
+	while (route[++j])
+		ft_printf("%s\n", route[j]);
+	return(route);
 }
 
 void	ft_son(char **argv, t_pip father, char **env)
@@ -59,6 +73,7 @@ int	main(int argc, char **argv, char **env)
 	t_pip	father;
 	pid_t	pid;
 
+//	ft_path(env);
 	if (argc == 5)
 	{
 		if (pipe(father.fd) == -1)
