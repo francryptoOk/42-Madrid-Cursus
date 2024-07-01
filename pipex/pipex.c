@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/07/01 11:33:49 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:28:31 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 char	**ft_path(char **env)
 {
 	int	i;
-	int j;
 	char **route;
 	
 	i = 0;
@@ -32,15 +31,37 @@ char	**ft_path(char **env)
 	}
 	if (!route)
 		ft_exit_msg("Error\n\t• Path/Route not found", 1);
-	j = -1;
-	while (route[++j])
-		ft_printf("%s\n", route[j]);
 	return(route);
+}
+
+//	i = -1;
+//	while (route[++i])
+//		ft_printf("%s\n", route[i]);
+
+char	*ft_valid_cmd_path(char **route, char *argv)
+{
+	char *cmd_path;
+	int	i;
+
+	i = 0;
+	while (route[i])
+	{
+		cmd_path = ft_strjoin(route[i], argv);
+		if (access(cmd_path, X_OK))
+			return(cmd_path);
+		free(cmd_path);
+		i++;
+	}
+	ft_exit_msg("Error\n\t• Invalid cmd on Path/Route", 1);
+	return (NULL);
 }
 
 void	ft_son(char **argv, t_pip father, char **env)
 {
 	int	fd;
+	char	**route;
+	char	**cmdflagsplit;
+	char	*validcmd;
 
 	close(father.fd[0]); //I don't use this reading FD in child process, so it's better closing
 	fd = open(argv[1], O_RDONLY); //open infile in read only mode
@@ -49,13 +70,19 @@ void	ft_son(char **argv, t_pip father, char **env)
 	dup2(fd, STDIN_FILENO); //Here I change the input from standard (terminal) to FD (infile)
 	dup2(father.fd[1], STDOUT_FILENO); //Here I change the output from standard to FD[1] (in structure)
 	close(fd); //I ended using the FD (the open infile), so it's better closing
-	execve(argv[2], &argv[2], env); //First command execution
+	route = ft_path(env);
+	cmdflagsplit = ft_split(argv[2], ' ');
+	validcmd = ft_valid_cmd_path(route, argv[2]);
+	execve(validcmd, cmdflagsplit, env); //First command execution
 	ft_exit_msg("Error\n\t• execve failed", 1);
 }
 
 void	ft_father(char **argv, t_pip father, char **env)
 {
-	int	fd;
+	int		fd;
+	char	**route;
+	char	**cmdflagsplit;
+	char	*validcmd;
 
 	close(father.fd[1]); //I don't use this writing FD in parent process, so it's better closing
 	fd = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0666); // open outfile in write only, trunc file (erasing old data in it) or create new file (if doesn't exist), 0666 for all permitions
@@ -64,7 +91,10 @@ void	ft_father(char **argv, t_pip father, char **env)
 	dup2(fd, STDOUT_FILENO); //Here I change the output from standard (terminal) to FD (infile)
 	dup2(father.fd[0], STDIN_FILENO); //Here I change the output from standard to FD[0] (in structure)
 	close(fd); //I ended using the FD (the open outfile), so it's better closing
-	execve(argv[3], &argv[3], env); //Second command execution
+	route = ft_path(env);
+	cmdflagsplit = ft_split(argv[3], ' ');
+	validcmd = ft_valid_cmd_path(route, argv[3]);
+	execve(validcmd, cmdflagsplit, env); //Second command execution
 	ft_exit_msg("Error\n\t• execve failed", 1);
 }
 
