@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/07/02 14:59:49 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/07/02 15:56:04 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	**ft_path(char **env)
 		}
 		i++;
 	}
-	ft_exit_msg("Error\n\t• Path/Route not found", 1);
+	ft_exit_msg("Error\n\t• Path/Route not found", 127);
 	return (NULL);
 }
 
@@ -47,6 +47,18 @@ char	*ft_valid_cmd_path(char **route, char *argv)
 	int	i;
 
 	i = 0;
+	if (argv[0] == '.' && argv[1] == '/')
+	{
+		if (access(argv, X_OK) == 0)
+			return (argv);
+	}
+	if (argv[0] == '/')
+	{
+		if (access(argv, X_OK) == 0)
+			return (argv);
+		else
+			ft_exit_msg("Error\n\t• Invalid cmd\n", 127);
+	}
 	while (route[i])
 	{
 		path_with_bar = ft_strjoin(route[i], "/");
@@ -57,7 +69,7 @@ char	*ft_valid_cmd_path(char **route, char *argv)
 		free(path_with_cmd);
 		i++;
 	}
-	ft_exit_msg("Error\n\t• Invalid cmd on Path/Route", 1);
+	ft_exit_msg("Error\n\t• Invalid cmd on Path/Route", 127);
 	return (NULL);
 }
 
@@ -113,28 +125,29 @@ int	main(int argc, char **argv, char **env)
 {
 	t_pip	father;
 	pid_t	pid;
+	int		status;
+	int		father_pid;
 
-	if (argc == 5)
-	{
-		if (pipe(father.fd) == -1)
-			ft_exit_msg("Error\n\t• Pipe failed", 1);
-		pid = fork();
-		if (pid == -1)
-			ft_exit_msg("Error\n\t• Fork cannot duplicate process, 1st try", 1);
-		else if (pid == 0)
-			ft_son_one(argv, father, env);
-		pid = fork();
-		if (pid == -1)
-			ft_exit_msg("Error\n\t• Fork cannot duplicate process, 2nd try", 1);
-		else if (pid == 0)
-			ft_son_two(argv, father, env);
-		close(father.fd[0]);
-		close(father.fd[1]);
-		wait(NULL);
-		wait(NULL);
-		return (0);
-	}
-	ft_exit_msg("Error\n\t• Invalid arguments", 0);
+	if (argc != 5)
+		ft_exit_msg("Error\n\t• Invalid arguments", -1);
+	if (pipe(father.fd) == -1)
+		ft_exit_msg("Error\n\t• Pipe failed", 1);
+	pid = fork();
+	ft_pid_fork_error(pid);
+	if (pid > 0)
+		father_pid = pid;
+	if (pid == 0)
+		ft_son_one(argv, father, env);
+	waitpid(father_pid, NULL, 0);
+	pid = fork();
+	ft_pid_fork_error(pid);
+	if (pid > 0)
+		father_pid = pid;
+	if (pid == 0)
+		ft_son_two(argv, father, env);
+	close(father.fd[0]);
+	close(father.fd[1]);
+	return (waitpid(father_pid, &status, 0), WEXITSTATUS(status));
 }
 
 //		ft_printf("fd0: %i fd1: %i\n", father.fd[0], father.fd[1]);
