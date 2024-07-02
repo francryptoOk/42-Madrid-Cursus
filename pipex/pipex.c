@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/07/02 13:02:31 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:59:49 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,12 +128,13 @@ int	main(int argc, char **argv, char **env)
 			ft_exit_msg("Error\n\t• Fork cannot duplicate process, 2nd try", 1);
 		else if (pid == 0)
 			ft_son_two(argv, father, env);
+		close(father.fd[0]);
+		close(father.fd[1]);
 		wait(NULL);
 		wait(NULL);
 		return (0);
 	}
-	else
-		ft_exit_msg("Error\n\t• Invalid arguments", 0);
+	ft_exit_msg("Error\n\t• Invalid arguments", 0);
 }
 
 //		ft_printf("fd0: %i fd1: %i\n", father.fd[0], father.fd[1]);
