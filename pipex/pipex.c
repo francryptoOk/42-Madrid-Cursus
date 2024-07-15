@@ -6,12 +6,31 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/07/02 15:56:04 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/07/15 13:38:36 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*	./pipex 	infile	com1	|	com2	outfile
 	0			1		2			3		4			<- argv Nº
+*/
+
+/*	
+	* infile:
+	ej. cat < infile (usa O_RDONLY, lee el contenido si existe, sino error)
+
+	* here_doc:
+	ej. cat << EOF (end of file) (usa el FD temporal donde almacena
+	lo que se escribe por consola)
+	
+	* trunc:
+	ej. cat > outfile (usa O_TRUNC, crea el archivo o lo elimina si existe
+	para crearlo de nuevo con ese contenido)
+	
+	* append:
+	ej. cat >> outfile (usa O_APPEND, crea el archivo o añade el
+	contenido al ya existente)
+
+	si hay varios infiles o varios outfiles SOLO va a utilizar el ULTIMO
 */
 
 #include "pipex.h"
