@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:06:28 by fsantill          #+#    #+#             */
-/*   Updated: 2024/07/02 15:51:39 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:17:18 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,3 @@ void	*ft_arr_free(char **arr)
 		free(arr);
 	return (NULL);
 }
-
-// -to print liberations, between lines 33/34)-
-// ft_printf("Liberando %s\n", arr[i]);
