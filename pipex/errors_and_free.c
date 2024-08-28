@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:06:28 by fsantill          #+#    #+#             */
-/*   Updated: 2024/08/28 13:04:04 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:17:18 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ void	ft_leaks(void)
 	system("leaks -q pipex");
 }
 
-void	ft_pid_fork(pid_t pid)
+void	ft_pid_fork_error(pid_t pid)
 {
-	pid = fork();
 	if (pid == -1)
 		ft_exit_msg("Error\n\t• Fork cannot duplicate process", 1);
 }

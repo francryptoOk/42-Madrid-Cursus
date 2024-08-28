@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 12:17:08 by fsantill          #+#    #+#             */
-/*   Updated: 2024/08/28 12:18:57 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/08/28 14:42:26 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ char	*ft_valid_cmd_path(char **route, char *argv)
 	int		i;
 
 	i = 0;
-	if ((argv[0] == '.' && argv[1] == '/') || argv[0] == '/')
-	{
-		if (access(argv, X_OK) == 0)
-			return (argv);
-		ft_exit_msg("Error\n\t• Invalid cmd\n", 127);
-	}
+//	if ((argv[0] == '.' && argv[1] == '/') || argv[0] == '/')
+//	{
+//		if (access(argv, X_OK) == 0)
+//			return (argv);
+//		ft_exit_msg("Error\n\t• Invalid cmd\n", 127);
+//	}
 	while (route[i])
 	{
 		path_with_bar = ft_strjoin(route[i], "/");
