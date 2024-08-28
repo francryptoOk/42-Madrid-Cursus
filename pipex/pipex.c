@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:03:30 by fsantill          #+#    #+#             */
-/*   Updated: 2024/08/28 12:22:36 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:04:21 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,13 @@ int	main(int argc, char **argv, char **env)
 		father_pid = pid;
 	if (pid == 0)
 		ft_son_one(argv, father, env);
-	pid = fork();
 	ft_pid_fork_error(pid);
 	if (pid > 0)
 		father_pid = pid;
 	if (pid == 0)
 		ft_son_two(argv, father, env);
-	waitpid(-1, NULL, 0);
+	while (waitpid(-1, NULL, 0) != -1)
+		;
 	close(father.fd[0]);
 	close(father.fd[1]);
 	return (waitpid(father_pid, &status, 0), WEXITSTATUS(status));

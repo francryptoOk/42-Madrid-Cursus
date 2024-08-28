@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/08/28 12:21:19 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/08/28 13:04:13 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_pip
 }					t_pip;
 
 void	ft_leaks(void);
-void	ft_pid_fork_error(pid_t pid);
+void	ft_pid_fork(pid_t pid);
 void	ft_exit_msg(char *msg, int errorvalue);
 void	*ft_arr_free(char **arr);
 char	**ft_path(char **env);
