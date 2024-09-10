@@ -1,0 +1,75 @@
+1 byte = 8 bits
+
+ejemplo:
+
+    0110	1001		esto es 1 byte completo
+ (bloque 1) + (bloque 2)
+
+-----------------------------------------------------------------------------------------
+
+Para hacer una función que lea los bits en formato reverso o inverso
+
+como es base binaria si quiero tomar el último bit
+- arranco el iterador desde la posición 8 (i = 8)
+- lo multiplico por 2 (en vez de por 10 en base decimal) para avanzar a la posición 7
+- hago módulo de 2 (en vez de 10 en base decimal) para tomar el decimal de la posición 8
+- reduzco el iterador en bucle
+
+unsigned char	reverse_bits(unsigned char octet)
+{
+	int		i = 8;
+	unsigned char	res = 0;
+
+	while (i > 0)
+	{
+		res = res * 2 + (octet % 2);
+		octet = octet / 2;
+		i--;
+	}
+	return (res);
+}
+
+-----------------------------------------------------------------------------------------
+
+Para hacer una función que haga un swap de dos bloques de bits
+
+ 0100 | 0001
+     \ /
+     / \
+ 0001 | 0100
+
+- se usan los operadores >> o << que son de desplazamiento de bits
+- un desplazamiento a la izquierda es equivalente a multiplicar por dos
+
+	bits << 1	 equivale a 	bits = bits * 2
+
+- en el caso del swap, lo que se hace es desplazar un bloque 4 veces
+a un lado y el otro bloque 4 veces al lado opuesto
+
+unsigned char swap_bits(unsigned char octet)
+{
+	return ((octet >> 4) | (octet << 4));
+}
+
+-----------------------------------------------------------------------------------------
+
+Para hacer una función que haga un print de los bits
+
+- se usa el operador & en vez de | por la siguiente razón:
+
+	1 & 0 = 0 (AND requiere que ambos bits sean 1).
+	1 | 0 = 1 (OR requiere que al menos un bit sea 1).
+
+- se le suma '0' o 48 para transformar el int en char
+
+void print_bits(unsigned char octet)
+{
+	int i = 8;
+	unsigned char 	bit;
+
+	while (i--)
+	{
+		bit = (octet >> i & 1) + '0';
+		write(1, &bit, 1);
+	}
+}
