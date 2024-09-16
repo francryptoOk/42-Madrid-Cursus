@@ -6,7 +6,7 @@
 #    By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/13 12:15:32 by fsantill          #+#    #+#              #
-#    Updated: 2024/09/16 11:50:00 by fsantill         ###   ########.fr        #
+#    Updated: 2024/09/16 13:26:50 by fsantill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,19 +20,14 @@ FT=		philo.c					\
 OBJ=$(FT:%.c=%.o)
 
 all:$(NAME)
-
 $(NAME): $(OBJ)
-	make -C ./libft
-	$(CC) $(OBJ) -o $(NAME) ./libft/libft.a
 
 .PHONY: clean fclean re
 
 clean:
 	rm -rf $(OBJ) 
 
-	make -C libft/ clean
 fclean: clean
 	rm -rf $(NAME)
 
-	make -C libft/ fclean
 re: fclean $(NAME)
