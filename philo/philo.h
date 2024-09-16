@@ -6,7 +6,7 @@
 /*   By: fsantill <fsantill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 16:05:15 by fsantill          #+#    #+#             */
-/*   Updated: 2024/09/16 13:26:47 by fsantill         ###   ########.fr       */
+/*   Updated: 2024/09/16 14:57:44 by fsantill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_data
 	int				time_to_eat;
 	int				time_to_sleep;
 	pthread_mutex_t	*forks;
-	t_philosopher		*philosophers;
+	t_philosopher	*philosophers;
 }					t_data;
 
 void	ft_leaks(void);
